@@ -699,7 +699,7 @@
 	}
 
 	.demo-video { margin: 0; justify-self: center; width: min(100%, 17rem); }
-	.demo-video video { width: 100%; aspect-ratio: 886 / 1920; background: var(--surface-2); }
+	.demo-video video { width: 100%; aspect-ratio: 720 / 1558; background: var(--surface-2); cursor: pointer; }
 
 	.demo-video figcaption {
 		margin-top: var(--space-3);
@@ -773,13 +773,15 @@
 	.gallery-track a { display: block; border-radius: 1.25rem; }
 	.gallery-track img { width: 100%; aspect-ratio: 1125 / 2436; object-fit: cover; }
 
+	/* A landscape screenshot takes two slots, centred in the row */
+	.gallery-track .gallery-wide { grid-column: span 2; align-self: center; }
+	.gallery-track .gallery-wide img { aspect-ratio: 2436 / 1125; }
+
 	.gallery-track figcaption {
 		margin-top: var(--space-3);
 		font-size: var(--step--1);
 		color: var(--muted);
 	}
-
-	.gallery-note { font-size: var(--step--1); color: var(--muted); }
 
 	.lightbox {
 		width: 100%;
