@@ -370,7 +370,6 @@
 	@media (min-width: 84rem) {
 		.site-nav { order: 1; }
 		.site-nav a { padding-inline: var(--space-2); }
-		.nav-login { display: none; }
 		.header-actions { order: 2; }
 	}
 
@@ -417,9 +416,16 @@
 	.header-actions { display: flex; gap: var(--space-2); }
 
 	@media (max-width: 83.99rem) {
-		.header-inner { flex-wrap: wrap; }
+		/* pin the first row to the header height: once the menu wraps open,
+		   the flex line would otherwise shrink to its content and jump up */
+		.header-inner {
+			flex-wrap: wrap;
+			align-content: flex-start;
+			padding-block: calc((var(--header-h) - var(--tap)) / 2);
+		}
 		.js .nav-toggle { display: inline-flex; }
-		.header-actions .button-secondary { display: none; }
+		/* the hero repeats « Créer mon compte » right below; returning users need their board */
+		.header-actions .header-register { display: none; }
 
 		.site-nav { flex-basis: 100%; order: 3; }
 		.js .site-nav:not(.is-open) { display: none; }
@@ -432,8 +438,15 @@
 		.site-nav a { width: 100%; font-size: var(--step-0); }
 	}
 
+	/* keep logo, « Mon tableau » and the menu on a single line */
+	@media (max-width: 36rem) {
+		.header-inner { gap: var(--space-2); }
+		.nav-toggle { padding-inline: var(--space-3); }
+		.nav-toggle span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+	}
+
 	@media (max-width: 26rem) {
-		.header-actions { display: none; }
+		.brand .wordmark { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 	}
 
 	/* Hero ------------------------------------------------------------- */
@@ -948,6 +961,22 @@
 		gap: var(--space-3);
 		max-width: 48rem;
 		margin-bottom: var(--space-6);
+	}
+
+	/* Large screens: heading pinned on the left, questions on the right */
+	@media (min-width: 60rem) {
+		.faq-layout {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+			gap: var(--space-7);
+			align-items: start;
+		}
+		.faq-layout .section-head {
+			position: sticky;
+			top: calc(var(--header-h) + var(--space-5));
+			margin-bottom: 0;
+		}
+		.faq-list { max-width: none; }
 	}
 
 	.faq-list details {

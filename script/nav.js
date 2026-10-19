@@ -1,8 +1,10 @@
-// Mobile menu: the toggle only exists once JavaScript runs; the nav stays visible otherwise.
-export function initNav(header) {
-	if (!header) return;
-	const toggle = header.querySelector('.nav-toggle');
-	const nav = header.querySelector('.site-nav');
+// Mobile menu. Classic script (not a module) so the menu also works when the page is
+// opened from disk (file://), where browsers block ES modules. The CSS shows the toggle
+// and folds the nav as soon as <html> has the "js" class; this only wires the behaviour.
+(() => {
+	const header = document.querySelector('.site-header');
+	const toggle = header && header.querySelector('.nav-toggle');
+	const nav = header && header.querySelector('.site-nav');
 	if (!toggle || !nav) return;
 
 	const setOpen = (open) => {
@@ -10,7 +12,6 @@ export function initNav(header) {
 		nav.classList.toggle('is-open', open);
 	};
 
-	toggle.hidden = false;
 	toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
 	nav.addEventListener('click', (event) => {
 		if (event.target.closest('a')) setOpen(false);
@@ -21,4 +22,4 @@ export function initNav(header) {
 			toggle.focus();
 		}
 	});
-}
+})();
