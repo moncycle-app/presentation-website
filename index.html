@@ -270,6 +270,7 @@
 		<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
 		<symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
 		<symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+		<symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
 	</svg>
 
 	<header class="site-header">
@@ -433,16 +434,18 @@
 				</div>
 
 				<!--
-					CONFIG: key figures. Update the three numbers and the date together
-					(source: https://tableau.moncycle.app/api/pub_stat, rounded by the server).
+					CONFIG: key figures, refreshed on load from data-stats-src (rounded by the server).
+					Both formats are read: v1 https://tableau.moncycle.app/api/pub_stat
+					and v2 https://dev.moncycle.app/api/v2/pub_stat ({"data": {...}}).
+					The numbers and date below are the fallback when the API cannot be reached.
 				-->
 				<h3 class="visually-hidden" id="figures-title">moncycle.app en chiffres</h3>
-				<dl class="figures" aria-labelledby="figures-title">
-					<div><dt>comptes ouverts</dt><dd>2&nbsp;190</dd></div>
-					<div><dt>cycles enregistrés</dt><dd>18&nbsp;000</dd></div>
-					<div><dt>observations notées</dt><dd>372&nbsp;700</dd></div>
+				<dl class="figures" aria-labelledby="figures-title" data-stats-src="https://tableau.moncycle.app/api/pub_stat">
+					<div><dt>comptes ouverts</dt><dd data-stat="accounts">2&nbsp;190</dd></div>
+					<div><dt>cycles enregistrés</dt><dd data-stat="cycles">18&nbsp;000</dd></div>
+					<div><dt>observations notées</dt><dd data-stat="observations">372&nbsp;700</dd></div>
 				</dl>
-				<p class="figures-date">Chiffres arrondis au 19&nbsp;octobre&nbsp;2026.</p>
+				<p class="figures-date">Chiffres arrondis au <time data-stats-date datetime="2026-10-19">19&nbsp;octobre&nbsp;2026</time>.</p>
 			</div>
 		</section>
 
@@ -520,6 +523,15 @@
 						</figure></li>
 					</ul>
 					<p class="gallery-note">Captures de la version précédente de l’application, en attendant celles de la nouvelle version.</p>
+					<dialog class="lightbox" aria-label="Capture d’écran agrandie">
+						<figure>
+							<img alt="">
+							<figcaption></figcaption>
+						</figure>
+						<button type="button" class="lightbox-close" data-lightbox-close aria-label="Fermer"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-close"/></svg></button>
+						<button type="button" class="lightbox-prev" data-lightbox-prev aria-label="Capture précédente"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-left"/></svg></button>
+						<button type="button" class="lightbox-next" data-lightbox-next aria-label="Capture suivante"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-right"/></svg></button>
+					</dialog>
 				</div>
 			</div>
 		</section>
@@ -907,7 +919,7 @@
 					<h2>Liens techniques</h2>
 					<ul>
 						<li><a href="https://github.com/moncycle-app/backend-api-web-app">Code source</a></li>
-						<li><a href="https://tableau.moncycle.app/api/">API</a></li>
+						<li><a href="https://tableau.moncycle.app/api">Documentation de l’API</a></li>
 						<li><a href="https://hub.docker.com/r/jeanio/moncycle.app">Image Docker</a></li>
 						<li><a href="https://install-app.yunohost.org/?app=moncycle">YunoHost</a></li>
 						<li><a href="https://status.moncycle.app">État du service</a></li>
@@ -925,7 +937,6 @@
 					<h2>Nous contacter</h2>
 					<ul>
 						<li><span class="email"><img src="ToS/email.jpg" alt="Adresse e-mail de contact (image)" width="166" height="22"></span></li>
-						<li><a href="https://signal.me/#eu/NZ99WMZSpp6NHkUBUhdKvADr4todXR+V8E20xbHQmtvZHRUK6cBOmIXE0PVQddrc">@jean.11 sur Signal</a></li>
 					</ul>
 				</div>
 			</div>
