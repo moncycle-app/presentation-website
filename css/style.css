@@ -461,7 +461,7 @@
 		align-items: center;
 	}
 
-	.hero h1 { max-width: 15ch; }
+	.hero h1 { max-width: 24ch; font-size: var(--step-3); }
 
 	.hero-actions {
 		display: flex;
