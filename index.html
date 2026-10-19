@@ -1,209 +1,939 @@
 <!doctype html>
-<html lang="fr">
-	<head>
-		<title>moncycle.app - suivi de cycle pour les méthodes naturelles</title>
-		<link rel="icon" href="favicon.ico" />
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" /> <!-- , height=device-height -->
-		<meta name="theme-color" media="(prefers-color-scheme: light)" content="white" />
-		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="black" />
-		<meta name="apple-mobile-web-app-status-bar-style" media="(prefers-color-scheme: light)" content="light-content" />
-		<meta name="apple-mobile-web-app-status-bar-style" media="(prefers-color-scheme: dark)" content="dark-content" />
-		<meta name="description" content="Application de suivi de cycle pour les méthodes naturelles de régulation des naissances." />
-		<meta property="og:title" content="moncycle.app" />
-		<meta property="og:type" content="siteweb" />
-		<meta property="og:url" content="https://www.moncycle.app/" />
-		<meta property="og:image" content="https://www.moncycle.app/image/preview.png" />
-		<meta property="og:description" content="Application de suivi de cycle menstruel pour les méthodes naturelles de régulation des naissances: Billings, FertilityCare ou encore suivi de la température." />
-		<link rel="stylesheet" href="style.css?v=test" />
-		<script type="text/javascript" src="script/jquery-3.6.3.min.js"></script>
-		<script type="text/javascript" src="script/animation.js?v=test"></script>
-		<script async src="https://plugin.tipeee.com/widget.js" charset="utf-8"></script>
-	</head>
-	<body>
-		<div class="animation">
-			<div class="img_container">
-				<img id="img_couple" src="image/moncycle_app_couple_web.png" alt="couple souriant visionnant un télèphonne" loading="lazy" />
+<html lang="fr" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>moncycle.app · carnet de cycle gratuit pour les méthodes Billings et FertilityCare</title>
+	<meta name="description" content="moncycle.app est une application web gratuite pour noter chaque jour vos observations de glaire et de température et tenir votre tableau Billings ou FertilityCare. Sans publicité, sans prédiction, hébergée en France.">
+	<link rel="canonical" href="https://www.moncycle.app/">
+	<meta name="color-scheme" content="light dark">
+	<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfaf6">
+	<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101512">
+	<meta name="author" content="Tech 4 Fertility">
+
+	<link rel="icon" href="favicon.ico" sizes="any">
+	<link rel="icon" href="favicon.svg" type="image/svg+xml">
+	<link rel="apple-touch-icon" href="image/apple-touch-icon.png">
+
+	<meta property="og:type" content="website">
+	<meta property="og:locale" content="fr_FR">
+	<meta property="og:site_name" content="moncycle.app">
+	<meta property="og:url" content="https://www.moncycle.app/">
+	<meta property="og:title" content="moncycle.app · le carnet de cycle des méthodes naturelles">
+	<meta property="og:description" content="Notez vos observations de glaire et de température, et retrouvez votre tableau Billings ou FertilityCare sur tous vos appareils. Gratuit, sans publicité, sans prédiction.">
+	<meta property="og:image" content="https://www.moncycle.app/image/preview.png">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:image:alt" content="Dessin d’un couple souriant au-dessus du nom moncycle.app">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="moncycle.app · le carnet de cycle des méthodes naturelles">
+	<meta name="twitter:description" content="Notez vos observations de glaire et de température, et retrouvez votre tableau Billings ou FertilityCare sur tous vos appareils. Gratuit, sans publicité, sans prédiction.">
+	<meta name="twitter:image" content="https://www.moncycle.app/image/preview.png">
+
+	<link rel="preload" href="font/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="stylesheet" href="css/style.css">
+	<script>document.documentElement.classList.replace('no-js', 'js');</script>
+	<script type="module" src="script/main.js"></script>
+	<script src="ToS/email.js" defer></script>
+
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "Organization",
+				"@id": "https://www.moncycle.app/#tech4fertility",
+				"name": "Tech 4 Fertility",
+				"url": "https://tech4fertility.org/",
+				"description": "Association française à but non lucratif (loi de 1901) qui développe et distribue moncycle.app.",
+				"address": {
+					"@type": "PostalAddress",
+					"streetAddress": "15A rue Valentin Gaumont",
+					"postalCode": "27200",
+					"addressLocality": "Vernon",
+					"addressCountry": "FR"
+				},
+				"sameAs": ["https://github.com/moncycle-app"]
+			},
+			{
+				"@type": "WebSite",
+				"@id": "https://www.moncycle.app/#website",
+				"url": "https://www.moncycle.app/",
+				"name": "moncycle.app",
+				"inLanguage": "fr",
+				"publisher": { "@id": "https://www.moncycle.app/#tech4fertility" }
+			},
+			{
+				"@type": "WebApplication",
+				"@id": "https://www.moncycle.app/#app",
+				"name": "moncycle.app",
+				"url": "https://tableau.moncycle.app/",
+				"description": "Carnet de suivi de cycle pour les méthodes naturelles (Billings, FertilityCare, avec ou sans température). Outil de bien-être : ni dispositif médical, ni moyen de contraception.",
+				"applicationCategory": "HealthApplication",
+				"operatingSystem": "Tout navigateur récent (iPhone, Android, ordinateur)",
+				"browserRequirements": "Nécessite JavaScript",
+				"inLanguage": "fr",
+				"isAccessibleForFree": true,
+				"offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+				"license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+				"screenshot": "https://www.moncycle.app/image/capture1.png",
+				"featureList": [
+					"Suivi de la glaire cervicale et des saignements",
+					"Suivi de la température basale (facultatif)",
+					"Notation Billings et FertilityCare",
+					"Export PDF, CSV et NFP",
+					"Envoi automatique des cycles terminés par e-mail",
+					"Synchronisation entre appareils",
+					"Mode sombre",
+					"Authentification à deux facteurs (TOTP)"
+				],
+				"author": { "@id": "https://www.moncycle.app/#tech4fertility" },
+				"publisher": { "@id": "https://www.moncycle.app/#tech4fertility" }
+			},
+			{
+				"@type": "SoftwareSourceCode",
+				"@id": "https://www.moncycle.app/#source",
+				"name": "moncycle.app (application web et API)",
+				"codeRepository": "https://github.com/moncycle-app/backend-api-web-app",
+				"programmingLanguage": ["PHP", "JavaScript"],
+				"license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+				"targetProduct": { "@id": "https://www.moncycle.app/#app" },
+				"author": { "@id": "https://www.moncycle.app/#tech4fertility" }
+			}
+		]
+	}
+	</script>
+	<!-- FAQ:JSONLD:START (generated from the #faq section by tools/faq-jsonld.mjs; do not edit by hand) -->
+	<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	"mainEntity": [
+		{
+			"@type": "Question",
+			"name": "Qu’est-ce que moncycle.app ?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Un carnet de suivi de cycle pour les méthodes naturelles : Billings et FertilityCare, avec ou sans température. Vous notez vos observations, l’application les affiche en tableau et les exporte. C’est une application web gratuite, utilisable sur téléphone comme sur ordinateur.\nC’est un outil de bien-être. Ce n’est ni un dispositif médical, ni un moyen de contraception, ni un outil de diagnostic."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "Qui développe moncycle.app ?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "L’application est développée et distribuée par Tech 4 Fertility, une association française à but non lucratif (loi de 1901) dont le siège est à Vernon, dans l’Eure. Elle en est propriétaire depuis octobre 2026. Le code est public sur GitHub."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "L’application est-elle vraiment gratuite ? Comment la soutenir ?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Oui. Il n’y a pas d’abonnement, pas de version payante, pas de publicité, et vos données ne sont jamais vendues. L’application vit des dons faits à Tech 4 Fertility, qui paient l’hébergement, le nom de domaine et le temps passé à la maintenir. Pour donner, voyez la rubrique Soutenir moncycle.app."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "Comment créer un compte ?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Allez sur la page d’inscription. Il faut avoir 18 ans révolus. On vous demande :\n• un pseudo (vos initiales suffisent) ;\n• une adresse e-mail qui ne permet pas de vous identifier (évitez prenom.nom@…) ;\n• un mot de passe d’au moins 10 caractères, que vous n’utilisez nulle part ailleurs ;\n• votre année de naissance et la méthode que vous suivez.\nVous recevez ensuite un lien de confirmation, valable 3 jours. Un compte qui n’est pas confirmé est supprimé au bout de 7 jours."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "Comment installer moncycle.app sur iPhone ou Android ?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "moncycle.app n’est pas sur l’App Store ni sur Google Play : c’est une application web. Connectez-vous, ouvrez votre tableau, puis ajoutez la page à l’écran d’accueil. Sur iPhone, dans Safari, c’est le bouton Partager puis « Sur l’écran d’accueil ». Sur Android, dans Chrome, c’est le menu puis « Ajouter à l’écran d’accueil ». L’icône ouvre ensuite l’application directement.\nDes applications pour iPhone et Android sont en préparation chez Tech 4 Fertility. Elles seront annoncées sur ce site."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "Les applications de suivi de cycle sont-elles fiables ?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Tout dépend de ce qu’on leur demande. La plupart annoncent les prochaines règles ou la date d’ovulation à partir de la durée des cycles passés. C’est le principe de l’ancien calendrier d’Ogino, version numérique : il ne tient plus dès que les cycles varient, ce qui arrive à beaucoup de femmes.\nLes méthodes d’observation font l’inverse : elles lisent les signes du cycle en cours, comme la glaire ou la température.\nmoncycle.app ne fait donc aucune prédiction. Elle enregistre ce que vous observez et le présente dans la notation de votre méthode. L’interprétation vous revient."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "Peut-on utiliser une application de suivi de cycle comme contraception ?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Non. Une application n’est pas une contraception : c’est le carnet dans lequel vous écrivez. Si vous suivez une méthode naturelle pour espacer les naissances, ce qui compte, c’est l’observation quotidienne et l’application correcte des règles de la méthode, apprises auprès d’un moniteur formé.\nmoncycle.app ne vous dit jamais si un jour est fertile ou non, et ne vérifie pas votre lecture du tableau. Aucune méthode n’est efficace à 100 %, et l’application ne garantit ni qu’une grossesse soit évitée, ni qu’elle survienne. Les décisions vous appartiennent, à vous et à votre conjoint."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "Mes données de cycle sont-elles privées ? Peuvent-elles être vendues ?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Les données de cycle sont parmi les plus intimes qu’on puisse confier à un téléphone. Avant de choisir une application, deux questions suffisent souvent : qui la paie, et où sont stockées les données ?\nPour moncycle.app :\n• elle est financée par les dons, sans publicité, sans outil de pistage, et vos données ne sont ni vendues ni cédées ;\n• les serveurs sont en France, chez OVH, et aucune donnée ne quitte l’Union européenne ; le traitement suit le RGPD ;\n• personne à l’association ne consulte vos observations. En dehors de l’hébergeur, elles ne partent que vers les adresses e-mail que vous avez ajoutées vous-même, et vers la recherche si vous l’acceptez. Les autorités ne peuvent les obtenir que sur demande légale ;\n• la participation à la recherche est facultative. Elle demande un second consentement, et les exports ne contiennent ni e-mail, ni pseudo, ni texte libre ;\n• la connexion est chiffrée (HTTPS), les mots de passe sont stockés sous forme d’empreinte, la double authentification est disponible et chaque nouvelle connexion vous est signalée par e-mail.\nUne limite à connaître : les e-mails de fin de cycle voyagent comme n’importe quel e-mail, sans chiffrement de bout en bout. Vous pouvez désactiver cet envoi dans « Mon compte ». Et comme le code est ouvert, tout cela peut se vérifier.\nEnfin, ne saisissez ni votre nom, ni aucune donnée médicale (maladie, traitement, diagnostic) : l’application n’est pas faite pour les recevoir."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "Puis-je exporter, synchroniser ou supprimer mes données ?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Oui, et sans avoir à écrire à qui que ce soit. Depuis « Mon compte », vous exportez vos cycles en PDF, CSV ou NFP, vous récupérez l’ensemble des données brutes du compte, vous importez des données et vous supprimez votre compte. La suppression est immédiate et définitive ; les sauvegardes s’effacent au plus tard 90 jours après.\nVos données sont synchronisées entre tous vos appareils. Si vous préférez tout garder chez vous, l’application peut aussi être auto-hébergée avec Docker ou YunoHost."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "Que devient mon compte si je ne l’utilise plus ?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Un compte sans activité (ni connexion, ni saisie) pendant 4 ans est supprimé. Vous n’êtes pas pris au dépourvu : un e-mail de rappel part après 35 jours sans saisie, puis un avertissement 10 jours avant la suppression, à votre adresse de connexion et à vos adresses de notification. Pour garder votre historique, il suffit de vous connecter, ou d’exporter vos cycles avant."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "Qu’est-ce qu’une méthode naturelle ? Est-ce la même chose que la méthode Ogino ?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Non, et la confusion explique une bonne part de la méfiance envers ces méthodes. La méthode Ogino, ou méthode du calendrier, déduit les jours fertiles de la durée des cycles passés. Les méthodes d’observation, comme Billings ou FertilityCare, lisent jour après jour les signes du cycle en cours : l’évolution de la glaire cervicale, et pour certaines la température au réveil. Rien n’est prédit : les signes se lisent au moment où ils apparaissent.\nmoncycle.app est faite pour ce second type de méthodes. Pour en savoir plus, voyez les méthodes naturelles et l’histoire des docteurs Billings."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "Faut-il une formation pour suivre une méthode naturelle ?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Oui. Lire sa propre glaire demande quelques cycles d’apprentissage accompagné, et les règles de la méthode s’apprennent : quand s’ouvre une phase fertile, comment repérer le sommet, que faire d’un cycle perturbé. Nos conditions d’utilisation supposent d’ailleurs que vous avez suivi une formation.\nmoncycle.app n’enseigne rien et ne corrige pas votre lecture. En France, le Centre Billings France et FertilityCare France vous orientent vers des moniteurs, des couples formateurs ou des instructrices près de chez vous."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "Comment observer la glaire cervicale ?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "La glaire évolue au fil du cycle sous l’effet des hormones. À l’approche de l’ovulation, elle devient en général plus abondante, plus claire, plus élastique et glissante ; ensuite, elle s’épaissit ou disparaît. On note deux choses : la sensation ressentie à la vulve pendant la journée, et l’aspect de ce que l’on voit. On observe tout au long de la journée et on note une seule fois, le soir.\nChaque méthode a son vocabulaire et ses codes, qui ne s’échangent pas de l’une à l’autre : c’est votre moniteur qui vous les apprend. Dans moncycle.app, vos observations s’affichent dans la notation de la méthode choisie, pour que votre tableau soit lisible tel quel par votre moniteur ou votre instructrice."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "Ces méthodes conviennent-elles aux cycles irréguliers, après une naissance, pendant l’allaitement ou à l’approche de la ménopause ?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Les méthodes d’observation ne supposent pas des cycles réguliers, puisqu’elles lisent le cycle en cours au lieu de le calculer. Mais ces périodes ont leurs propres règles (retour de la fertilité après l’accouchement, allaitement, fluctuations de la préménopause), et c’est là que l’accompagnement d’un moniteur compte le plus.\nDans moncycle.app, aucune durée de cycle n’est imposée et aucune prédiction ne vient se superposer à vos données : un cycle long, court ou atypique s’affiche normalement."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "Puis-je partager mon tableau avec mon conjoint, mon médecin ou mon moniteur ?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Oui. Vous pouvez exporter un cycle en PDF, CSV ou NFP et l’envoyer à qui vous voulez. Vous pouvez aussi ajouter jusqu’à 5 adresses de notification : elles reçoivent automatiquement l’export complet de chaque cycle terminé, ce qui est pratique pour un suivi régulier avec votre moniteur. N’ajoutez que des personnes qui sont d’accord, puisqu’elles reçoivent vos données de cycle. Vous pouvez retirer une adresse quand vous voulez."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "L’application utilise-t-elle l’intelligence artificielle ?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Non, et c’est voulu. Beaucoup d’applications mettent en avant des prédictions « intelligentes ». Elles restent une estimation statistique, appliquée à un corps qui ne suit pas forcément la moyenne, et peuvent rassurer à tort justement les jours où l’erreur coûte le plus.\nmoncycle.app enregistre, range et affiche. Il n’y a ni algorithme de prédiction, ni décision automatisée, ni profilage. La lecture du tableau reste la vôtre, selon les règles de votre méthode."
+			}
+		}
+	]
+}
+	</script>
+	<!-- FAQ:JSONLD:END -->
+</head>
+<body>
+	<a class="skip-link" href="#main">Aller au contenu</a>
+
+	<!-- Icon sprite: decorative, referenced with <use href="#…"> -->
+	<svg xmlns="http://www.w3.org/2000/svg" hidden>
+		<symbol id="logo" viewBox="0 0 2 2"><path fill="#ac2333" d="M0 0h1v1H0z"/><path fill="#fbca0b" d="M1 0h1v1H1z"/><path fill="#1e824c" d="M0 1h1v1H0z"/><path fill="#fff" d="M1 1h1v1H1z"/></symbol>
+		<symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3c3.5 4.4 6 8 6 11a6 6 0 0 1-12 0c0-3 2.5-6.6 6-11z"/></symbol>
+		<symbol id="i-thermo" viewBox="0 0 24 24"><path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0z"/><path d="M12 9v7"/></symbol>
+		<symbol id="i-list" viewBox="0 0 24 24"><path d="M10 6h10M10 12h10M10 18h10M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></symbol>
+		<symbol id="i-ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></symbol>
+		<symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></symbol>
+		<symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 13.5A8 8 0 1 1 10.5 4a6.5 6.5 0 0 0 9.5 9.5z"/></symbol>
+		<symbol id="i-sync" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3M18 3v4h-4M6 21v-4h4"/></symbol>
+		<symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 20h14"/></symbol>
+		<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+		<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+		<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+		<symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+		<symbol id="i-code" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></symbol>
+		<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z"/></symbol>
+		<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5V5a2 2 0 0 1 2-2h14v15H6a2 2 0 0 0-2 2 2 2 0 0 0 2 2h14"/></symbol>
+		<symbol id="i-box" viewBox="0 0 24 24"><path d="M3 7.5l9-4.5 9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5L12 12l9-4.5M12 12v9"/></symbol>
+		<symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01"/></symbol>
+		<symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l3-7 4 14 3-7h4"/></symbol>
+		<symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></symbol>
+		<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+		<symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+		<symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+	</svg>
+
+	<header class="site-header">
+		<div class="container header-inner">
+			<a class="brand" href="#top">
+				<svg class="logo" aria-hidden="true" focusable="false"><use href="#logo"/></svg>
+				<span class="wordmark">mon<b>cycle</b>.app</span>
+			</a>
+			<div class="header-actions">
+				<a class="button button-secondary button-small" href="https://tableau.moncycle.app/">Se connecter</a>
+				<a class="button button-primary button-small" href="https://tableau.moncycle.app/register">Créer mon compte</a>
 			</div>
+			<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>
+				<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-menu"/></svg>
+				<span>Menu</span>
+			</button>
+			<nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+				<ul>
+					<li><a href="#how">Comment ça marche</a></li>
+					<li><a href="#features">Fonctionnalités</a></li>
+					<li><a href="#demo">Démo</a></li>
+					<li><a href="#methods">Méthodes</a></li>
+					<li><a href="#faq">Questions</a></li>
+					<li><a href="#support">Soutenir</a></li>
+					<li><a href="#tech">Technique</a></li>
+					<li class="nav-login"><a href="https://tableau.moncycle.app/">Se connecter</a></li>
+				</ul>
+			</nav>
 		</div>
-		<div class="acceuil"></div>
-		<div class="corp">
-		<div class="menu">
-			<h1 class="centre">mon<span class="gradiant_logo">cycle</span>.app</h1>
-			<div class="actions">
-				<a href="#info">Découvrir</a>
-				<a href="https://tableau.moncycle.app/inscription" target="_blank">Inscription</a>
-				<a href="https://tableau.moncycle.app">Mon tableau</a>
-			</div>
-		</div>
-		<div class="col_central">
-			<div class="sous_titre">Rendre facile le suivi des cycles menstruels et l’utilisation des méthodes naturelles.</div>
-			<div class="sous_titre"><b>Billings . FertilityCare . Température</b></div>
+	</header>
 
+	<main id="main">
 
-			<h2 class="" id="info">L’application</h2>
-
-			<video class="media_border" width="170px" autoplay loop muted autobuffer playsinline>
-				<source src="video/demo.mp4" type="video/mp4" loading="lazy" />
-			</video>
-			<p class="desc_emoji" style="text-align: left">
-				👩	dédiée au suivi des cycles menstruels<br />
-				🌳	adaptée à l'usage des méthodes naturelles<br />
-				🤏	suivi de l'évolution de la glaire cervicale<br />
-				🌡️	suivi de la température corporelle<br />
-				🔠	100% compatible avec les méthodes FertilityCare et Billings<br />
-				📱	pensée pour les téléphones<br />
-				🌜	Ergonomique et esthétique incluant un mode sombre<br />
-				📖	<a href="https://github.com/moncycle-app/backend-api-web-app" target="_blank">code</a> open source<br />
-				🤪	sans IA et sans pseudo intelligence prédictive<br />
-				📊	export PDF/CSV des cycles<br />
-				👩‍❤️‍👨	synchronisation des données entre plusieurs appareils<br />
-				📩	envoi par mail automatique des cycles<br />
-				🇫🇷	app hébergée et développée en France<br />
-				🔒	pas de vente de données / pas de publicité<br />
-				🛡️	Authentification multifacteur (TOTP)<br />
-			</p>
-			<div class="chiffre">
-				<div class="chiffre_cle chiffre_couples">
-					<p>moncycle.app c'est:</p>
-					<span id="stat_compte">1900</span>
-					<p>femmes et couples qui suivent en confiance et quotidiennement leur fertilité.</p>
-				</div>
-				<div class="chiffre_cle chiffre_cycles">
-					<p>moncycle.app c'est:</p>
-					<span id="stat_cycle">12000</span>
-					<p>cycles menstruels enregistrés regroupant les informations propres à chaque méthode.</p>
-				</div>
-				<div class="chiffre_cle chiffre_observations">
-					<p>moncycle.app c'est:</p>
-					<span id="stat_obs">260 000</span>
-					<p>observations journalières personnalisées et confidentielles.</p>
-				</div>
-			</div>
-
-
-
-
-			<h2 class="" id="captures">Captures d'écran</h2>
-			<div class="boite_capture"><img id="grosse_img" src="image/capture1.png" class="media_border"/></div>
-			<div class="boite_a_mini">
-				<a href="image/capture1.png" class="mini_img active"><img class="capture media_border" src="image/capture1.png" alt="Capture d'écran 1" loading="lazy" /></a>
-				<a href="image/capture2.png" class="mini_img"><img class="capture media_border" src="image/capture2.png" alt="Capture d'écran 2" loading="lazy" /></a>
-				<a href="image/capture3.png" class="mini_img"><img class="capture media_border" src="image/capture3.png" alt="Capture d'écran 3" loading="lazy" /></a>
-				<a href="image/capture4.png" class="mini_img"><img class="capture media_border" src="image/capture4.png" alt="Capture d'écran 1" loading="lazy" /></a>
-				<a href="image/capture5.png" class="mini_img"><img class="capture media_border" src="image/capture5.png" alt="Capture d'écran 2" loading="lazy" /></a>
-				<a href="image/capture6.png" class="mini_img"><img class="capture media_border" src="image/capture6.png" alt="Capture d'écran 3" loading="lazy" /></a>
-				<a href="image/capture7.png" class="mini_img"><img class="capture media_border" src="image/capture7.png" alt="Capture d'écran 1" loading="lazy" /></a>
-				<a href="image/capture8.png" class="mini_img"><img class="capture media_border" src="image/capture8.png" alt="Capture d'écran 2" loading="lazy" /></a>
+		<!-- Hero -->
+		<section class="hero" id="top" aria-labelledby="hero-title">
+			<div class="container hero-grid">
 				<div>
-					<br /><span class="chiffre_couples">&#x1F60D; Envie d'en voir plus?</span> Deux comptes de démonstration sont disponibles pour tester l'application sans inscription! Identifiants:<br /><br />
-					Compte Billings: <b>demo.bill@moncycle.app</b><br />
-					Compte FertilityCare: <b>demo.fc@moncycle.app</b><br />
-					Mot de passe: <b>demo</b><br /><br />
-					<a href="https://tableau.moncycle.app/connexion" target="_blank"><button type="button">Les compte de démo, c'est par ici!</button></a>
+					<p class="eyebrow rise">Billings · FertilityCare · Température</p>
+					<h1 id="hero-title" class="rise rise-2">moncycle.app, le carnet de cycle des méthodes naturelles</h1>
+					<p class="lead rise rise-3">Chaque soir, vous notez vos observations de la journée&nbsp;: glaire, saignements, et votre température si vous la prenez. L’application les range dans un tableau que vous savez lire, et votre moniteur aussi. Elle est gratuite, sans publicité, et ne prédit rien.</p>
+					<div class="hero-actions rise rise-4">
+						<a class="button button-primary" href="https://tableau.moncycle.app/register">Créer mon compte</a>
+						<a class="button button-secondary" href="#demo">Essayer la démo</a>
+					</div>
+					<p class="hero-small rise rise-4">Application web pour téléphone et ordinateur, hébergée en France. Développée et distribuée par l’association Tech&nbsp;4&nbsp;Fertility.</p>
+				</div>
+				<div class="hero-visual">
+					<picture>
+						<source media="(min-width: 48rem)" type="image/webp" srcset="image/moncycle_app_couple_web.webp" width="472" height="1000">
+						<source media="(min-width: 48rem)" srcset="image/moncycle_app_couple_web.png" width="472" height="1000">
+						<source type="image/webp" srcset="image/moncycle_app_couple_crop_web.webp" width="472" height="489">
+						<img src="image/moncycle_app_couple_crop_web.png" width="472" height="489" fetchpriority="high" alt="Dessin d’un jeune couple. L’homme pose la main sur l’épaule de la femme, qui tient son téléphone et se tourne vers lui en souriant.">
+					</picture>
+					<div class="hero-squares" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+					<div class="hero-screen device">
+						<picture>
+							<source type="image/webp" srcset="image/capture1-360.webp">
+							<img src="image/capture1.png" width="1125" height="2436" alt="Tableau d’un cycle Billings dans moncycle.app&nbsp;: une ligne par jour, avec un tampon de couleur, la température et l’observation notée.">
+						</picture>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- How it works -->
+		<section class="section section-alt" id="how" aria-labelledby="how-title">
+			<div class="container">
+				<div class="section-head">
+					<h2 id="how-title">Comment ça marche</h2>
+					<p class="lead">Rien à installer depuis un magasin d’applications, rien à configurer pendant des heures. Il faut avoir appris sa méthode&nbsp;; pour le reste, une saisie par jour suffit.</p>
 				</div>
 
+				<ol class="steps">
+					<li>
+						<h3>Vous créez votre compte</h3>
+						<p>Un pseudo (vos initiales suffisent), une adresse e-mail qui ne donne pas votre nom, votre méthode. Vous cliquez sur le lien reçu par e-mail et votre tableau est prêt.</p>
+					</li>
+					<li>
+						<h3>Le soir, vous notez la journée</h3>
+						<p>Ce que vous avez senti et vu, les saignements, la température si vous la suivez, un commentaire si besoin. Un tampon de couleur vient marquer le jour.</p>
+					</li>
+					<li>
+						<h3>Le tableau se construit</h3>
+						<p>Jour après jour, dans la notation de votre méthode. Avec la température, une courbe s’affiche au-dessus du cycle.</p>
+					</li>
+					<li>
+						<h3>Vous l’exportez ou le partagez</h3>
+						<p>En PDF, CSV ou NFP, quand vous voulez. Chaque cycle terminé peut aussi partir tout seul par e-mail, vers vous et jusqu’à cinq adresses choisies&nbsp;: votre conjoint, votre moniteur ou votre monitrice.</p>
+					</li>
+				</ol>
+
+				<div class="install">
+					<div class="prose">
+						<h3 id="install">L’installer sur votre téléphone</h3>
+						<p>moncycle.app est une application web&nbsp;: vous ne la trouverez ni sur l’App Store, ni sur Google Play. Une fois connecté sur votre tableau, ajoutez la page à l’écran d’accueil. Une icône apparaît, et l’application s’ouvre ensuite comme les autres.</p>
+						<p><strong>Sur iPhone</strong>, dans Safari&nbsp;: bouton Partager, puis «&nbsp;Sur l’écran d’accueil&nbsp;».<br>
+						<strong>Sur Android</strong>, dans Chrome&nbsp;: menu en haut à droite, puis «&nbsp;Ajouter à l’écran d’accueil&nbsp;».</p>
+						<p class="note">Tech&nbsp;4&nbsp;Fertility prépare des applications pour iPhone et Android. Nous l’annoncerons ici quand elles seront prêtes&nbsp;; d’ici là, l’application web reste la seule version.</p>
+					</div>
+					<ul class="install-shots">
+						<li>
+							<figure>
+								<picture class="device">
+									<source type="image/webp" srcset="image/install_iphone-360.webp">
+									<img src="image/install_iphone.png" width="1125" height="2436" loading="lazy" alt="Menu de partage de Safari sur iPhone, avec l’option «&nbsp;Sur l’écran d’accueil&nbsp;» entourée.">
+								</picture>
+								<figcaption>iPhone</figcaption>
+							</figure>
+						</li>
+						<li>
+							<figure>
+								<picture class="device">
+									<source type="image/webp" srcset="image/install_android-360.webp">
+									<img src="image/install_android.png" width="720" height="1280" loading="lazy" alt="Menu de Chrome sur Android, avec l’option «&nbsp;Ajouter à l’écran d’accueil&nbsp;» entourée.">
+								</picture>
+								<figcaption>Android</figcaption>
+							</figure>
+						</li>
+					</ul>
+				</div>
 			</div>
+		</section>
 
+		<!-- Features -->
+		<section class="section" id="features" aria-labelledby="features-title">
+			<div class="container">
+				<div class="section-head">
+					<h2 id="features-title">Pourquoi moncycle.app</h2>
+					<p class="lead">Elle est faite pour les femmes et les couples qui suivent une méthode naturelle. Elle remplace le carnet papier, sans jamais chercher à deviner à votre place.</p>
+				</div>
 
+				<div class="feature-groups">
+					<div class="feature-group">
+						<h3>Faite pour les méthodes naturelles</h3>
+						<ul class="feature-list">
+							<li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-drop"/></svg><p><strong>La glaire et les saignements</strong> <span>Sensation, aspect, flux&nbsp;: tout ce que votre méthode vous a appris à observer.</span></p></li>
+							<li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-thermo"/></svg><p><strong>La température, si vous la prenez</strong> <span>Elle s’ajoute au tableau, avec sa courbe. Sinon, elle ne vous encombre pas.</span></p></li>
+							<li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-list"/></svg><p><strong>Billings et FertilityCare</strong> <span>Compatibles à 100&nbsp;%, chacune avec sa propre notation.</span></p></li>
+							<li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-ban"/></svg><p><strong>Sans IA, sans prédiction</strong> <span>Aucun calcul ne vous dit si vous êtes fertile. Le tableau montre ce que vous avez noté, rien de plus.</span></p></li>
+						</ul>
+					</div>
+					<div class="feature-group">
+						<h3>Au quotidien</h3>
+						<ul class="feature-list">
+							<li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg><p><strong>Pensée pour le téléphone</strong> <span>Et lisible aussi sur un ordinateur.</span></p></li>
+							<li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-moon"/></svg><p><strong>Mode sombre</strong> <span>Pour la saisie du soir.</span></p></li>
+							<li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-sync"/></svg><p><strong>Sur tous vos appareils</strong> <span>Vos données sont synchronisées entre le téléphone, la tablette et l’ordinateur.</span></p></li>
+							<li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-download"/></svg><p><strong>Export PDF, CSV et NFP</strong> <span>Pour imprimer, garder une copie ou changer d’outil.</span></p></li>
+							<li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg><p><strong>Envoi automatique par e-mail</strong> <span>Chaque cycle terminé arrive dans votre boîte, et chez qui vous voulez.</span></p></li>
+						</ul>
+					</div>
+					<div class="feature-group">
+						<h3>Vos données</h3>
+						<ul class="feature-list">
+							<li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pin"/></svg><p><strong>Hébergées en France</strong> <span>Chez OVH. Rien ne part hors de l’Union européenne.</span></p></li>
+							<li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><p><strong>Ni publicité, ni pistage, ni revente</strong> <span>L’application vit des dons, pas de vos données.</span></p></li>
+							<li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-lock"/></svg><p><strong>Double authentification (TOTP)</strong> <span>En option, avec un e-mail à chaque nouvelle connexion.</span></p></li>
+							<li><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-code"/></svg><p><strong>Open source</strong> <span>Le <a href="https://github.com/moncycle-app/backend-api-web-app">code est public</a>&nbsp;: chacun peut vérifier ce qu’il fait.</span></p></li>
+						</ul>
+					</div>
+				</div>
 
-			<h2 class="" id="tarifs">Le prix? c'est gratuit!</h2>
-			<p>Cette application est <b>GRATUITE</b> et sans publicité ni vente de donnnées! Moncycle.app vit seulement de vos dons.</p>
-			<p>En faisant un don vous participez:<br />
-				🖥️ aux frais de serveur et d’hébergement<br />
-				🔠 au financement du nom de domaine<br />
-				⏱️ au maintien dans le temps de l'application<br />
-				👨‍👩‍👧 au quotidien du développeur et de sa famille</p>
-			<p>Offrez un café au développeur de moncycle.app sur <a target='_blank' href='https://fr.tipeee.com/moncycleapp'>Tipeee</a> en donnant 2€ par mois:</p>
+				<!--
+					CONFIG: key figures. Update the three numbers and the date together
+					(source: https://tableau.moncycle.app/api/pub_stat, rounded by the server).
+				-->
+				<h3 class="visually-hidden" id="figures-title">moncycle.app en chiffres</h3>
+				<dl class="figures" aria-labelledby="figures-title">
+					<div><dt>comptes ouverts</dt><dd>2&nbsp;190</dd></div>
+					<div><dt>cycles enregistrés</dt><dd>18&nbsp;000</dd></div>
+					<div><dt>observations notées</dt><dd>372&nbsp;700</dd></div>
+				</dl>
+				<p class="figures-date">Chiffres arrondis au 19&nbsp;octobre&nbsp;2026.</p>
+			</div>
+		</section>
 
-			<a href="https://fr.tipeee.com/moncycleapp" class="tipeee-project-cart-iframe" data-orientation="line" data-rewards="0">Soutenez moncycle.app sur Tipeee</a>
+		<!-- Screenshots and demo -->
+		<section class="section section-alt" id="demo" aria-labelledby="demo-title">
+			<div class="container">
+				<div class="section-head">
+					<h2 id="demo-title">Voir l’application</h2>
+					<p class="lead">Le plus simple est encore d’y aller&nbsp;: deux comptes de démonstration sont ouverts à tous, sans inscription.</p>
+				</div>
 
+				<div class="demo-grid">
+					<figure class="demo-video">
+						<video class="device" width="886" height="1920" muted loop playsinline controls preload="none" poster="video/demo-poster.webp">
+							<source src="video/demo.mp4" type="video/mp4">
+						</video>
+						<figcaption>Le tableau d’un cycle et sa courbe de température, en vidéo sans son.</figcaption>
+					</figure>
 
+					<div class="card demo-accounts" id="demo-accounts">
+						<h3>Essayer avec un compte de démonstration</h3>
+						<p>Choisissez le compte de votre méthode et connectez-vous avec ces identifiants. Ces comptes sont publics&nbsp;: tout le monde peut les lire et les modifier, et ils sont remis à zéro toutes les heures. N’y saisissez rien de personnel.</p>
+						<dl>
+							<dt>Billings</dt>
+							<dd><code>demo.mucus.self.obs@moncycle.app</code></dd>
+							<dt>FertilityCare</dt>
+							<dd><code>demo.fc@moncycle.app</code></dd>
+							<dt>Mot de passe</dt>
+							<dd><code>demo</code></dd>
+						</dl>
+						<a class="button button-primary" href="https://tableau.moncycle.app/">Ouvrir la page de connexion</a>
+					</div>
+				</div>
 
-			<h2 class="" id="installation">Installation</h2>
-			<p>Cette application n'est pas sur l'App Store d'Apple ou sur le Google Play Store. Il s'agit d'une application web. <b>Une fois connecté et sur votre tableau</b>, vous pouvez installer l'application en l'ajoutant sur votre écran d'accueil comme montré sur les captures d'écrans ci-dessous. Plus de détails sur la procédure à suivre: <a target="_blank" href="https://www.astuces-aide-informatique.info/11299/ajouter-site-sur-ecran-accueil-android-ios">installer une web-app</a>.</p>
-			<p>
-				<a href="image/install_iphone.png"><img width="27%" class=" media_border" src="image/install_iphone.png" alt="Capture d'installation sur iPhone" loading="lazy" /></a>
-				<a href="image/install_android.png"><img width="27%" class=" media_border" src="image/install_android.png" alt="Capture d'installation sur Android" loading="lazy" /></a>
-			</p>
+				<div class="gallery" data-gallery>
+					<div class="gallery-head">
+						<h3 id="gallery-title">Captures d’écran</h3>
+						<div class="gallery-controls" hidden>
+							<button type="button" data-gallery-prev aria-controls="gallery-track" aria-label="Captures précédentes"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-left"/></svg></button>
+							<button type="button" data-gallery-next aria-controls="gallery-track" aria-label="Captures suivantes"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-right"/></svg></button>
+						</div>
+					</div>
+					<ul class="gallery-track" id="gallery-track" tabindex="0" aria-labelledby="gallery-title">
+						<li><figure>
+							<a href="image/capture1.png"><picture class="device"><source type="image/webp" srcset="image/capture1-360.webp 360w, image/capture1-720.webp 720w" sizes="14rem"><img src="image/capture1.png" width="1125" height="2436" loading="lazy" alt="Tableau d’un cycle Billings de 30 jours, en clair&nbsp;: un tampon rouge pour les règles, puis des tampons verts et des tampons à bébé, avec la température de chaque jour."></picture></a>
+							<figcaption>Le tableau d’un cycle</figcaption>
+						</figure></li>
+						<li><figure>
+							<a href="image/capture2.png"><picture class="device"><source type="image/webp" srcset="image/capture2-360.webp 360w, image/capture2-720.webp 720w" sizes="14rem"><img src="image/capture2.png" width="1125" height="2436" loading="lazy" alt="Fiche de saisie d’une journée&nbsp;: choix du tampon, champ de température et cases pour les sensations et l’aspect (humide, sec, élastique, blanc…)."></picture></a>
+							<figcaption>La saisie d’une journée</figcaption>
+						</figure></li>
+						<li><figure>
+							<a href="image/capture3.png"><picture class="device"><source type="image/webp" srcset="image/capture3-360.webp 360w, image/capture3-720.webp 720w" sizes="14rem"><img src="image/capture3.png" width="1125" height="2436" loading="lazy" alt="Le même tableau en mode sombre, avec les jours non observés marqués d’un point d’interrogation."></picture></a>
+							<figcaption>Le mode sombre</figcaption>
+						</figure></li>
+						<li><figure>
+							<a href="image/capture4.png"><picture class="device"><source type="image/webp" srcset="image/capture4-360.webp 360w, image/capture4-720.webp 720w" sizes="14rem"><img src="image/capture4.png" width="1125" height="2436" loading="lazy" alt="Saisie FertilityCare&nbsp;: choix du saignement (H, M, L, VL, B) et des codes de sensation et d’observation (0, 2, 2W, 4, 6, 8, 10…)."></picture></a>
+							<figcaption>La notation FertilityCare</figcaption>
+						</figure></li>
+						<li><figure>
+							<a href="image/capture5.png"><picture class="device"><source type="image/webp" srcset="image/capture5-360.webp 360w, image/capture5-720.webp 720w" sizes="14rem"><img src="image/capture5.png" width="1125" height="2436" loading="lazy" alt="Page «&nbsp;Mon compte&nbsp;» d’un compte de démonstration, avec le choix de la méthode suivie&nbsp;: Billings, FertilityCare ou symptothermie."></picture></a>
+							<figcaption>Le choix de la méthode</figcaption>
+						</figure></li>
+						<li><figure>
+							<a href="image/capture6.png"><picture class="device"><source type="image/webp" srcset="image/capture6-360.webp 360w, image/capture6-720.webp 720w" sizes="14rem"><img src="image/capture6.png" width="1125" height="2436" loading="lazy" alt="Vue réduite qui affiche plusieurs cycles sur une ligne chacun, pour les comparer d’un coup d’œil."></picture></a>
+							<figcaption>Plusieurs cycles côte à côte</figcaption>
+						</figure></li>
+						<li><figure>
+							<a href="image/capture7.png"><picture class="device"><source type="image/webp" srcset="image/capture7-360.webp 360w, image/capture7-720.webp 720w" sizes="14rem"><img src="image/capture7.png" width="1125" height="2436" loading="lazy" alt="Tableau d’un cycle de 31 jours avec températures, commentaires du jour et jours comptés après le sommet."></picture></a>
+							<figcaption>Températures et commentaires</figcaption>
+						</figure></li>
+						<li><figure>
+							<a href="image/capture8.png"><picture class="device"><source type="image/webp" srcset="image/capture8-360.webp 360w, image/capture8-720.webp 720w" sizes="14rem"><img src="image/capture8.png" width="1125" height="2436" loading="lazy" alt="En mode sombre, une actualité de l’application puis la courbe de température du cycle, avec le décalage thermique bien visible."></picture></a>
+							<figcaption>La courbe de température</figcaption>
+						</figure></li>
+					</ul>
+					<p class="gallery-note">Captures de la version précédente de l’application, en attendant celles de la nouvelle version.</p>
+				</div>
+			</div>
+		</section>
 
+		<!-- Natural methods -->
+		<section class="section" id="methods" aria-labelledby="methods-title">
+			<div class="container">
+				<div class="section-head">
+					<h2 id="methods-title">Les méthodes naturelles</h2>
+				</div>
 
+				<blockquote class="methods-quote prose" cite="https://www.methodes-naturelles.fr/">
+					<p>«&nbsp;Ce sont des méthodes basées sur la connaissance des signes de fertilité du cycle féminin. Le couple peut ainsi connaître avec précision les périodes fertiles ou infertiles qu’il traverse. En fonction de son projet d’enfant, il peut ainsi connaitre le meilleur moment pour transmettre la vie, ou quelles sont ses périodes infertiles lorsqu’il souhaite espacer ou limiter les naissances.&nbsp;»</p>
+					<footer>Source&nbsp;: <cite><a href="https://www.methodes-naturelles.fr/">methodes-naturelles.fr</a></cite></footer>
+				</blockquote>
 
-			<h2 class="" id="methodes" >Les méthodes naturelles</h2>
-			<p><i>Les méthodes naturelles ? «Ce sont des méthodes basées sur la connaissance des signes de fertilité du cycle féminin. Le couple peut ainsi connaître avec précision les périodes fertiles ou infertiles qu'il traverse. En fonction de son projet d'enfant, il peut ainsi connaitre le meilleur moment pour transmettre la vie, ou quelles sont ses périodes infertiles lorsqu'il souhaite espacer ou limiter les naissances.» <span class="gris">Source: methodes-naturelles.fr</span></i></p>
+				<p class="prose">Plusieurs méthodes existent, enseignées par différentes associations. Voici où en est moncycle.app avec les plus répandues en France (la liste n’est pas complète).</p>
 
-			<p>Il existe plusieurs méthodes proposées par différentes associations. Voici une liste non exhaustive:
-			<ul>
-				<li><b>Méthode Billings</b> ✅<br />
-				<span class="">Méthode 100% compatible avec moncycle.app !</span><br />
-				<a href="https://www.methode-billings.com/trouver-un-formateur" target="_blank">👫 trouver un couple formateur</a><br /><br /></li>
-				<li><b>FertilityCare (NaProTechnologie)</b> ✅<br />
-				<span  class="">Méthode 100% compatible avec moncycle.app !</span><br />
-				<a href="https://www.fertilitycare.fr/instructrices-et-medecins" target="_blank">👩‍⚕️ trouver une instructrice</a><br /><br /></li>
-				<li><b>Cyclamen (Symptothermie)</b> ⚠️<br />
-				<span  class="">Méthode partiellement compatible avec moncycle.app: l'app ne permet une interprétation que partielle des courbes de températures.</span><br /><br /></li>
-				<li><b>SensiPlan (Symptothermie)</b> ⚠️<br />
-				<span  class="">Méthode partiellement compatible avec moncycle.app: l'app ne permet une interprétation que partielle des courbes de températures.</span><br /><br /></li>
-				<li><b>La méthode M (M fertilité / symptothermie)</b> ⚠️<br />
-				<span  class="">Méthode partiellement compatible avec moncycle.app: l'app ne permet une interprétation que partielle des courbes de températures.</span><br /><br /></li>
-			</ul></p>
+				<div class="methods-grid">
+				<ul class="method-list">
+					<li>
+						<h3>Méthode Billings</h3>
+						<span class="badge badge-full">Compatible à 100&nbsp;%</span>
+						<p><a href="https://www.methode-billings.com/trouver-un-formateur">Trouver un couple formateur</a> auprès du Centre Billings France.</p>
+					</li>
+					<li>
+						<h3>FertilityCare (NaProTECHNOLOGY)</h3>
+						<span class="badge badge-full">Compatible à 100&nbsp;%</span>
+						<p><a href="https://www.fertilitycare.fr/instructrices-et-medecins">Trouver une instructrice</a> auprès de FertilityCare France.</p>
+					</li>
+					<li>
+						<h3>Cyclamen (symptothermie)</h3>
+						<span class="badge badge-partial">Partiellement compatible</span>
+						<p>L’application ne permet qu’une lecture partielle des courbes de température.</p>
+					</li>
+					<li>
+						<h3>SensiPlan (symptothermie)</h3>
+						<span class="badge badge-partial">Partiellement compatible</span>
+						<p>Même limite&nbsp;: la courbe de température n’est interprétée qu’en partie.</p>
+					</li>
+					<li>
+						<h3>Méthode M (M fertilité, symptothermie)</h3>
+						<span class="badge badge-partial">Partiellement compatible</span>
+						<p>Même limite que pour les autres méthodes symptothermiques.</p>
+					</li>
+				</ul>
 
-			<p>🧠 moncycle.app n'a pas pour objectif de prédire ou de contrôler le bon usage des méthodes (ni de remplacer vos moniteurs) mais seulement de proposer un support numérique. <b>Vous restez le cerveau derrière votre tableau.</b> Si vous ne connaissez pas les méthodes naturelles ou si vous avez des questions sur les règles de celles-ci, rapprochez-vous d'un moniteur de l'une des associations ci-dessus.</p>
+				<div class="brain">
+					<h3>Vous restez le cerveau derrière votre tableau</h3>
+					<p>moncycle.app ne cherche ni à prédire, ni à vérifier que vous appliquez bien les règles de votre méthode, et elle ne remplace pas votre moniteur. C’est un support numérique, comme le carnet papier avant lui. Si vous découvrez les méthodes naturelles, ou si une règle vous pose question, adressez-vous à un moniteur de l’association qui enseigne votre méthode.</p>
+				</div>
+				</div>
+			</div>
+		</section>
 
-			<h2 class="" id="rgpd">Héberger à la maison</h2>
+		<!-- John and Evelyn Billings -->
+		<section class="section section-alt" id="billings" aria-labelledby="billings-title">
+			<div class="container">
+				<div class="section-head">
+					<p class="eyebrow">Histoire</p>
+					<h2 id="billings-title">John et Evelyn Billings, les médecins qui ont appris à lire la glaire</h2>
+					<p class="lead">La méthode Billings porte le nom d’un couple de médecins de Melbourne, en Australie. Leurs travaux ont fait passer l’observation du cycle du calcul des dates à la lecture des signes du corps.</p>
+				</div>
 
-			<p>En tant qu'application open source écrite en PHP et JS, vous pouvez auto-héberger moncycle.app directement sur vos serveurs via <a target="_blank" href="https://install-app.yunohost.org/?app=moncycle">YunoHost</a> ou <a target="_blank" href="https://hub.docker.com/r/jeanio/moncycle.app">Docker</a>.</p>
-			<center>
-				<a target="_blank" href="https://install-app.yunohost.org/?app=moncycle"><img width="156px" src="https://install-app.yunohost.org/install-with-yunohost.svg" alt="moncycle.app sur YunoHost" /></a>&nbsp;&nbsp;&nbsp;
-				<a target="_blank" href="https://hub.docker.com/r/jeanio/moncycle.app"><img width="156px" src="https://www.docker.com/wp-content/uploads/2022/03/horizontal-logo-monochromatic-white.png" alt="moncycle.app sur le Docker Hub" /></a>
-			</center>
+				<div class="billings-grid">
+					<div class="prose">
+						<ol class="timeline">
+							<li>
+								<time datetime="1953">1953</time>
+								<p>À la demande du père Maurice Catarinich, le neurologue John Billings commence à chercher une méthode naturelle de régulation des naissances. La méthode Ogino-Knaus, fondée sur un calcul de calendrier, est jugée trop imprécise. Son intuition&nbsp;: la glaire cervicale, dont l’aspect et la texture changent au fil du cycle, renseigne mieux que n’importe quel calcul sur l’approche de l’ovulation.</p>
+							</li>
+							<li>
+								<time datetime="1964-12">Décembre 1964</time>
+								<p>John Billings publie son premier livre, <cite lang="en">The Ovulation Method</cite>. Son épouse Evelyn, médecin elle aussi, en a relu le manuscrit&nbsp;: c’est ainsi qu’elle découvre ses travaux.</p>
+							</li>
+							<li>
+								<time datetime="1965">1965</time>
+								<p>Evelyn Billings travaille désormais avec lui, en particulier sur les cycles difficiles à lire. Elle apprend à reconnaître, dans les tableaux des femmes, les schémas de sécheresse et de glaire qui précèdent l’ovulation, mais aussi ceux qui signalent les jours infertiles.</p>
+							</li>
+							<li>
+								<time datetime="1972-02-05">5 février 1972</time>
+								<p><cite lang="en">The Lancet</cite> publie l’étude des deux Billings, cosignée par H.&nbsp;G.&nbsp;Burger et par le chercheur James Brown, arrivé à Melbourne en 1962 pour créer l’unité d’endocrinologie du Royal Women’s Hospital. Les dosages hormonaux confirment ce que les femmes observaient&nbsp;: les changements de la glaire suivent les variations des œstrogènes et de la progestérone.</p>
+							</li>
+						</ol>
 
-			<h2 class="" id="rgpd">Conditions d'utilisation et politique de confidentialité</h2>
+						<h3>Ce qui a changé</h3>
+						<p>Cette double validation, par l’observation et par les dosages, a donné aux méthodes naturelles une base scientifique qui ne reposait plus sur le seul calcul des dates. La méthode Billings a inspiré la méthode symptothermique, qui associe la glaire à la mesure de la température. On la retrouve aussi à l’origine des méthodes d’observation de la fertilité d’aujourd’hui, qui croisent plusieurs signes du corps.</p>
+						<p>Plus de soixante-dix ans après les premières recherches de John Billings, savoir lire sa glaire reste l’une des bases pour qui veut connaître son cycle.</p>
+					</div>
 
-			<p>Voici l'essentiel de nos conditions d'utilisation et de notre politique de confidentialité (conforme au <b>RGPD</b>):</p>
-			<ol>
-				<li>moncycle.app est un <b>carnet de suivi de cycle</b>, un outil de bien-être et non un dispositif médical ou un moyen de contraception.</li>
-				<li>Il faut avoir <b>18 ans</b> et avoir <b>suivi une formation</b> à sa méthode naturelle. <b>Les décisions vous appartiennent.</b></li>
-				<li>Ne saisissez <b>aucune information qui vous identifie</b> ni <b>aucune donnée de santé médicale</b>.</li>
-				<li>Gratuite, sans publicité ni pistage: <b>vos données ne sont jamais vendues</b> et sont hébergées en France.</li>
-				<li>Vous accédez à vos données, les exportez, les modifiez ou les supprimez à tout moment depuis « Mon compte ».</li>
-				<li>Un compte sans activité pendant 4 ans est supprimé, après avertissement.</li>
-			</ol>
-			<p>&#x1F4C4; Nous vous invitons à lire les <a target="_blank" href="ToS/term_of_service_fr.html"><b>conditions d'utilisation et la politique de confidentialité</b></a> en entier avant de créer un compte.</p>
-			<div class="espace"></div>
+					<aside class="billings-aside" aria-labelledby="billings-ref-title">
+						<div class="reference">
+							<h3 id="billings-ref-title">L’article original</h3>
+							<p lang="en">Billings EL, Brown JB, Billings JJ, Burger HG. <cite>Symptoms and hormonal changes accompanying ovulation</cite>. The Lancet, 1972;1(7745):282-284. <a href="https://doi.org/10.1016/S0140-6736(72)90291-7">doi:10.1016/S0140-6736(72)90291-7</a></p>
+							<h3>Sources</h3>
+							<ul>
+								<li><a href="https://en.wikipedia.org/wiki/John_and_Evelyn_Billings" hreflang="en">John and Evelyn Billings, Wikipédia (anglais)</a></li>
+								<li><a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_Billings">Méthode Billings, Wikipédia</a></li>
+								<li><a href="https://woombinternational.org/wp-content/uploads/2022/05/Rock-Solid-Science.pdf" hreflang="en">Rock Solid Science, WOOMB International (PDF, anglais)</a></li>
+								<li><a href="https://www.sfsc.fr/pdf/La%20m%C3%A9thode%20de%20l'ovulation%20Billings.pdf">La méthode de l’ovulation Billings, SFSC (PDF)</a></li>
+								<li><a href="https://link.springer.com/article/10.1007/BF01849421" hreflang="en">Fertility awareness in the 1990s: the Billings Ovulation Method, Springer (anglais)</a></li>
+								<li><a href="http://www.cmq.org.uk/CMQ/2015/May/symptothermal_method_of_natural.html" hreflang="en">The Symptothermal Method of Natural Family Planning, Catholic Medical Quarterly (anglais)</a></li>
+							</ul>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</section>
+
+		<!-- FAQ -->
+		<section class="section" id="faq" aria-labelledby="faq-title">
+			<div class="container">
+				<div class="section-head">
+					<h2 id="faq-title">Questions fréquentes</h2>
+					<p class="lead">Les réponses s’appuient sur nos <a href="ToS/term_of_service_fr.html">conditions d’utilisation</a>, qui font foi en cas de doute.</p>
+				</div>
+
+				<!-- FAQ:START -->
+				<div class="faq-list">
+					<details id="faq-what">
+						<summary><h3>Qu’est-ce que moncycle.app&nbsp;?</h3></summary>
+						<div class="faq-answer">
+							<p>Un carnet de suivi de cycle pour les méthodes naturelles&nbsp;: Billings et FertilityCare, avec ou sans température. Vous notez vos observations, l’application les affiche en tableau et les exporte. C’est une application web gratuite, utilisable sur téléphone comme sur ordinateur.</p>
+							<p>C’est un outil de bien-être. Ce n’est ni un dispositif médical, ni un moyen de contraception, ni un outil de diagnostic.</p>
+						</div>
+					</details>
+
+					<details id="faq-who">
+						<summary><h3>Qui développe moncycle.app&nbsp;?</h3></summary>
+						<div class="faq-answer">
+							<p>L’application est développée et distribuée par <a href="https://tech4fertility.org/">Tech&nbsp;4&nbsp;Fertility</a>, une association française à but non lucratif (loi de 1901) dont le siège est à Vernon, dans l’Eure. Elle en est propriétaire depuis octobre 2026. Le code est public sur <a href="https://github.com/moncycle-app/backend-api-web-app">GitHub</a>.</p>
+						</div>
+					</details>
+
+					<details id="faq-free">
+						<summary><h3>L’application est-elle vraiment gratuite&nbsp;? Comment la soutenir&nbsp;?</h3></summary>
+						<div class="faq-answer">
+							<p>Oui. Il n’y a pas d’abonnement, pas de version payante, pas de publicité, et vos données ne sont jamais vendues. L’application vit des dons faits à Tech&nbsp;4&nbsp;Fertility, qui paient l’hébergement, le nom de domaine et le temps passé à la maintenir. Pour donner, voyez la rubrique <a href="#support">Soutenir moncycle.app</a>.</p>
+						</div>
+					</details>
+
+					<details id="faq-signup">
+						<summary><h3>Comment créer un compte&nbsp;?</h3></summary>
+						<div class="faq-answer">
+							<p>Allez sur la <a href="https://tableau.moncycle.app/register">page d’inscription</a>. Il faut avoir 18&nbsp;ans révolus. On vous demande&nbsp;:</p>
+							<ul>
+								<li>un pseudo (vos initiales suffisent)&nbsp;;</li>
+								<li>une adresse e-mail qui ne permet pas de vous identifier (évitez prenom.nom@…)&nbsp;;</li>
+								<li>un mot de passe d’au moins 10&nbsp;caractères, que vous n’utilisez nulle part ailleurs&nbsp;;</li>
+								<li>votre année de naissance et la méthode que vous suivez.</li>
+							</ul>
+							<p>Vous recevez ensuite un lien de confirmation, valable 3&nbsp;jours. Un compte qui n’est pas confirmé est supprimé au bout de 7&nbsp;jours.</p>
+						</div>
+					</details>
+
+					<details id="faq-install">
+						<summary><h3>Comment installer moncycle.app sur iPhone ou Android&nbsp;?</h3></summary>
+						<div class="faq-answer">
+							<p>moncycle.app n’est pas sur l’App Store ni sur Google Play&nbsp;: c’est une application web. Connectez-vous, ouvrez votre tableau, puis ajoutez la page à l’écran d’accueil. Sur iPhone, dans Safari, c’est le bouton Partager puis «&nbsp;Sur l’écran d’accueil&nbsp;». Sur Android, dans Chrome, c’est le menu puis «&nbsp;Ajouter à l’écran d’accueil&nbsp;». L’icône ouvre ensuite l’application directement.</p>
+							<p>Des applications pour iPhone et Android sont en préparation chez Tech&nbsp;4&nbsp;Fertility. Elles seront annoncées sur ce site.</p>
+						</div>
+					</details>
+
+					<details id="faq-reliable">
+						<summary><h3>Les applications de suivi de cycle sont-elles fiables&nbsp;?</h3></summary>
+						<div class="faq-answer">
+							<p>Tout dépend de ce qu’on leur demande. La plupart annoncent les prochaines règles ou la date d’ovulation à partir de la durée des cycles passés. C’est le principe de l’ancien calendrier d’Ogino, version numérique&nbsp;: il ne tient plus dès que les cycles varient, ce qui arrive à beaucoup de femmes.</p>
+							<p>Les méthodes d’observation font l’inverse&nbsp;: elles lisent les signes du cycle en cours, comme la glaire ou la température.</p>
+							<p>moncycle.app ne fait donc aucune prédiction. Elle enregistre ce que vous observez et le présente dans la notation de votre méthode. L’interprétation vous revient.</p>
+						</div>
+					</details>
+
+					<details id="faq-contraception">
+						<summary><h3>Peut-on utiliser une application de suivi de cycle comme contraception&nbsp;?</h3></summary>
+						<div class="faq-answer">
+							<p>Non. Une application n’est pas une contraception&nbsp;: c’est le carnet dans lequel vous écrivez. Si vous suivez une méthode naturelle pour espacer les naissances, ce qui compte, c’est l’observation quotidienne et l’application correcte des règles de la méthode, apprises auprès d’un moniteur formé.</p>
+							<p>moncycle.app ne vous dit jamais si un jour est fertile ou non, et ne vérifie pas votre lecture du tableau. Aucune méthode n’est efficace à 100&nbsp;%, et l’application ne garantit ni qu’une grossesse soit évitée, ni qu’elle survienne. Les décisions vous appartiennent, à vous et à votre conjoint.</p>
+						</div>
+					</details>
+
+					<details id="faq-privacy">
+						<summary><h3>Mes données de cycle sont-elles privées&nbsp;? Peuvent-elles être vendues&nbsp;?</h3></summary>
+						<div class="faq-answer">
+							<p>Les données de cycle sont parmi les plus intimes qu’on puisse confier à un téléphone. Avant de choisir une application, deux questions suffisent souvent&nbsp;: qui la paie, et où sont stockées les données&nbsp;?</p>
+							<p>Pour moncycle.app&nbsp;:</p>
+							<ul>
+								<li>elle est financée par les dons, sans publicité, sans outil de pistage, et vos données ne sont ni vendues ni cédées&nbsp;;</li>
+								<li>les serveurs sont en France, chez OVH, et aucune donnée ne quitte l’Union européenne&nbsp;; le traitement suit le RGPD&nbsp;;</li>
+								<li>personne à l’association ne consulte vos observations. En dehors de l’hébergeur, elles ne partent que vers les adresses e-mail que vous avez ajoutées vous-même, et vers la recherche si vous l’acceptez. Les autorités ne peuvent les obtenir que sur demande légale&nbsp;;</li>
+								<li>la participation à la recherche est facultative. Elle demande un second consentement, et les exports ne contiennent ni e-mail, ni pseudo, ni texte libre&nbsp;;</li>
+								<li>la connexion est chiffrée (HTTPS), les mots de passe sont stockés sous forme d’empreinte, la double authentification est disponible et chaque nouvelle connexion vous est signalée par e-mail.</li>
+							</ul>
+							<p>Une limite à connaître&nbsp;: les e-mails de fin de cycle voyagent comme n’importe quel e-mail, sans chiffrement de bout en bout. Vous pouvez désactiver cet envoi dans «&nbsp;Mon compte&nbsp;». Et comme le code est ouvert, tout cela peut se vérifier.</p>
+							<p>Enfin, ne saisissez ni votre nom, ni aucune donnée médicale (maladie, traitement, diagnostic)&nbsp;: l’application n’est pas faite pour les recevoir.</p>
+						</div>
+					</details>
+
+					<details id="faq-export">
+						<summary><h3>Puis-je exporter, synchroniser ou supprimer mes données&nbsp;?</h3></summary>
+						<div class="faq-answer">
+							<p>Oui, et sans avoir à écrire à qui que ce soit. Depuis «&nbsp;Mon compte&nbsp;», vous exportez vos cycles en PDF, CSV ou NFP, vous récupérez l’ensemble des données brutes du compte, vous importez des données et vous supprimez votre compte. La suppression est immédiate et définitive&nbsp;; les sauvegardes s’effacent au plus tard 90&nbsp;jours après.</p>
+							<p>Vos données sont synchronisées entre tous vos appareils. Si vous préférez tout garder chez vous, l’application peut aussi être <a href="#tech">auto-hébergée</a> avec Docker ou YunoHost.</p>
+						</div>
+					</details>
+
+					<details id="faq-inactive">
+						<summary><h3>Que devient mon compte si je ne l’utilise plus&nbsp;?</h3></summary>
+						<div class="faq-answer">
+							<p>Un compte sans activité (ni connexion, ni saisie) pendant 4&nbsp;ans est supprimé. Vous n’êtes pas pris au dépourvu&nbsp;: un e-mail de rappel part après 35&nbsp;jours sans saisie, puis un avertissement 10&nbsp;jours avant la suppression, à votre adresse de connexion et à vos adresses de notification. Pour garder votre historique, il suffit de vous connecter, ou d’exporter vos cycles avant.</p>
+						</div>
+					</details>
+
+					<details id="faq-natural">
+						<summary><h3>Qu’est-ce qu’une méthode naturelle&nbsp;? Est-ce la même chose que la méthode Ogino&nbsp;?</h3></summary>
+						<div class="faq-answer">
+							<p>Non, et la confusion explique une bonne part de la méfiance envers ces méthodes. La méthode Ogino, ou méthode du calendrier, déduit les jours fertiles de la durée des cycles passés. Les méthodes d’observation, comme Billings ou FertilityCare, lisent jour après jour les signes du cycle en cours&nbsp;: l’évolution de la glaire cervicale, et pour certaines la température au réveil. Rien n’est prédit&nbsp;: les signes se lisent au moment où ils apparaissent.</p>
+							<p>moncycle.app est faite pour ce second type de méthodes. Pour en savoir plus, voyez <a href="#methods">les méthodes naturelles</a> et <a href="#billings">l’histoire des docteurs Billings</a>.</p>
+						</div>
+					</details>
+
+					<details id="faq-instructor">
+						<summary><h3>Faut-il une formation pour suivre une méthode naturelle&nbsp;?</h3></summary>
+						<div class="faq-answer">
+							<p>Oui. Lire sa propre glaire demande quelques cycles d’apprentissage accompagné, et les règles de la méthode s’apprennent&nbsp;: quand s’ouvre une phase fertile, comment repérer le sommet, que faire d’un cycle perturbé. Nos conditions d’utilisation supposent d’ailleurs que vous avez suivi une formation.</p>
+							<p>moncycle.app n’enseigne rien et ne corrige pas votre lecture. En France, le <a href="https://www.methode-billings.com/trouver-un-formateur">Centre Billings France</a> et <a href="https://www.fertilitycare.fr/instructrices-et-medecins">FertilityCare France</a> vous orientent vers des moniteurs, des couples formateurs ou des instructrices près de chez vous.</p>
+						</div>
+					</details>
+
+					<details id="faq-mucus">
+						<summary><h3>Comment observer la glaire cervicale&nbsp;?</h3></summary>
+						<div class="faq-answer">
+							<p>La glaire évolue au fil du cycle sous l’effet des hormones. À l’approche de l’ovulation, elle devient en général plus abondante, plus claire, plus élastique et glissante&nbsp;; ensuite, elle s’épaissit ou disparaît. On note deux choses&nbsp;: la sensation ressentie à la vulve pendant la journée, et l’aspect de ce que l’on voit. On observe tout au long de la journée et on note une seule fois, le soir.</p>
+							<p>Chaque méthode a son vocabulaire et ses codes, qui ne s’échangent pas de l’une à l’autre&nbsp;: c’est votre moniteur qui vous les apprend. Dans moncycle.app, vos observations s’affichent dans la notation de la méthode choisie, pour que votre tableau soit lisible tel quel par votre moniteur ou votre instructrice.</p>
+						</div>
+					</details>
+
+					<details id="faq-irregular">
+						<summary><h3>Ces méthodes conviennent-elles aux cycles irréguliers, après une naissance, pendant l’allaitement ou à l’approche de la ménopause&nbsp;?</h3></summary>
+						<div class="faq-answer">
+							<p>Les méthodes d’observation ne supposent pas des cycles réguliers, puisqu’elles lisent le cycle en cours au lieu de le calculer. Mais ces périodes ont leurs propres règles (retour de la fertilité après l’accouchement, allaitement, fluctuations de la préménopause), et c’est là que l’accompagnement d’un moniteur compte le plus.</p>
+							<p>Dans moncycle.app, aucune durée de cycle n’est imposée et aucune prédiction ne vient se superposer à vos données&nbsp;: un cycle long, court ou atypique s’affiche normalement.</p>
+						</div>
+					</details>
+
+					<details id="faq-share">
+						<summary><h3>Puis-je partager mon tableau avec mon conjoint, mon médecin ou mon moniteur&nbsp;?</h3></summary>
+						<div class="faq-answer">
+							<p>Oui. Vous pouvez exporter un cycle en PDF, CSV ou NFP et l’envoyer à qui vous voulez. Vous pouvez aussi ajouter jusqu’à 5&nbsp;adresses de notification&nbsp;: elles reçoivent automatiquement l’export complet de chaque cycle terminé, ce qui est pratique pour un suivi régulier avec votre moniteur. N’ajoutez que des personnes qui sont d’accord, puisqu’elles reçoivent vos données de cycle. Vous pouvez retirer une adresse quand vous voulez.</p>
+						</div>
+					</details>
+
+					<details id="faq-ai">
+						<summary><h3>L’application utilise-t-elle l’intelligence artificielle&nbsp;?</h3></summary>
+						<div class="faq-answer">
+							<p>Non, et c’est voulu. Beaucoup d’applications mettent en avant des prédictions «&nbsp;intelligentes&nbsp;». Elles restent une estimation statistique, appliquée à un corps qui ne suit pas forcément la moyenne, et peuvent rassurer à tort justement les jours où l’erreur coûte le plus.</p>
+							<p>moncycle.app enregistre, range et affiche. Il n’y a ni algorithme de prédiction, ni décision automatisée, ni profilage. La lecture du tableau reste la vôtre, selon les règles de votre méthode.</p>
+						</div>
+					</details>
+				</div>
+				<!-- FAQ:END -->
+
+				<p class="note prose"><strong>Avertissement.</strong> moncycle.app est un outil de notation. Ce n’est ni un dispositif médical, ni un moyen de contraception&nbsp;; elle ne remplace ni la formation à une méthode naturelle, ni l’avis d’un professionnel de santé. Pour une question sur votre santé, votre fertilité ou les règles de votre méthode, parlez-en à votre moniteur ou à votre médecin. En cas d’urgence, appelez le 112.</p>
+			</div>
+		</section>
+
+		<!-- Support -->
+		<section class="section section-alt" id="support" aria-labelledby="support-title">
+			<div class="container">
+				<div class="support">
+					<div>
+						<h2 id="support-title">Soutenir moncycle.app</h2>
+						<p>moncycle.app est gratuite&nbsp;: pas d’abonnement, pas de publicité, pas de revente de données. Pour tenir, elle compte sur vos dons.</p>
+						<p>Ils paient les serveurs et l’envoi des e-mails chez OVH, le nom de domaine, et le temps nécessaire pour corriger, sécuriser et faire évoluer l’application d’une année sur l’autre. Les dons vont à Tech&nbsp;4&nbsp;Fertility, l’association qui porte le projet.</p>
+					</div>
+					<div class="support-cta">
+						<svg class="icon icon-heart" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg>
+						<!-- CONFIG: HelloAsso donation page. This href is the only place the URL lives (placeholder until the page exists). -->
+						<a class="button button-primary" href="#support" id="donate-link">Faire un don</a>
+						<p>Paiement sécurisé par HelloAsso, plateforme française de dons aux associations.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Technical -->
+		<section class="section" id="tech" aria-labelledby="tech-title">
+			<div class="container">
+				<div class="section-head">
+					<h2 id="tech-title">Côté technique</h2>
+					<p class="lead">moncycle.app est une application open source&nbsp;: une application web en HTML, CSS et JavaScript, sans étape de compilation, et une API HTTP en PHP sur une base MariaDB.</p>
+				</div>
+				<ul class="tech-list">
+					<li>
+						<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-code"/></svg>
+						<h3><a href="https://github.com/moncycle-app/backend-api-web-app">Code source sur GitHub</a></h3>
+						<p>Application web, API, scripts de maintenance et documentation de déploiement.</p>
+					</li>
+					<li>
+						<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-book"/></svg>
+						<h3><a href="https://tableau.moncycle.app/api/">Documentation de l’API</a></h3>
+						<p>API v2 décrite en OpenAPI 3.0. Vous pouvez l’utiliser pour votre propre compte, avec un jeton d’accès créé dans «&nbsp;Mon compte&nbsp;».</p>
+					</li>
+					<li>
+						<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-box"/></svg>
+						<h3><a href="https://hub.docker.com/r/jeanio/moncycle.app">Image Docker</a></h3>
+						<p><code>jeanio/moncycle.app</code>&nbsp;: elle crée son schéma au premier démarrage et lance elle-même la tâche quotidienne.</p>
+					</li>
+					<li>
+						<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-server"/></svg>
+						<h3><a href="https://install-app.yunohost.org/?app=moncycle">Installer avec YunoHost</a></h3>
+						<p>Pour faire tourner votre propre instance sur un serveur YunoHost, depuis son interface d’administration.</p>
+					</li>
+					<li>
+						<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-file"/></svg>
+						<h3><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">Licence CC BY-NC-SA 4.0</a></h3>
+						<p>Elle couvre le code&nbsp;; vos données restent les vôtres.</p>
+					</li>
+					<li>
+						<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pulse"/></svg>
+						<h3><a href="https://status.moncycle.app">État du service</a></h3>
+						<p>La disponibilité est surveillée par updown.io, qui ne reçoit aucune donnée de compte.</p>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<!-- News: the content of actu.html is loaded by script/news.js -->
+		<section class="section section-alt news" id="news" aria-labelledby="news-title" data-news-src="actu.html">
+			<div class="container">
+				<div class="section-head">
+					<h2 id="news-title">Actualités</h2>
+				</div>
+				<div class="news-box">
+					<p class="news-loading" role="status">Chargement des actualités…</p>
+					<p class="news-fallback">Les actualités n’ont pas pu s’afficher ici. Vous pouvez les lire sur <a href="actu.html">la page des actualités</a>.</p>
+					<div class="news-content" aria-live="polite"></div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Terms of service summary -->
+		<section class="section" id="terms" aria-labelledby="terms-title">
+			<div class="container">
+				<div class="section-head">
+					<h2 id="terms-title">Conditions d’utilisation et confidentialité</h2>
+					<p class="lead">L’essentiel de nos conditions d’utilisation et de notre politique de confidentialité, conformes au RGPD.</p>
+				</div>
+				<ol class="terms-list">
+					<li><p>moncycle.app est un <strong>carnet de suivi de cycle</strong>, un outil de bien-être. Ce n’est ni un dispositif médical, ni un moyen de contraception.</p></li>
+					<li><p>Il faut avoir <strong>18&nbsp;ans</strong> et avoir <strong>suivi une formation</strong> à sa méthode naturelle. Les décisions vous appartiennent.</p></li>
+					<li><p>Ne saisissez <strong>aucune information qui vous identifie</strong>, ni <strong>aucune donnée de santé médicale</strong>.</p></li>
+					<li><p>Gratuite, sans publicité ni pistage&nbsp;: vos données ne sont jamais vendues et sont hébergées en France.</p></li>
+					<li><p>Vous consultez, exportez, modifiez ou supprimez vos données à tout moment depuis «&nbsp;Mon compte&nbsp;».</p></li>
+					<li><p>Un compte sans activité pendant 4&nbsp;ans est supprimé, après avertissement.</p></li>
+				</ol>
+				<p>Lisez les <a href="ToS/term_of_service_fr.html">conditions d’utilisation et la politique de confidentialité complètes</a> (version&nbsp;2.0, en vigueur au 1<sup>er</sup>&nbsp;novembre&nbsp;2026) avant de créer un compte. Elles existent aussi <a href="ToS/term_of_service_en.html" hreflang="en" lang="en">in English</a>.</p>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="container">
+			<div class="footer-top">
+				<div class="footer-brand">
+					<a class="brand" href="#top">
+						<svg class="logo" aria-hidden="true" focusable="false"><use href="#logo"/></svg>
+						<span class="wordmark">mon<b>cycle</b>.app</span>
+					</a>
+					<picture>
+						<source type="image/webp" srcset="image/moncycle_app_couple_crop_web.webp">
+						<img class="footer-couple" src="image/moncycle_app_couple_crop_web.png" width="472" height="489" loading="lazy" alt="Le couple dessiné de moncycle.app, en buste, qui se sourit.">
+					</picture>
+					<p>moncycle.app est développée et distribuée par Tech&nbsp;4&nbsp;Fertility, association française à but non lucratif.</p>
+				</div>
+				<div class="footer-col">
+					<h2>Tech 4 Fertility</h2>
+					<ul>
+						<li><a href="https://tech4fertility.org/">tech4fertility.org</a></li>
+						<li><a href="#support">Faire un don</a></li>
+						<li><a href="ToS/term_of_service_fr.html">Conditions d’utilisation</a></li>
+						<li><a href="#news">Actualités</a></li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h2>Liens techniques</h2>
+					<ul>
+						<li><a href="https://github.com/moncycle-app/backend-api-web-app">Code source</a></li>
+						<li><a href="https://tableau.moncycle.app/api/">API</a></li>
+						<li><a href="https://hub.docker.com/r/jeanio/moncycle.app">Image Docker</a></li>
+						<li><a href="https://install-app.yunohost.org/?app=moncycle">YunoHost</a></li>
+						<li><a href="https://status.moncycle.app">État du service</a></li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h2>Se faire aider</h2>
+					<ul>
+						<li><a href="https://www.methode-billings.com/trouver-un-formateur">Centre Billings France</a></li>
+						<li><a href="https://www.fertilitycare.fr/instructrices-et-medecins">FertilityCare France</a></li>
+						<li><a href="#faq">Questions fréquentes</a></li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h2>Nous contacter</h2>
+					<ul>
+						<li><span class="email"><img src="ToS/email.jpg" alt="Adresse e-mail de contact (image)" width="166" height="22"></span></li>
+						<li><a href="https://signal.me/#eu/NZ99WMZSpp6NHkUBUhdKvADr4todXR+V8E20xbHQmtvZHRUK6cBOmIXE0PVQddrc">@jean.11 sur Signal</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>Dessin&nbsp;: <a href="https://by-bm.fr">by.bm</a>. Hébergement&nbsp;: OVH, en France. Surveillance&nbsp;: updown.io.</p>
+				<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr"><img src="image/by-nc-sa.png" width="88" height="31" loading="lazy" alt="Licence Creative Commons BY-NC-SA 4.0"></a></p>
+			</div>
 		</div>
-		</div>
-		<div class="pieddepage">
-			<div>
-				<img id="img_couple_foot" src="image/moncycle_app_couple_web.png" alt="couple souriant visionnant un télèphonne" loading="lazy" />
-			</div>
-			<div>
-				<p>L'application est <b>Open Source</b> sous licence <b>Creative Commons</b> (CC BY-NC-SA). Le code source est disponible sur <b>Github</b>. L'application est hebergée chez <b>OVH</b> en France et la disponibilité du serveur est surveillée par <b>updown.io</b>. Dessin par <b>by.bm</b>.</p>
-				<img src="image/by-nc-sa.png" />
-			</div>
-			<div>
-				<h4>Liens techniques</h4>
-				<a target="_blank" href="https://tableau.moncycle.app/api/">API de l'application</a><br />
-				<a target="_blank" href="https://github.com/moncycle-app/backend-api-web-app">Code source sur Github</a><br />
-				<a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0">Licences CC BY-NC-SA</a><br />
-				<a target="_blank" href="https://status.moncycle.app">Disponiblité par updown.io</a><br />
-				<a target="_blank" href="https://hub.docker.com/r/jeanio/moncycle.app">Image Docker</a><br />
-				<a target="_blank" href="https://install-app.yunohost.org/?app=moncycle">Installer sur Yunohost</a><br />
-				<a target="_blank" href="https://by-bm.fr">Dessin par by.bm</a><br />
-			</div>
-			<div>
-				<h4>Se faire aider</h4>
-				<a target="_blank" href="https://www.methode-billings.com/trouver-un-formateur">Centre Billings France</a><br />
-				<a target="_blank" href="https://www.fertilitycare.fr/instructrices-et-medecins">Association FertilityCare</a><br />
-				<h4>Tech 4 Fertility</h4>
-				<p>L'application moncycle.app est éditée par Tech 4 Fertility, une association française à but non lucratif.</p>
-				<a target='_blank' href='https://tech4fertility.org'>tech4fertility.org</a><br />
-			</div>
-			<div>
-				<h4>Nous contater</h4>
-				<a href="" id="contact_mail" target="_blank"></a><br />
-				<a href="https://signal.me/#eu/NZ99WMZSpp6NHkUBUhdKvADr4todXR+V8E20xbHQmtvZHRUK6cBOmIXE0PVQddrc" target="_blank">@jean.11 sur Signal</a><br /><br />
-			</div>
-		</div>
-	</body>
+	</footer>
+</body>
 </html>
