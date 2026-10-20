@@ -1,12 +1,5 @@
-import { urls } from './site';
-
-export interface FaqEntry {
-	id: string;
-	/** HTML (non-breaking spaces as entities) */
-	question: string;
-	/** HTML blocks (<p> or <ul>), in order */
-	answer: string[];
-}
+import { urls } from '../../data/site';
+import type { FaqEntry } from '../types';
 
 // Frequently asked questions. The visible FAQ and the FAQPage JSON-LD are both generated from this list.
 export const faq: FaqEntry[] = [

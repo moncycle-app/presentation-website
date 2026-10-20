@@ -1,0 +1,33 @@
+---
+import { langs, locales, type Lang } from '../i18n/config';
+import { getMessages } from '../i18n';
+
+interface Props {
+	lang: Lang;
+	/** URL of the current page in each language */
+	paths: Record<Lang, string>;
+	/** "header": short codes; "footer": full names */
+	variant?: 'header' | 'footer';
+}
+
+const { lang, paths, variant = 'header' } = Astro.props;
+const label = getMessages(lang).ui.language.label;
+---
+{langs.length > 1 && (
+	<nav class={`lang-switch lang-switch-${variant}`} aria-label={label}>
+		<ul>
+			{langs.map((code) => (
+				<li>
+					<a
+						href={paths[code]}
+						lang={locales[code].htmlLang}
+						hreflang={locales[code].htmlLang}
+						aria-current={code === lang ? 'true' : undefined}
+						aria-label={variant === 'header' ? locales[code].label : undefined}
+						data-lang-choice={code}
+					>{variant === 'header' ? code.toUpperCase() : locales[code].label}</a>
+				</li>
+			))}
+		</ul>
+	</nav>
+)}

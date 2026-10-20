@@ -1,5 +1,5 @@
 /*
-** moncycle.app -- terms of service: the style shared by term_of_service_fr.html and term_of_service_en.html
+** moncycle.app -- terms of service: the style shared by /<lang>/term_of_service.html (one page per language)
 **
 ** One column. Light or dark, from the browser's own setting. The green of the app is for the titles only.
 ** The HTML stays plain (h1-h3, p, ul, table, b, i, mark): the few rules by id or class are noted below.
@@ -138,11 +138,17 @@ footer {
 	border-top: 1px solid var(--line);
 }
 
-/* Navigation: the language link and the table of contents (both left out of print) */
+/* Navigation: the language links and the table of contents (both left out of print) */
 
 nav {
 	margin: 0 0 1.25rem;
 	font-size: .95rem;
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
 nav ol {

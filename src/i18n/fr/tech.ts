@@ -1,12 +1,4 @@
-import type { IconName } from './icons';
-
-export interface TechLink {
-	icon: IconName;
-	href: string;
-	title: string;
-	/** HTML */
-	text: string;
-}
+import type { TechLink } from '../types';
 
 export const techLinks: TechLink[] = [
 	{

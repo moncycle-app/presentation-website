@@ -1,17 +1,5 @@
-import { urls } from './site';
-import type { IconName } from './icons';
-
-export interface Feature {
-	icon: IconName;
-	title: string;
-	/** HTML */
-	text: string;
-}
-
-export interface FeatureGroup {
-	title: string;
-	features: Feature[];
-}
+import { urls } from '../../data/site';
+import type { FeatureGroup } from '../types';
 
 export const featureGroups: FeatureGroup[] = [
 	{

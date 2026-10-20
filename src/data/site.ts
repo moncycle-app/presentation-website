@@ -4,8 +4,11 @@
 export const siteName = 'moncycle.app';
 export const publisherName = 'Tech 4 Fertility';
 
-/** Last modification of the home page, for the sitemap */
+/** Last modification of the home pages, for the sitemap */
 export const homeLastmod = '2026-10-19';
+
+/** Date of the fallback key figures written in the HTML of the home page (the texts are in src/i18n/<lang>/home.ts) */
+export const figuresDate = '2026-10-19';
 
 export const urls = {
 	app: 'https://tableau.moncycle.app/',
@@ -17,7 +20,6 @@ export const urls = {
 	docker: 'https://hub.docker.com/r/jeanio/moncycle.app',
 	yunohost: 'https://install-app.yunohost.org/?app=moncycle',
 	license: 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
-	licenseDeed: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr',
 	tech4fertility: 'https://tech4fertility.org/',
 	billingsTrainers: 'https://www.methode-billings.com/trouver-un-formateur',
 	fertilityCareInstructors: 'https://www.fertilitycare.fr/instructrices-et-medecins',

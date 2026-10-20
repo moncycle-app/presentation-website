@@ -1,10 +1,4 @@
-export interface Method {
-	name: string;
-	compatibility: 'full' | 'partial';
-	badge: string;
-	/** HTML */
-	text: string;
-}
+import type { Method } from '../types';
 
 export const methods: Method[] = [
 	{

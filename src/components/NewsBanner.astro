@@ -1,10 +1,19 @@
 ---
+import { getMessages } from '../i18n';
+import { defaultLang, type Lang } from '../i18n/config';
 import { endpoints, urls } from '../data/site';
+
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
+const { newsBanner } = getMessages(lang).ui;
 ---
-<!-- News banner: filled and revealed by scripts/news.ts -->
-<aside class="news-banner" aria-label="Dernière actualité" data-news-src={endpoints.news} hidden>
+<!-- News banner: filled and revealed by scripts/news.ts (entry of the page language in the feed, else data-news-fallback) -->
+<aside class="news-banner" aria-label={newsBanner.label} data-news-src={endpoints.news} data-news-fallback={defaultLang} hidden>
 	<div class="container news-banner-inner">
-		<p class="news-banner-text"><strong class="news-banner-tag">Actualité</strong> <span data-news="banner-title"></span></p>
-		<a class="button button-small news-banner-button" data-news="banner-link" href={urls.tech4fertility} target="_blank" rel="noopener">Lire l’article</a>
+		<p class="news-banner-text"><strong class="news-banner-tag">{newsBanner.tag}</strong> <span data-news="banner-title"></span></p>
+		<a class="button button-small news-banner-button" data-news="banner-link" href={urls.tech4fertility} target="_blank" rel="noopener">{newsBanner.button}</a>
 	</div>
 </aside>

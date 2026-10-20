@@ -1,0 +1,15 @@
+---
+import type { GetStaticPaths } from 'astro';
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import { getTerms } from '../../i18n';
+import { langs, type Lang } from '../../i18n/config';
+
+// /fr/term_of_service.html, /en/term_of_service.html… (build.format is 'file')
+export const getStaticPaths = (() => langs.map((lang) => ({ params: { lang } }))) satisfies GetStaticPaths;
+
+const lang = Astro.params.lang as Lang;
+const Terms = getTerms(lang);
+---
+<LegalLayout lang={lang}>
+	<Terms />
+</LegalLayout>

@@ -2,69 +2,66 @@
 import { Picture } from 'astro:assets';
 import installIphone from '../assets/images/install_iphone.png';
 import installAndroid from '../assets/images/install_android.png';
+import { getMessages } from '../i18n';
+import type { Lang } from '../i18n/config';
+
+interface Props {
+	lang: Lang;
+}
+
+const { how } = getMessages(Astro.props.lang).home;
 ---
 <!-- How it works -->
 <section class="section section-alt" id="how" aria-labelledby="how-title">
 	<div class="container">
 		<div class="section-head">
-			<h2 id="how-title">Fonctionnement</h2>
-			<p class="lead">Aucune application à télécharger depuis un magasin d’applications. Une fois la méthode apprise auprès d’un moniteur ou d’une instructrice, une saisie quotidienne suffit.</p>
+			<h2 id="how-title">{how.title}</h2>
+			<p class="lead" set:html={how.lead} />
 		</div>
 
 		<ol class="steps">
-			<li>
-				<h3>Vous créez votre compte</h3>
-				<p>Choisissez un pseudonyme (vos initiales suffisent), une adresse e-mail qui ne révèle pas votre nom et la méthode suivie. Il vous suffit ensuite de cliquer sur le lien de confirmation reçu par e-mail&nbsp;: votre tableau est prêt.</p>
-			</li>
-			<li>
-				<h3>Chaque soir, vous notez la journée</h3>
-				<p>Vous saisissez vos sensations et vos observations, vos règles, votre température si vous la mesurez et, si nécessaire, un commentaire. Vous choisissez ensuite le tampon de couleur correspondant à la journée.</p>
-			</li>
-			<li>
-				<h3>Le tableau se construit</h3>
-				<p>Jour après jour, dans la notation standard de la méthode choisie. Si vous mesurez votre température, sa courbe s’affiche au-dessus du cycle.</p>
-			</li>
-			<li>
-				<h3>Vous l’exportez ou le partagez</h3>
-				<p>Exportez vos cycles en PDF, CSV ou NFP à tout moment. Si vous le souhaitez, vous pouvez aussi activer l’envoi automatique de chaque cycle terminé par e-mail, à votre adresse et à cinq destinataires au plus&nbsp;: votre conjoint, votre moniteur ou votre instructrice.</p>
-			</li>
+			{how.steps.map(({ title, text }) => (
+				<li>
+					<h3>{title}</h3>
+					<p set:html={text} />
+				</li>
+			))}
 		</ol>
 
 		<div class="install">
 			<div class="prose">
-				<h3 id="install">Installer l’application sur votre téléphone</h3>
-				<p>moncycle.app est une application web&nbsp;: elle n’est disponible ni sur l’App Store, ni sur Google Play. Depuis votre tableau, ajoutez la page à l’écran d’accueil&nbsp;: une icône apparaît, et l’application s’ouvre ensuite comme n’importe quelle autre.</p>
-				<p><strong>Sur iPhone</strong>, dans Safari&nbsp;: touchez le bouton Partager, puis «&nbsp;Sur l’écran d’accueil&nbsp;».<br>
-				<strong>Sur Android</strong>, dans Chrome&nbsp;: ouvrez le menu en haut à droite, puis choisissez «&nbsp;Ajouter à l’écran d’accueil&nbsp;».</p>
-				<p class="note">Tech&nbsp;4&nbsp;Fertility prépare des applications pour iPhone et Android. Leur sortie sera annoncée ici&nbsp;; en attendant, l’application web reste la seule version disponible.</p>
+				<h3 id="install">{how.install.title}</h3>
+				<p set:html={how.install.intro} />
+				<p set:html={how.install.steps} />
+				<p class="note" set:html={how.install.note} />
 			</div>
 			<ul class="install-shots">
 				<li>
 					<figure>
 						<Picture
 									src={installIphone}
-									alt="Menu de partage de Safari sur iPhone, avec l’option « Sur l’écran d’accueil » entourée."
+									alt={how.install.iphoneAlt}
 									formats={['webp']}
 									fallbackFormat="png"
 									widths={[360, 720]}
 									sizes="11rem"
 									pictureAttributes={{ class: 'device' }}
 								/>
-						<figcaption>iPhone</figcaption>
+						<figcaption>{how.install.iphoneCaption}</figcaption>
 					</figure>
 				</li>
 				<li>
 					<figure>
 						<Picture
 									src={installAndroid}
-									alt="Menu de Chrome sur Android, avec l’option « Ajouter à l’écran d’accueil » entourée."
+									alt={how.install.androidAlt}
 									formats={['webp']}
 									fallbackFormat="png"
 									widths={[360, 720]}
 									sizes="11rem"
 									pictureAttributes={{ class: 'device' }}
 								/>
-						<figcaption>Android</figcaption>
+						<figcaption>{how.install.androidCaption}</figcaption>
 					</figure>
 				</li>
 			</ul>

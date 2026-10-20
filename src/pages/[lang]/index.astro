@@ -1,0 +1,61 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import NewsBanner from '../../components/NewsBanner.astro';
+import Hero from '../../components/Hero.astro';
+import HowItWorks from '../../components/HowItWorks.astro';
+import Features from '../../components/Features.astro';
+import Demo from '../../components/Demo.astro';
+import Methods from '../../components/Methods.astro';
+import Billings from '../../components/Billings.astro';
+import Faq from '../../components/Faq.astro';
+import Support from '../../components/Support.astro';
+import Tech from '../../components/Tech.astro';
+import News from '../../components/News.astro';
+import Terms from '../../components/Terms.astro';
+import Footer from '../../components/Footer.astro';
+import { getMessages } from '../../i18n';
+import { homePath, langs, type Lang } from '../../i18n/config';
+import { faqPage, siteGraph } from '../../data/structured-data';
+import { screenshots } from '../../data/screenshots';
+
+// One home page per language: /fr/, /en/… (build.format is 'file': /fr/index.html)
+export const getStaticPaths = (() => langs.map((lang) => ({ params: { lang } }))) satisfies GetStaticPaths;
+
+const lang = Astro.params.lang as Lang;
+const { meta } = getMessages(lang).ui;
+const structuredData = [siteGraph(Astro.site!, lang, screenshots[0].image.src), faqPage(lang)];
+---
+<BaseLayout
+	lang={lang}
+	title={meta.title}
+	description={meta.description}
+	socialTitle={meta.socialTitle}
+	socialDescription={meta.socialDescription}
+	paths={homePath}
+	defaultPath="/"
+>
+	{structuredData.map((data) => (
+		<script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(data)} />
+	))}
+
+	<Header lang={lang} />
+	<NewsBanner lang={lang} />
+
+	<main id="main">
+		<Hero lang={lang} />
+		<HowItWorks lang={lang} />
+		<Features lang={lang} />
+		<Demo lang={lang} />
+		<Methods lang={lang} />
+		<Billings lang={lang} />
+		<Faq lang={lang} />
+		<Support lang={lang} />
+		<Tech lang={lang} />
+		<News lang={lang} />
+		<Terms lang={lang} />
+	</main>
+
+	<Footer lang={lang} />
+</BaseLayout>

@@ -1,11 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getMessages } from '../i18n';
+import { homePath, internationalLang, langs, locales } from '../i18n/config';
+
+// GitHub Pages serves a single 404.html for every language: it speaks all of them.
+const { notFound } = getMessages(internationalLang).ui;
 ---
-<BaseLayout title="Page introuvable · moncycle.app" description="Cette page n’existe pas." noindex>
+<BaseLayout lang={internationalLang} title={notFound.title} description={notFound.description} skipLink={false} noindex>
 	<main id="main" class="section">
 		<div class="container prose">
-			<h1>Page introuvable</h1>
-			<p>Cette page n’existe pas. <a href="/">Retourner à l’accueil</a>.</p>
+			{langs.map((code, i) => {
+				const text = getMessages(code).ui.notFound;
+				return (
+					<section lang={locales[code].htmlLang}>
+						{i === 0 ? <h1>{text.heading}</h1> : <h2>{text.heading}</h2>}
+						<p>{text.text} <a href={homePath(code)} hreflang={locales[code].htmlLang}>{text.link}</a>.</p>
+					</section>
+				);
+			})}
 		</div>
 	</main>
 </BaseLayout>

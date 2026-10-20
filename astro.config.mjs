@@ -3,8 +3,9 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 export default defineConfig({
   site: 'https://www.moncycle.app',
-  // Keep the existing URLs: /ToS/term_of_service_fr.html, /ToS/term_of_service_en.html
-  build: { format: 'file' },
+  // 'preserve' writes each page as authored: src/pages/[lang]/index.astro → fr/index.html (served as /fr/),
+  // src/pages/[lang]/term_of_service.astro → fr/term_of_service.html. ('file' would turn the first into fr.html.)
+  build: { format: 'preserve' },
   trailingSlash: 'ignore',
   prefetch: true,
   fonts: [

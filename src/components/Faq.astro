@@ -1,12 +1,21 @@
 ---
-import { faq } from '../data/faq';
+import { getMessages } from '../i18n';
+import { legalPath, type Lang } from '../i18n/config';
+
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
+const { faq, home } = getMessages(lang);
+const lead = home.faq.lead.replace('{terms}', legalPath(lang));
 ---
 <!-- FAQ -->
 <section class="section" id="faq" aria-labelledby="faq-title">
 	<div class="container faq-layout">
 		<div class="section-head">
-			<h2 id="faq-title">Questions fréquentes</h2>
-			<p class="lead">Retrouvez ici les réponses aux questions les plus courantes. Pour aller plus loin, nos <a href="/ToS/term_of_service_fr.html">conditions d’utilisation</a> détaillent le fonctionnement de l’application et la protection de vos données.</p>
+			<h2 id="faq-title">{home.faq.title}</h2>
+			<p class="lead" set:html={lead} />
 		</div>
 
 		<div class="faq-main">
@@ -19,7 +28,7 @@ import { faq } from '../data/faq';
 				))}
 			</div>
 
-			<p class="note prose"><strong>Avertissement.</strong> moncycle.app est un outil de notation. Ce n’est ni un dispositif médical, ni un moyen de contraception&nbsp;; elle ne remplace ni la formation à une méthode de régulation naturelle des naissances, ni l’avis d’un professionnel de santé. Pour toute question relative à votre fertilité ou aux règles de la méthode, adressez-vous à votre moniteur ou à votre instructrice&nbsp;; pour toute question de santé, consultez un professionnel de santé. En cas d’urgence, composez le 112.</p>
+			<p class="note prose" set:html={home.faq.warning} />
 		</div>
 	</div>
 </section>

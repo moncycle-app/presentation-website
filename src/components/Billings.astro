@@ -1,50 +1,45 @@
+---
+import { getMessages } from '../i18n';
+import type { Lang } from '../i18n/config';
+
+interface Props {
+	lang: Lang;
+}
+
+const { billings } = getMessages(Astro.props.lang).home;
+const { reference } = billings;
+---
 <!-- John and Evelyn Billings -->
 <section class="section section-alt" id="billings" aria-labelledby="billings-title">
 	<div class="container">
 		<div class="section-head">
-			<p class="eyebrow">Histoire</p>
-			<h2 id="billings-title">John et Evelyn Billings, les docteurs qui ont appris à lire la glaire</h2>
-			<p class="lead">La méthode Billings doit son nom à un couple de docteurs de Melbourne, en Australie. Leurs travaux ont fait passer le suivi du cycle du calcul des dates à la lecture des signes du corps.</p>
+			<p class="eyebrow">{billings.eyebrow}</p>
+			<h2 id="billings-title">{billings.title}</h2>
+			<p class="lead" set:html={billings.lead} />
 		</div>
 
 		<div class="billings-grid">
 			<div class="prose">
 				<ol class="timeline">
-					<li>
-						<time datetime="1953">1953</time>
-						<p>À la demande du père Maurice Catarinich, le neurologue John Billings entreprend de rechercher une méthode de régulation naturelle des naissances. La méthode Ogino-Knaus, fondée sur un calcul de calendrier, est jugée trop imprécise. Son intuition&nbsp;: la glaire cervicale, dont l’aspect et la texture changent au fil du cycle, renseigne mieux que n’importe quel calcul sur l’approche de l’ovulation.</p>
-					</li>
-					<li>
-						<time datetime="1964-12">Décembre 1964</time>
-						<p>John Billings publie son premier livre, <cite lang="en">The Ovulation Method</cite>. Son épouse Evelyn, également docteure, en a relu le manuscrit&nbsp;: c’est ainsi qu’elle découvre ses travaux.</p>
-					</li>
-					<li>
-						<time datetime="1965">1965</time>
-						<p>Evelyn Billings travaille désormais avec lui, en particulier sur les cycles difficiles à lire. Elle apprend à reconnaître, dans les tableaux des femmes, les schémas de sécheresse et de glaire qui précèdent l’ovulation, mais aussi ceux qui signalent les jours infertiles.</p>
-					</li>
-					<li>
-						<time datetime="1972-02-05">5 février 1972</time>
-						<p><cite lang="en">The Lancet</cite> publie l’étude des deux Billings, cosignée par H.&nbsp;G.&nbsp;Burger et par le chercheur James Brown, arrivé à Melbourne en 1962 pour créer l’unité d’endocrinologie du Royal Women’s Hospital. Les dosages hormonaux confirment ce que les femmes observaient&nbsp;: les changements de la glaire suivent les variations des œstrogènes et de la progestérone.</p>
-					</li>
+					{billings.timeline.map(({ datetime, label, text }) => (
+						<li>
+							<time datetime={datetime}>{label}</time>
+							<p set:html={text} />
+						</li>
+					))}
 				</ol>
 
-				<h3>Un tournant</h3>
-				<p>Cette double validation, par l’observation et par les dosages hormonaux, a donné aux méthodes de régulation naturelle des naissances une base scientifique qui ne reposait plus sur le seul calcul des dates. La méthode Billings a inspiré la méthode symptothermique, qui associe l’observation de la glaire à la mesure de la température. Elle est également à l’origine des méthodes actuelles d’observation de la fertilité, qui croisent plusieurs signes du corps.</p>
-				<p>Plus de soixante-dix ans après les premières recherches de John Billings, savoir observer sa glaire cervicale demeure l’un des fondements de la connaissance de son cycle.</p>
+				<h3>{billings.turningPoint.title}</h3>
+				{billings.turningPoint.paragraphs.map((paragraph) => <p set:html={paragraph} />)}
 			</div>
 
 			<aside class="billings-aside" aria-labelledby="billings-ref-title">
 				<div class="reference">
-					<h3 id="billings-ref-title">L’article original</h3>
-					<p lang="en">Billings EL, Brown JB, Billings JJ, Burger HG. <cite>Symptoms and hormonal changes accompanying ovulation</cite>. The Lancet, 1972;1(7745):282-284. <a href="https://doi.org/10.1016/S0140-6736(72)90291-7" target="_blank" rel="noopener">doi:10.1016/S0140-6736(72)90291-7</a></p>
-					<h3>Sources</h3>
+					<h3 id="billings-ref-title">{reference.title}</h3>
+					<p lang="en" set:html={reference.citation} />
+					<h3>{reference.sourcesTitle}</h3>
 					<ul>
-						<li><a href="https://en.wikipedia.org/wiki/John_and_Evelyn_Billings" hreflang="en" target="_blank" rel="noopener">John and Evelyn Billings, Wikipédia (anglais)</a></li>
-						<li><a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_Billings" target="_blank" rel="noopener">Méthode Billings, Wikipédia</a></li>
-						<li><a href="https://woombinternational.org/wp-content/uploads/2022/05/Rock-Solid-Science.pdf" hreflang="en" target="_blank" rel="noopener">Rock Solid Science, WOOMB International (PDF, anglais)</a></li>
-						<li><a href="https://www.sfsc.fr/pdf/La%20m%C3%A9thode%20de%20l'ovulation%20Billings.pdf" target="_blank" rel="noopener">La méthode de l’ovulation Billings, SFSC (PDF)</a></li>
-						<li><a href="https://link.springer.com/article/10.1007/BF01849421" hreflang="en" target="_blank" rel="noopener">Fertility awareness in the 1990s: the Billings Ovulation Method, Springer (anglais)</a></li>
-						<li><a href="http://www.cmq.org.uk/CMQ/2015/May/symptothermal_method_of_natural.html" hreflang="en" target="_blank" rel="noopener">The Symptothermal Method of Natural Family Planning, Catholic Medical Quarterly (anglais)</a></li>
+						{reference.sources.map(({ href, hreflang, label }) => <li><a href={href} hreflang={hreflang} target="_blank" rel="noopener">{label}</a></li>)}
 					</ul>
 				</div>
 			</aside>

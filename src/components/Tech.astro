@@ -1,13 +1,21 @@
 ---
 import Icon from './Icon.astro';
-import { techLinks } from '../data/tech';
+import { getMessages } from '../i18n';
+import type { Lang } from '../i18n/config';
+
+interface Props {
+	lang: Lang;
+}
+
+const { home, techLinks } = getMessages(Astro.props.lang);
+const { tech } = home;
 ---
 <!-- Technical -->
 <section class="section" id="tech" aria-labelledby="tech-title">
 	<div class="container">
 		<div class="section-head">
-			<h2 id="tech-title">Informations techniques</h2>
-			<p class="lead">moncycle.app est un logiciel open source&nbsp;: une application web en HTML, CSS et JavaScript, sans étape de compilation, et une API HTTP en PHP reposant sur une base MariaDB.</p>
+			<h2 id="tech-title">{tech.title}</h2>
+			<p class="lead" set:html={tech.lead} />
 		</div>
 		<ul class="tech-list">
 				{techLinks.map(({ icon, href, title, text }) => (

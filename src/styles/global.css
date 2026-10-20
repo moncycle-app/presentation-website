@@ -3,6 +3,7 @@
 @import './base.css';
 @import './components.css';
 @import './sections/header.css';
+@import './sections/language.css';
 @import './sections/hero.css';
 @import './sections/how-it-works.css';
 @import './sections/features.css';

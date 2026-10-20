@@ -2,40 +2,59 @@
 import { Font } from 'astro:assets';
 import '../styles/global.css';
 import IconSprite from '../components/IconSprite.astro';
+import { getMessages } from '../i18n';
+import { alternates, locales, otherLangs, type Lang } from '../i18n/config';
 import { siteName } from '../data/site';
 
 interface Props {
+	lang: Lang;
 	title: string;
 	description: string;
 	/** Open Graph / Twitter title, if different from the page title */
 	socialTitle?: string;
 	socialDescription?: string;
 	socialImageAlt?: string;
+	/** Path of the same page in each language (hreflang links); omit for a page that exists in one version only */
+	paths?: (lang: Lang) => string;
+	/** URL of the x-default alternate (the page for visitors whose language is not offered) */
+	defaultPath?: string;
 	/** Keep the page out of search engines */
 	noindex?: boolean;
+	/** Show the skip link (pages with a <main id="main">) */
+	skipLink?: boolean;
 }
 
 const {
+	lang,
 	title,
 	description,
 	socialTitle = title,
 	socialDescription = description,
-	socialImageAlt = 'Dessin d’un couple souriant au-dessus du nom moncycle.app',
+	socialImageAlt = getMessages(lang).ui.meta.socialImageAlt,
+	paths,
+	defaultPath,
 	noindex = false,
+	skipLink = true,
 } = Astro.props;
 
-// build.format is 'file': the home page is /index.html on disk but must be canonical as /
+const { htmlLang, ogLocale, dir } = locales[lang];
+const ui = getMessages(lang).ui;
+
+// build.format is 'file': the home page is /fr/index.html on disk but must be canonical as /fr/
 const canonical = new URL(Astro.url.pathname.replace(/index\.html$/, ''), Astro.site);
 const socialImage = new URL('/image/preview.png', Astro.site);
+const versions = paths ? alternates(paths, Astro.site!) : [];
 ---
 <!doctype html>
-<html lang="fr" class="no-js">
+<html lang={htmlLang} dir={dir} class="no-js">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{title}</title>
 	<meta name="description" content={description}>
 	<link rel="canonical" href={canonical}>
+	{versions.map(({ hreflang, href }) => <link rel="alternate" hreflang={hreflang} href={href}>)}
+	{defaultPath && <link rel="alternate" hreflang="x-default" href={new URL(defaultPath, Astro.site)}>}
 	{noindex && <meta name="robots" content="noindex">}
 	<meta name="color-scheme" content="light dark">
 	<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfaf6">
@@ -47,7 +66,8 @@ const socialImage = new URL('/image/preview.png', Astro.site);
 	<link rel="apple-touch-icon" href="/image/apple-touch-icon.png">
 
 	<meta property="og:type" content="website">
-	<meta property="og:locale" content="fr_FR">
+	<meta property="og:locale" content={ogLocale}>
+	{paths && otherLangs(lang).map((code) => <meta property="og:locale:alternate" content={locales[code].ogLocale}>)}
 	<meta property="og:site_name" content={siteName}>
 	<meta property="og:url" content={canonical}>
 	<meta property="og:title" content={socialTitle}>
@@ -66,7 +86,7 @@ const socialImage = new URL('/image/preview.png', Astro.site);
 	<slot name="head" />
 </head>
 <body>
-	<a class="skip-link" href="#main">Aller au contenu</a>
+	{skipLink && <a class="skip-link" href="#main">{ui.skipLink}</a>}
 
 	<IconSprite />
 

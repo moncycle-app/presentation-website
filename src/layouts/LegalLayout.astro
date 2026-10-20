@@ -1,25 +1,29 @@
 ---
 import '../styles/legal.css';
-import { legalPages, type LegalPage } from '../data/legal';
+import { getMessages } from '../i18n';
+import { alternates, defaultLang, legalPath, locales, otherLangs, type Lang } from '../i18n/config';
 
 interface Props {
-	page: LegalPage;
+	lang: Lang;
 }
 
-const { page } = Astro.props;
-const other = legalPages[page.switchLang.lang];
+const { lang } = Astro.props;
+const page = getMessages(lang).legal;
+const { htmlLang, dir } = locales[lang];
+const versions = alternates(legalPath, Astro.site!);
+const others = otherLangs(lang);
 ---
 <!doctype html>
-<html lang={page.lang}>
+<html lang={htmlLang} dir={dir}>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="color-scheme" content="light dark">
 	<meta name="description" content={page.description}>
 	<title>{page.title}</title>
-	<link rel="canonical" href={new URL(`/ToS/term_of_service_${page.lang}.html`, Astro.site)}>
-	<link rel="alternate" hreflang={page.lang} href={new URL(`/ToS/term_of_service_${page.lang}.html`, Astro.site)}>
-	<link rel="alternate" hreflang={other.lang} href={new URL(`/ToS/term_of_service_${other.lang}.html`, Astro.site)}>
+	<link rel="canonical" href={new URL(legalPath(lang), Astro.site)}>
+	{versions.map(({ hreflang, href }) => <link rel="alternate" hreflang={hreflang} href={href}>)}
+	<link rel="alternate" hreflang="x-default" href={new URL(legalPath(defaultLang), Astro.site)}>
 </head>
 <body>
 
@@ -28,9 +32,15 @@ const other = legalPages[page.switchLang.lang];
 		<p>{page.version}</p>
 	</header>
 
-	<nav aria-label={page.switchLang.label}>
-		<a href={`term_of_service_${page.switchLang.lang}.html`} hreflang={page.switchLang.lang} lang={page.switchLang.lang}>{page.switchLang.text}</a>
-	</nav>
+	{others.length > 0 && (
+		<nav aria-label={page.languageLabel}>
+			<ul>
+				{others.map((code) => (
+					<li><a href={legalPath(code)} hreflang={locales[code].htmlLang} lang={locales[code].htmlLang}>{getMessages(code).legal.readThis}</a></li>
+				))}
+			</ul>
+		</nav>
+	)}
 
 	<nav aria-label={page.contents.label}>
 		<b>{page.contents.title}</b>

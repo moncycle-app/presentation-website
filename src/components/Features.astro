@@ -1,14 +1,23 @@
 ---
 import Icon from './Icon.astro';
-import { featureGroups } from '../data/features';
-import { endpoints } from '../data/site';
+import { getMessages } from '../i18n';
+import type { Lang } from '../i18n/config';
+import { endpoints, figuresDate } from '../data/site';
+
+interface Props {
+	lang: Lang;
+}
+
+const { featureGroups, home } = getMessages(Astro.props.lang);
+const { features } = home;
+const { figures } = features;
 ---
 <!-- Features -->
 <section class="section" id="features" aria-labelledby="features-title">
 	<div class="container">
 		<div class="section-head">
-			<h2 id="features-title">Pourquoi choisir moncycle.app</h2>
-			<p class="lead">Conçue pour les femmes et les couples qui suivent une méthode de régulation naturelle des naissances, elle remplace le carnet papier sans jamais interpréter à votre place.</p>
+			<h2 id="features-title">{features.title}</h2>
+			<p class="lead" set:html={features.lead} />
 		</div>
 
 		<div class="feature-groups">
@@ -31,12 +40,12 @@ import { endpoints } from '../data/site';
 				The numbers and date below are the fallback when the API cannot be reached.
 				The URL comes from PUBLIC_STATS_URL (see .env.example).
 			-->
-		<h3 class="visually-hidden" id="figures-title">moncycle.app en chiffres</h3>
+		<h3 class="visually-hidden" id="figures-title">{figures.title}</h3>
 		<dl class="figures" aria-labelledby="figures-title" data-stats-src={endpoints.stats}>
-			<div><dt>comptes ouverts</dt><dd data-stat="accounts">2&nbsp;190</dd></div>
-			<div><dt>cycles enregistrés</dt><dd data-stat="cycles">18&nbsp;000</dd></div>
-			<div><dt>observations notées</dt><dd data-stat="observations">372&nbsp;700</dd></div>
+			<div><dt>{figures.accounts.label}</dt><dd data-stat="accounts" set:html={figures.accounts.value} /></div>
+			<div><dt>{figures.cycles.label}</dt><dd data-stat="cycles" set:html={figures.cycles.value} /></div>
+			<div><dt>{figures.observations.label}</dt><dd data-stat="observations" set:html={figures.observations.value} /></div>
 		</dl>
-		<p class="figures-date">Chiffres arrondis au <time data-stats-date datetime="2026-10-19">19&nbsp;octobre&nbsp;2026</time>.</p>
+		<p class="figures-date">{figures.dateBefore}<time data-stats-date datetime={figuresDate} set:html={figures.dateLabel} />{figures.dateAfter}</p>
 	</div>
 </section>
