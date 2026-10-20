@@ -3,7 +3,7 @@ import type { ScreenshotText } from '../types';
 
 export const screenshots: Record<ScreenshotId, ScreenshotText> = {
 	'cycle-table': {
-		alt: 'Tableau d’un cycle Billings de 26 jours, en mode sombre\u00a0: tampons jaunes, puis tampons «\u00a0bébé\u00a0» jusqu’au jour sommet, suivis des jours comptés et de tampons verts, avec sensations et observations notées chaque jour.',
+		alt: 'Tableau d’un cycle Billings de 26 jours, en mode sombre\u00a0: tampons jaunes, puis tampons «\u00a0bébé\u00a0» jusqu’au jour sommet, suivis des jours comptés et de tampons verts, avec les sensations et observations notées chaque jour.',
 		caption: 'Le tableau d’un cycle',
 	},
 	'temperature-curve': {
@@ -23,7 +23,7 @@ export const screenshots: Record<ScreenshotId, ScreenshotText> = {
 		caption: 'La saisie d’une journée',
 	},
 	keywords: {
-		alt: 'Réglages des sensations et observations\u00a0: liste des mots clés (sec, humide, collant, pâteux…) avec le nombre de jours qui les utilisent, et champ pour en créer un nouveau.',
+		alt: 'Réglages des sensations et observations\u00a0: liste des mots clés (sec, humide, collant, pâteux…) avec le nombre de jours où chacun est utilisé, et champ pour en créer un nouveau.',
 		caption: 'Vos propres mots clés',
 	},
 	'mini-view': {

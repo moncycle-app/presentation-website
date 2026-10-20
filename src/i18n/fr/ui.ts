@@ -59,7 +59,7 @@ export const ui = {
 	},
 	footer: {
 		about: 'moncycle.app est développée et distribuée par Tech&nbsp;4&nbsp;Fertility, association française à but non lucratif.',
-		coupleAlt: 'Le couple dessiné de moncycle.app, en buste, qui se sourit.',
+		coupleAlt: 'Le couple dessiné de moncycle.app, en buste, échangeant un sourire.',
 		organization: { title: 'Tech 4 Fertility', donate: 'Faire un don', terms: 'Conditions d’utilisation', news: 'Actualités' },
 		technical: { title: 'Liens techniques', source: 'Code source', api: 'Documentation de l’API', docker: 'Image Docker', yunohost: 'YunoHost', status: 'État du service' },
 		help: {

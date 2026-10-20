@@ -23,7 +23,7 @@ export const methods: Method[] = [
 		name: 'SensiPlan (symptothermie)',
 		compatibility: 'partial',
 		badge: 'Partiellement compatible',
-		text: 'Même limite\u00a0: la courbe de température n’est interprétée que partiellement.',
+		text: 'Même limite\u00a0: la courbe de température n’est prise en charge que partiellement.',
 	},
 	{
 		name: 'Méthode M (M fertilité, symptothermie)',

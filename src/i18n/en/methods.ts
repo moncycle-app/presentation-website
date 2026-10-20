@@ -1,35 +1,34 @@
-import { urls } from '../../data/site';
 import type { Method } from '../types';
 
 export const methods: Method[] = [
 	{
-		name: 'Billings method',
+		name: 'Billings Ovulation Method',
 		compatibility: 'full',
-		badge: '100% compatible',
-		text: `Find a teacher through <a href="${urls.billingsInternational}" target="_blank" rel="noopener">WOOMB International</a>, or in France through the <a href="${urls.billingsTrainers}" target="_blank" rel="noopener" hreflang="fr">Centre Billings France</a> (in French).`,
+		badge: '100% compatible',
+		text: '<a href="https://www.methode-billings.com/trouver-un-formateur" target="_blank" rel="noopener">Find a teaching couple</a> through the Centre Billings France (website in French).',
 	},
 	{
 		name: 'FertilityCare (NaProTECHNOLOGY)',
 		compatibility: 'full',
-		badge: '100% compatible',
-		text: `Find a practitioner through <a href="${urls.fertilityCareInternational}" target="_blank" rel="noopener">FertilityCare Centers of America</a>, or in France through <a href="${urls.fertilityCareInstructors}" target="_blank" rel="noopener" hreflang="fr">FertilityCare France</a> (in French).`,
+		badge: '100% compatible',
+		text: '<a href="https://www.fertilitycare.fr/instructrices-et-medecins" target="_blank" rel="noopener">Find an instructor</a> through FertilityCare France (website in French).',
 	},
 	{
 		name: 'Cyclamen (symptothermal)',
 		compatibility: 'partial',
-		badge: 'Partially compatible',
-		text: 'The app only allows a partial reading of temperature curves.',
+		badge: 'Partly compatible',
+		text: 'The application only partly supports temperature curves.',
 	},
 	{
 		name: 'SensiPlan (symptothermal)',
 		compatibility: 'partial',
-		badge: 'Partially compatible',
-		text: 'Same limit: the temperature curve is only partially interpreted.',
+		badge: 'Partly compatible',
+		text: 'Same limitation: the temperature curve is only partly supported.',
 	},
 	{
-		name: 'M method (M fertility, symptothermal)',
+		name: 'Méthode M (M Fertilité, symptothermal)',
 		compatibility: 'partial',
-		badge: 'Partially compatible',
-		text: 'Same limit as for the other symptothermal methods.',
+		badge: 'Partly compatible',
+		text: 'Same limitation as for the other symptothermal methods.',
 	},
 ];
