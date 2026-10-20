@@ -30,7 +30,7 @@ const structuredData = selectorGraph(Astro.site!);
 				return (
 					<li lang={locales[code].htmlLang}>
 						<p>{block.text}</p>
-						<a class="button button-primary" href={homePath(code)} hreflang={locales[code].htmlLang}>{block.cta}</a>
+						<a class="button button-primary" href={homePath(code)} hreflang={locales[code].htmlLang} data-lang-choice={code}>{block.cta}</a>
 					</li>
 				);
 			})}

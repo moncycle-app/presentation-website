@@ -1,0 +1,28 @@
+---
+import Icon from './Icon.astro';
+import { getMessages } from '../i18n';
+import { homePath, locales, otherLangs, type Lang } from '../i18n/config';
+
+// Suggestion to switch language. Every possible suggestion is in the markup, in the language it proposes
+// (so no text lives in the script); scripts/lang-banner.ts reveals the one that matches the browser language.
+// Nothing is redirected: crawlers and visitors who do not run JavaScript simply never see it.
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+<aside class="lang-banner" data-lang-banner hidden>
+	<div class="container lang-banner-inner">
+		{otherLangs(lang).map((code) => {
+			const { banner } = getMessages(code).ui;
+			return (
+				<p class="lang-banner-text" lang={locales[code].htmlLang} data-lang-suggest={code} hidden>
+					<span>{banner.message}</span>
+					<a href={homePath(code)} hreflang={locales[code].htmlLang} data-lang-choice={code}>{banner.link}</a>
+					<button class="lang-banner-close" type="button" data-lang-dismiss aria-label={banner.dismiss}><Icon name="close" /></button>
+				</p>
+			);
+		})}
+	</div>
+</aside>

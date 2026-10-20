@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
+import LanguageBanner from '../../components/LanguageBanner.astro';
 import NewsBanner from '../../components/NewsBanner.astro';
 import Hero from '../../components/Hero.astro';
 import HowItWorks from '../../components/HowItWorks.astro';
@@ -40,6 +41,7 @@ const structuredData = [siteGraph(Astro.site!, lang, screenshots[0].image.src), 
 		<script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(data)} />
 	))}
 
+	<LanguageBanner lang={lang} />
 	<Header lang={lang} />
 	<NewsBanner lang={lang} />
 

@@ -7,10 +7,14 @@ Guide for AI agents (and humans) working on this repository.
 Presentation website of **moncycle.app** (https://www.moncycle.app), a cycle-tracking notebook for natural
 family planning methods (Billings, FertilityCare), published by the Tech 4 Fertility association.
 Statically generated with [Astro](https://astro.build) 7, no UI framework, no server adapter.
-The page content is **French**; the terms of use exist in French (reference version) and English.
+The site is **multilingual** (French and English today, built to take more): one home page and one terms of use
+page per language. French is the original language and the reference version of the terms of use.
+The application itself is French only; the English pages say so.
 
-Pages: the home page (`/`), the terms of use (`/ToS/term_of_service_fr.html`, `/ToS/term_of_service_en.html`)
-and a 404 page. Generated files: `/sitemap.xml`, `/robots.txt`, `/llms.txt`.
+Pages: a language selector at `/` (the `x-default`, no redirect), the home page of each language (`/fr/`, `/en/`),
+the terms of use of each language (`/fr/term_of_service.html`, `/en/term_of_service.html`) and a multilingual
+404 page. The former `/ToS/term_of_service_{fr,en}.html` URLs remain as canonical + refresh stubs.
+Generated files: `/sitemap.xml`, `/robots.txt`, `/llms.txt` (English) and `/llms-<lang>.txt` (other languages).
 
 ## Commands
 
@@ -40,18 +44,26 @@ src/
     fonts/                 Montserrat variable font (loaded through the Astro Fonts API)
     images/                Drawings, install screenshots, badge, e-mail image
     screenshots/           capture1…10.png, the app screenshots of the gallery
-  components/              One component per section of the home page, plus Icon, IconSprite, EmailLink
-    legal/                 TermsFr.astro / TermsEn.astro: the text of the terms of use
-  data/                    Content as data (see below), icons, nav, site constants, structured data
+  components/              One component per section of the home page (each takes a `lang` prop), plus Icon,
+                           IconSprite, EmailLink, LanguageSwitcher, LanguageBanner
+  data/                    Language-independent data: icons, site constants and URLs, screenshots (images), structured data
+  i18n/                    Everything that exists once per language (see "Languages" below)
+    config.ts              THE list of languages, default/international languages, path helpers
+    index.ts               Registry: getMessages(lang), getTerms(lang)
+    types.ts               Shapes of the per-language content
+    <lang>/                ui.ts home.ts faq.ts features.ts methods.ts tech.ts screenshots.ts legal.ts llms.ts
+                           index.ts (assembles them) and Terms.astro (text of the terms of use)
   layouts/
-    BaseLayout.astro       Home page <head> (SEO, Open Graph, fonts, scripts), skip link, icon sprite
-    LegalLayout.astro      Terms of use page shell (own stylesheet, language switch, table of contents)
+    BaseLayout.astro       <head> (SEO, hreflang, Open Graph, fonts, scripts), skip link, icon sprite
+    LegalLayout.astro      Terms of use page shell (own stylesheet, language links, table of contents)
   pages/
-    index.astro            Home page: assembles the section components
-    404.astro
-    ToS/term_of_service_[lang].astro   Terms of use, one route for both languages
-    sitemap.xml.ts  robots.txt.ts  llms.txt.ts   Generated from the site URL
-  scripts/                 Browser scripts in TypeScript (main.ts is the entry point)
+    index.astro            Language selector (x-default)
+    [lang]/index.astro     Home page of each language: assembles the section components
+    [lang]/term_of_service.astro   Terms of use of each language
+    ToS/term_of_service_[lang].astro   Former URLs, canonical + refresh stubs (do not add languages)
+    404.astro              Multilingual 404
+    sitemap.xml.ts  robots.txt.ts  llms.txt.ts  llms-[lang].txt.ts   Generated from the site URL and the languages
+  scripts/                 Browser scripts in TypeScript (main.ts is the entry point); no text lives in them
   styles/
     global.css             Imports the files below, in this order
     layers.css             Declares the cascade layers: tokens, base, components, sections
@@ -60,18 +72,49 @@ src/
   utils/html-text.ts       HTML fragment → plain text (used for the FAQ JSON-LD)
 ```
 
-## Content lives in `src/data/`
+## Languages
 
-- `faq.ts`: the FAQ. The visible FAQ **and** the `FAQPage` JSON-LD are generated from it, so they cannot drift.
-  Question and answers are HTML strings (use `&nbsp;` before `?`, `:`, `;` and `%`, as French typography requires).
-- `screenshots.ts`: the gallery (image, alt text, caption). Add the PNG to `src/assets/screenshots/` first.
-- `features.ts`, `methods.ts`, `tech.ts`, `nav.ts`: the lists rendered by the matching components.
+`src/i18n/config.ts` is the single list of languages (`locales`): routes, hreflang links, the switcher, the
+sitemap, the language banner and the llms files are all generated from it. Nothing else hard-codes `fr` or `en`:
+use `langs`, `otherLangs()`, `homePath()`, `legalPath()` and `alternates()`.
+
+- French is the reference: the `Messages` type is the type of the French messages, so a language that misses or
+  misspells a key does not compile (`npm run build` fails).
+- Strings used as element content may contain HTML (entities such as `&nbsp;`, links) and are rendered with
+  `set:html`; strings used as attributes (`alt`, `label`…) are plain text (use `\u00a0` for a non-breaking space).
+  In French use `&nbsp;` before `?`, `:`, `;` and `%`, as the typography requires.
+- A component takes `lang` and reads `getMessages(lang)`. Markup is shared; text never lives in a component.
+- `ui.ts`: head/meta, header, footer, banners, gallery, 404, selector, structured-data texts.
+  `home.ts`: the text of each section. `faq.ts`, `features.ts`, `methods.ts`, `tech.ts`: the lists.
+  `screenshots.ts`: alt text and caption of each screenshot (images are in `src/data/screenshots.ts`).
+  `legal.ts` + `Terms.astro`: terms of use. `llms.ts`: the llms summary.
+- The FAQ page and the `FAQPage` JSON-LD are generated from the same `faq.ts`, so they cannot drift.
+- Anchors (`#how`, `#faq`…) and element ids are identical in every language.
+
+### Adding a language
+
+1. Add one line to `locales` in `src/i18n/config.ts`.
+2. Copy `src/i18n/en/` to `src/i18n/<lang>/` and translate every file, including `Terms.astro` (courtesy translation
+   of the French reference) and `llms.ts`.
+3. Register it in `src/i18n/index.ts`.
+4. Run `npm run build`: TypeScript lists what is missing. Nothing else changes: the routes, hreflang, sitemap,
+   switcher, banner, selector page, 404 and `/llms-<lang>.txt` follow. For a right-to-left language set `dir: 'rtl'`
+   and check the styles (logical properties).
+5. Adapt what is local: external resources (e.g. where to find a teacher), the licence deed link, date and number
+   formats of the fallback key figures.
+
+Every new string must exist in every language.
+
+## Other data in `src/data/`
+
+- `screenshots.ts`: the gallery images (ids, order, `wide`). Add the PNG to `src/assets/screenshots/` first, then
+  the alt text and caption in each `src/i18n/<lang>/screenshots.ts`.
 - `icons.ts`: the SVG icons. Use `<Icon name="…" />`; the sprite is emitted once by `IconSprite.astro`.
-- `legal.ts`: titles, descriptions, table of contents and `lastmod` of the terms of use.
-- `site.ts`: external URLs (`urls`), remote JSON endpoints (`endpoints`), `homeLastmod`.
-- `structured-data.ts`: schema.org JSON-LD of the home page (organisation, website, application, FAQ).
+- `site.ts`: external URLs (`urls`), remote JSON endpoints (`endpoints`), `homeLastmod`, `figuresDate`.
+- `structured-data.ts`: schema.org JSON-LD (organisation, website, page, application, FAQ), per language.
 
-Sections without repeated items (hero, steps, Billings history, terms summary…) are plain markup in their component.
+Sections without repeated items (hero, steps, Billings history, terms summary…) are plain markup in their
+component, with their text in `home.ts`.
 
 ## Images
 
@@ -92,13 +135,20 @@ Sections without repeated items (hero, steps, Billings history, terms summary…
 
 ## Build output
 
-- `build.format` is `'file'`: `src/pages/ToS/term_of_service_fr.astro` → `dist/ToS/term_of_service_fr.html`.
+- `build.format` is `'preserve'`: `src/pages/[lang]/index.astro` → `dist/fr/index.html` (served as `/fr/`) and
+  `src/pages/[lang]/term_of_service.astro` → `dist/fr/term_of_service.html`. (`'file'` would write `fr.html`.)
   Keep these URLs, they are public and listed in the sitemap.
+- SEO is part of the design and the HTML must stay complete without JavaScript: every page is static, with its own
+  canonical, `hreflang` alternates (all languages + `x-default` → `/`), `og:locale` and JSON-LD in its language.
+  Only the news, the live key figures (static fallback in the HTML) and the e-mail address are filled in by scripts.
+- GitHub Pages cannot send redirects, hence `/` is a real selector page and the language banner
+  (`LanguageBanner.astro`, `scripts/lang-banner.ts`) only suggests; it never redirects.
 - Internal links and assets are absolute (`/…`): `dist` is meant to be served at the domain root
   (use `npm run preview` locally; opening the HTML from disk does not work).
-- The sitemap is a custom endpoint (not `@astrojs/sitemap`) to keep the `/sitemap.xml` URL and the hreflang
-  alternates. Update `homeLastmod` (`site.ts`) and `lastmod` (`legal.ts`) when the content changes.
-- `llms.txt` is a text template in `src/pages/llms.txt.ts`: keep it consistent with the page content.
+- The sitemap is a custom endpoint (not `@astrojs/sitemap`) to control the hreflang alternates. Update
+  `homeLastmod` (`site.ts`) and `lastmod` (each `i18n/<lang>/legal.ts`) when the content changes.
+- `/llms.txt` is the English summary (`llmsLang`), `/llms-<lang>.txt` the others, each a template in
+  `src/i18n/<lang>/llms.ts`: keep them consistent with the page content.
 
 ## Deployment
 
@@ -108,6 +158,6 @@ request and deploys the `webpage` branch (repository setting: Pages source = Git
 ## Conventions
 
 - Everything in the codebase is written in **English**: code, comments, docs, commit messages.
-  French only appears as site content (components, `src/data/`, terms of use).
+  Site content lives in `src/i18n/<lang>/` (French and English, plus any added language).
 - Do not change the page text, markup or styles unless the task asks for it.
-- Terms of use: French is the reference version, English is a courtesy translation. Keep both in sync.
+- Terms of use: French is the reference version, the other languages are courtesy translations. Keep all in sync.
