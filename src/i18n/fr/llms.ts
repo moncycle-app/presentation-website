@@ -45,4 +45,9 @@ Faits à retenir (source de vérité : les conditions d’utilisation, version 2
 ## Éditeur
 
 - [Tech 4 Fertility](https://tech4fertility.org/) : association loi 1901, RNA W271007328, 15A rue Valentin Gaumont, 27200 Vernon, France. Site en construction.
+
+## Autres langues
+
+- [English summary for language models](${site}llms.txt)
+- [Site in English](${site}en/)
 `;

@@ -23,6 +23,8 @@ export const urls = {
 	tech4fertility: 'https://tech4fertility.org/',
 	billingsTrainers: 'https://www.methode-billings.com/trouver-un-formateur',
 	fertilityCareInstructors: 'https://www.fertilitycare.fr/instructrices-et-medecins',
+	billingsInternational: 'https://woombinternational.org/',
+	fertilityCareInternational: 'https://www.fertilitycare.org/',
 } as const;
 
 // Remote JSON read by the browser (see scripts/news.ts and scripts/stats.ts).

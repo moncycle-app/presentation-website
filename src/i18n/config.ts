@@ -4,6 +4,7 @@
 // Adding a language: see "Adding a language" in AGENTS.md.
 export const locales = {
 	fr: { label: 'Français', htmlLang: 'fr', ogLocale: 'fr_FR', dir: 'ltr' },
+	en: { label: 'English', htmlLang: 'en', ogLocale: 'en_US', dir: 'ltr' },
 } as const satisfies Record<string, { label: string; htmlLang: string; ogLocale: string; dir: 'ltr' | 'rtl' }>;
 
 export type Lang = keyof typeof locales;
@@ -14,10 +15,10 @@ export const langs = Object.keys(locales) as Lang[];
 export const defaultLang: Lang = 'fr';
 
 /** Language of the pages that belong to no language: the selector at "/" and the 404 page */
-export const internationalLang: Lang = 'fr';
+export const internationalLang: Lang = 'en';
 
 /** Language of /llms.txt, the summary read by language models (the other languages are /llms-<lang>.txt) */
-export const llmsLang: Lang = 'fr';
+export const llmsLang: Lang = 'en';
 
 /** The other languages, in the order of `locales` */
 export const otherLangs = (lang: Lang): Lang[] => langs.filter((code) => code !== lang);
