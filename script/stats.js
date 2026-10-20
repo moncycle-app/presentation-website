@@ -1,27 +1,26 @@
-// Key figures: replaces the numbers written in the HTML with the live ones.
+// Key figures: replaces the numbers written in the HTML with the live ones,
+// then counts them up from zero the first time the list scrolls into view.
 // Reads both API formats: v1 (moncycle_app_nb_* keys) and v2 ({ data: { accounts, cycles, observations } }).
 const V1_KEYS = {
 	accounts: 'moncycle_app_nb_compte',
 	cycles: 'moncycle_app_nb_cycle',
 	observations: 'moncycle_app_nb_total_observation',
 };
+const TIMEOUT = 5000;
+const DURATION = 1600;
 
 function read(json) {
 	if (json?.data) return json.data;
 	return Object.fromEntries(Object.entries(V1_KEYS).map(([key, v1]) => [key, json?.[v1]]));
 }
 
-export async function initStats(list) {
-	if (!list) return;
-	const lang = document.documentElement.lang || 'fr';
+async function fetchStats(list, cells, format, lang) {
 	try {
-		const response = await fetch(list.dataset.statsSrc, { cache: 'no-cache' });
+		const response = await fetch(list.dataset.statsSrc, { cache: 'no-cache', signal: AbortSignal.timeout(TIMEOUT) });
 		if (!response.ok) throw new Error(String(response.status));
 		const values = read(await response.json());
-		const cells = [...list.querySelectorAll('[data-stat]')];
 		// all or nothing: never show live and stale numbers side by side
 		if (!cells.every((cell) => Number.isFinite(values[cell.dataset.stat]))) throw new Error('format');
-		const format = new Intl.NumberFormat(lang);
 		for (const cell of cells) cell.textContent = format.format(values[cell.dataset.stat]);
 
 		const date = document.querySelector('[data-stats-date]');
@@ -33,4 +32,33 @@ export async function initStats(list) {
 	} catch {
 		// keep the fallback figures written in the HTML
 	}
+}
+
+function countUp(cells, format) {
+	const targets = cells.map((cell) => Number(cell.textContent.replace(/\D/g, '')));
+	const start = performance.now();
+	const step = (now) => {
+		const progress = Math.min((now - start) / DURATION, 1);
+		const eased = 1 - (1 - progress) ** 3;
+		cells.forEach((cell, i) => { cell.textContent = format.format(Math.round(targets[i] * eased)); });
+		if (progress < 1) requestAnimationFrame(step);
+	};
+	requestAnimationFrame(step);
+}
+
+export async function initStats(list) {
+	if (!list) return;
+	const lang = document.documentElement.lang || 'fr';
+	const format = new Intl.NumberFormat(lang);
+	const cells = [...list.querySelectorAll('[data-stat]')];
+
+	await fetchStats(list, cells, format, lang);
+
+	if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+	const observer = new IntersectionObserver((entries) => {
+		if (!entries.some((entry) => entry.isIntersecting)) return;
+		observer.disconnect();
+		countUp(cells, format);
+	}, { threshold: 0.5 });
+	observer.observe(list);
 }
