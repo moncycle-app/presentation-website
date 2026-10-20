@@ -8,6 +8,7 @@ export const legal: LegalPage = {
 	version: 'Version 2.0 · in effect from 1 November 2026',
 	languageLabel: 'Language',
 	readThis: 'Read in English (translation)',
+	home: '← Back to the home page',
 	contents: {
 		label: 'Contents',
 		title: 'Contents',

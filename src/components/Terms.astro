@@ -22,10 +22,10 @@ const others = otherLangs(lang);
 			{terms.items.map((item) => <li><p set:html={item} /></li>)}
 		</ol>
 		<p>
-			<Fragment set:html={more} />
+			<Fragment set:html={more} />{' '}
 			{others.length > 0 && (
 				<>
-					<Fragment set:html={terms.alsoAvailable} />
+					<Fragment set:html={terms.alsoAvailable} />{' '}
 					{others.map((code, i) => (
 						<>{i > 0 && ', '}<a href={legalPath(code)} hreflang={locales[code].htmlLang} lang={locales[code].htmlLang}>{locales[code].label}</a></>
 					))}.

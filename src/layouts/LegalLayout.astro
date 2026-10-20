@@ -1,7 +1,7 @@
 ---
 import '../styles/legal.css';
 import { getMessages } from '../i18n';
-import { alternates, defaultLang, legalPath, locales, otherLangs, type Lang } from '../i18n/config';
+import { alternates, defaultLang, homePath, legalPath, locales, otherLangs, type Lang } from '../i18n/config';
 
 interface Props {
 	lang: Lang;
@@ -26,6 +26,10 @@ const others = otherLangs(lang);
 	<link rel="alternate" hreflang="x-default" href={new URL(legalPath(defaultLang), Astro.site)}>
 </head>
 <body>
+
+	<nav aria-label={page.home}>
+		<a href={homePath(lang)}>{page.home}</a>
+	</nav>
 
 	<header>
 		<h1>{page.h1[0]}<br>{page.h1[1]}</h1>

@@ -8,7 +8,7 @@
 	}
 
 	.demo-video { margin: 0; justify-self: center; width: min(100%, 17rem); }
-	.demo-video video { width: 100%; aspect-ratio: 720 / 1558; background: var(--surface-2); cursor: pointer; }
+	.demo-video video { width: 100%; aspect-ratio: 720 / 1490; object-fit: cover; background: var(--surface-2); cursor: pointer; }
 
 	.demo-video figcaption {
 		margin-top: var(--space-3);
@@ -26,13 +26,14 @@
 
 	.demo-accounts dt { color: var(--muted); }
 	.demo-accounts dd { margin: 0; font-weight: 600; min-width: 0; }
+	.demo-accounts code { overflow-wrap: anywhere; }
 
 	@media (max-width: 30rem) {
 		.demo-accounts dl { grid-template-columns: 1fr; gap: 0; }
 		.demo-accounts dd { margin-bottom: var(--space-3); }
 	}
 
-	@media (min-width: 48rem) { .demo-grid { grid-template-columns: auto 1fr; gap: var(--space-7); } }
+	@media (min-width: 48rem) { .demo-grid { grid-template-columns: 17rem minmax(0, 1fr); gap: var(--space-7); } .demo-accounts { max-width: 40rem; } }
 
 	.gallery { position: relative; }
 

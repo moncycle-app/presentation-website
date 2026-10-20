@@ -55,6 +55,8 @@ export interface LegalPage {
 	/** Label of the language list, and the text of the link that leads to this language */
 	languageLabel: string;
 	readThis: string;
+	/** Link back to the home page, at the top of the page */
+	home: string;
 	contents: { label: string; title: string; sections: { id: string; title: string }[] };
 	footer: string;
 	/** Last modification, for the sitemap */

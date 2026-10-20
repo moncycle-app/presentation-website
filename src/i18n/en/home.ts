@@ -93,7 +93,6 @@ export const home = {
 			sources: [
 				{ href: 'https://en.wikipedia.org/wiki/John_and_Evelyn_Billings', hreflang: 'en', label: 'John and Evelyn Billings, Wikipedia' },
 				{ href: 'https://fr.wikipedia.org/wiki/M%C3%A9thode_Billings', label: 'Méthode Billings, Wikipedia (in French)' },
-				{ href: 'https://woombinternational.org/wp-content/uploads/2022/05/Rock-Solid-Science.pdf', hreflang: 'en', label: 'Rock Solid Science, WOOMB International (PDF)' },
 				{ href: "https://www.sfsc.fr/pdf/La%20m%C3%A9thode%20de%20l'ovulation%20Billings.pdf", label: 'La méthode de l’ovulation Billings, SFSC (PDF, in French)' },
 				{ href: 'https://link.springer.com/article/10.1007/BF01849421', hreflang: 'en', label: 'Fertility awareness in the 1990s: the Billings Ovulation Method, Springer' },
 				{ href: 'http://www.cmq.org.uk/CMQ/2015/May/symptothermal_method_of_natural.html', hreflang: 'en', label: 'The Symptothermal Method of Natural Family Planning, Catholic Medical Quarterly' },

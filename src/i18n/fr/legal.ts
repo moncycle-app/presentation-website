@@ -8,6 +8,7 @@ export const legal: LegalPage = {
 	version: 'Version 2.0 · en vigueur à compter du 1er novembre 2026',
 	languageLabel: 'Langue',
 	readThis: 'Lire en français (version de référence)',
+	home: '← Retour à l’accueil',
 	contents: {
 		label: 'Sommaire',
 		title: 'Sommaire',
