@@ -302,6 +302,14 @@
 		</div>
 	</header>
 
+	<!-- News banner: filled and revealed by script/news.js -->
+	<aside class="news-banner" aria-label="Dernière actualité" data-news-src="http://localhost:8006/latest-news.json" hidden>
+		<div class="container news-banner-inner">
+			<p class="news-banner-text"><strong class="news-banner-tag">Actualité</strong> <span data-news="banner-title"></span></p>
+			<a class="button button-small news-banner-button" data-news="banner-link" href="https://tech4fertility.org/" target="_blank" rel="noopener">Lire l’article</a>
+		</div>
+	</aside>
+
 	<main id="main">
 
 		<!-- Hero -->
@@ -867,17 +875,18 @@
 			</div>
 		</section>
 
-		<!-- News: the content of actu.html is loaded by script/news.js -->
-		<section class="section section-alt news" id="news" aria-labelledby="news-title" data-news-src="actu.html">
+		<!-- News: filled and revealed by script/news.js; stays hidden if there is nothing recent to show -->
+		<section class="section section-alt news" id="news" aria-labelledby="news-title" hidden>
 			<div class="container">
 				<div class="section-head">
 					<h2 id="news-title">Actualités</h2>
 				</div>
-				<div class="news-box">
-					<p class="news-loading" role="status">Chargement des actualités…</p>
-					<p class="news-fallback">Les actualités n’ont pas pu être chargées. Vous pouvez les consulter sur <a href="actu.html">la page des actualités</a>.</p>
-					<div class="news-content" aria-live="polite"></div>
-				</div>
+				<article class="news-box">
+					<h3 data-news="title"></h3>
+					<time data-news="date"></time>
+					<p data-news="description"></p>
+					<a class="button button-primary" data-news="link" href="https://tech4fertility.org/" target="_blank" rel="noopener">Lire la suite</a>
+				</article>
 			</div>
 		</section>
 
@@ -921,7 +930,7 @@
 						<li><a href="https://tech4fertility.org/" target="_blank" rel="noopener">tech4fertility.org</a></li>
 						<li><a href="#support">Faire un don</a></li>
 						<li><a href="ToS/term_of_service_fr.html">Conditions d’utilisation</a></li>
-						<li><a href="#news">Actualités</a></li>
+						<li data-news-nav hidden><a href="#news">Actualités</a></li>
 					</ul>
 				</div>
 				<div class="footer-col">

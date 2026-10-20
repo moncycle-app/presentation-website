@@ -1074,6 +1074,34 @@
 	@media (min-width: 64rem) { .tech-list { grid-template-columns: repeat(3, 1fr); } }
 
 	/* News -------------------------------------------------------------- */
+	.news-banner {
+		background: var(--primary-soft);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.news-banner[hidden], .news[hidden], [data-news-nav][hidden] { display: none; }
+
+	.news-banner-inner {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-2) var(--space-4);
+		padding-block: var(--space-3);
+	}
+
+	.news-banner-text { margin: 0; font-size: var(--step-0); color: var(--text); }
+
+	.news-banner-tag {
+		margin-right: var(--space-1);
+		color: var(--primary-strong);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+	}
+
+	.news-banner-button { background: var(--button-bg); color: var(--button-text); }
+	.news-banner-button:hover { background: var(--button-bg-hover); }
+
 	.news-box {
 		max-width: 48rem;
 		padding: var(--space-6);
@@ -1082,40 +1110,16 @@
 		border-radius: var(--radius-m);
 	}
 
-	.news-loading, .news-fallback { margin: 0; color: var(--muted); }
+	.news-box h3 { font-size: var(--step-1); margin-bottom: var(--space-1); }
 
-	/* Without JavaScript only the fallback shows; news.js drives data-state */
-	.news-loading { display: none; }
-	.js .news[data-state="loading"] .news-loading { display: block; }
-	.js .news:not([data-state="error"]) .news-fallback { display: none; }
-
-	.news-loading::before {
-		content: "";
-		display: inline-block;
-		width: 0.9rem;
-		height: 0.9rem;
-		margin-right: var(--space-2);
-		vertical-align: -0.1rem;
-		border: 2px solid var(--border);
-		border-top-color: var(--primary);
-		border-radius: 50%;
-	}
-
-	@media (prefers-reduced-motion: no-preference) {
-		.news-loading::before { animation: spin 0.9s linear infinite; }
-		@keyframes spin { to { rotate: 360deg; } }
-	}
-
-	.news-content h3 { font-size: var(--step-1); margin-bottom: var(--space-1); }
-
-	.news-content time {
+	.news-box time {
 		display: block;
 		margin-bottom: var(--space-3);
 		font-size: var(--step--1);
 		color: var(--muted);
 	}
 
-	.news-content > :last-child { margin-bottom: 0; }
+	.news-box p { margin-bottom: var(--space-5); }
 
 	/* Terms ------------------------------------------------------------- */
 	.terms-list {

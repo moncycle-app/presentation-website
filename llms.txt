@@ -24,7 +24,7 @@ Faits à retenir (source de vérité : les conditions d’utilisation, version 2
 - [John et Evelyn Billings](https://www.moncycle.app/#billings) : histoire de la méthode Billings, avec l’article du Lancet de 1972 et les sources.
 - [Questions fréquentes](https://www.moncycle.app/#faq)
 - [Soutenir moncycle.app](https://www.moncycle.app/#support)
-- [Actualités](https://www.moncycle.app/actu.html)
+- [Actualités](https://www.moncycle.app/#news)
 
 ## Conditions d’utilisation
 

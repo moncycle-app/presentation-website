@@ -1,59 +1,57 @@
-// Loads the news fragment (same origin, maintained by the team) into the News section.
-// Only a small set of tags is kept; headings are shifted so they sit under the section's h2.
-const ALLOWED = new Map([
-	['H4', 'h3'], ['H3', 'h3'], ['P', 'p'], ['TIME', 'time'], ['A', 'a'], ['BR', 'br'],
-	['STRONG', 'strong'], ['B', 'strong'], ['EM', 'em'], ['I', 'em'], ['UL', 'ul'], ['OL', 'ol'], ['LI', 'li'],
-]);
-const ATTRIBUTES = { a: ['href', 'hreflang'], time: ['datetime'] };
+// Latest news: reads the French entry of the Tech 4 Fertility feed and fills the banner and the
+// "Actualités" section. Both stay hidden when the news is missing, invalid, unreachable or too old.
+const TIMEOUT = 5000;
+const MAX_AGE_DAYS = 30;
+const REQUIRED = ['title', 'description', 'url', 'pubDate'];
 
-function copy(source, target) {
-	for (const node of source.childNodes) {
-		if (node.nodeType === Node.TEXT_NODE) {
-			target.append(node.textContent);
-			continue;
-		}
-		if (node.nodeType !== Node.ELEMENT_NODE) continue;
-		const tag = ALLOWED.get(node.tagName);
-		if (!tag) {
-			copy(node, target);
-			continue;
-		}
-		const element = document.createElement(tag);
-		for (const name of ATTRIBUTES[tag] ?? []) {
-			const value = node.getAttribute(name);
-			if (value !== null) element.setAttribute(name, value);
-		}
-		if (tag === 'a') {
-			const url = new URL(element.getAttribute('href') ?? '', document.baseURI);
-			if (!['http:', 'https:', 'mailto:'].includes(url.protocol)) element.removeAttribute('href');
-			else if (url.protocol !== 'mailto:' && url.origin !== location.origin) {
-				element.target = '_blank';
-				element.rel = 'noopener';
-			}
-		}
-		copy(node, element);
-		target.append(element);
+function validate(json) {
+	if (!json || typeof json !== 'object') throw new Error('response is not a JSON object');
+	for (const lang of ['fr', 'en']) {
+		if (json[lang] == null) throw new Error(`no news for "${lang}" (value: ${json[lang]})`);
 	}
+	const news = json.fr;
+	const missing = REQUIRED.filter((key) => typeof news[key] !== 'string' || !news[key].trim());
+	if (missing.length) throw new Error(`missing or invalid field(s) in "fr": ${missing.join(', ')}`);
+
+	const date = new Date(news.pubDate);
+	if (Number.isNaN(date.getTime())) throw new Error(`invalid pubDate: ${news.pubDate}`);
+	const url = new URL(news.url);
+	if (!['http:', 'https:'].includes(url.protocol)) throw new Error(`unsupported url protocol: ${news.url}`);
+	return { title: news.title.trim(), description: news.description.trim(), url: url.href, date };
 }
 
-export async function initNews(section) {
-	if (!section) return;
-	const content = section.querySelector('.news-content');
-	const source = new URL(section.dataset.newsSrc, document.baseURI);
-	if (source.origin !== location.origin) return;
+function render(news) {
+	const set = (name, value) => document.querySelectorAll(`[data-news="${name}"]`).forEach((el) => { el.textContent = value; });
+	const iso = news.date.toISOString();
+	set('banner-title', news.title);
+	set('title', news.title);
+	set('description', news.description);
+	set('date', news.date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }));
+	document.querySelector('[data-news="date"]').dateTime = iso;
+	document.querySelectorAll('[data-news="link"], [data-news="banner-link"]').forEach((a) => { a.href = news.url; });
+}
 
-	section.dataset.state = 'loading';
+function toggle(visible) {
+	document.querySelectorAll('.news-banner, .news, [data-news-nav]').forEach((el) => { el.hidden = !visible; });
+}
+
+export async function initNews(banner) {
+	if (!banner) return;
+	const source = banner.dataset.newsSrc;
 	try {
-		// "no-cache" revalidates with the server, so a new deployment shows up at once.
-		const response = await fetch(source, { cache: 'no-cache' });
-		if (!response.ok) throw new Error(String(response.status));
-		const fragment = new DOMParser().parseFromString(await response.text(), 'text/html');
-		const holder = document.createDocumentFragment();
-		copy(fragment.body, holder);
-		if (!holder.textContent.trim()) throw new Error('empty');
-		content.replaceChildren(holder);
-		section.dataset.state = 'done';
-	} catch {
-		section.dataset.state = 'error';
+		const response = await fetch(source, { cache: 'no-cache', signal: AbortSignal.timeout(TIMEOUT) });
+		if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText}: ${(await response.text()).slice(0, 500)}`);
+		const news = validate(await response.json());
+
+		const age = (Date.now() - news.date.getTime()) / 86400000;
+		if (age > MAX_AGE_DAYS) {
+			console.info(`News "${news.title}" is ${Math.floor(age)} days old (max ${MAX_AGE_DAYS}): hidden.`);
+			return;
+		}
+		render(news);
+		toggle(true);
+	} catch (error) {
+		console.error('News unavailable. Source:', source, error);
+		toggle(false);
 	}
 }
