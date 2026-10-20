@@ -1,0 +1,38 @@
+---
+import Gallery from './Gallery.astro';
+import { urls } from '../data/site';
+---
+<!-- Screenshots and demo -->
+<section class="section section-alt" id="demo" aria-labelledby="demo-title">
+	<div class="container">
+		<div class="section-head">
+			<h2 id="demo-title">Découvrir l’application</h2>
+			<p class="lead">Le plus simple est de l’essayer&nbsp;: deux comptes de démonstration sont accessibles à tous, sans inscription.</p>
+		</div>
+
+		<div class="demo-grid">
+			<figure class="demo-video">
+				<video class="device" width="720" height="1558" muted loop playsinline preload="none" poster="/video/demo-poster.webp">
+					<source src="/video/demo.mp4" type="video/mp4">
+				</video>
+				<figcaption>Saisie de quelques journées, puis passage à la vue mini (vidéo sans son).</figcaption>
+			</figure>
+
+			<div class="card demo-accounts" id="demo-accounts">
+				<h3>Essayer avec un compte de démonstration</h3>
+				<p>Choisissez le compte correspondant à la méthode qui vous intéresse et connectez-vous avec les identifiants ci-dessous. Ces comptes sont publics&nbsp;: chacun peut les consulter et les modifier, et ils sont réinitialisés toutes les heures. N’y saisissez aucune information personnelle.</p>
+				<dl>
+					<dt>Billings</dt>
+					<dd><code>demo.mucus.self.obs@moncycle.app</code></dd>
+					<dt>FertilityCare</dt>
+					<dd><code>demo.fc@moncycle.app</code></dd>
+					<dt>Mot de passe</dt>
+					<dd><code>demo</code></dd>
+				</dl>
+				<a class="button button-primary" href={urls.app} target="_blank" rel="noopener">Ouvrir la page de connexion</a>
+			</div>
+		</div>
+
+		<Gallery />
+	</div>
+</section>

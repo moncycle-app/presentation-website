@@ -1,0 +1,51 @@
+---
+import type { ImageMetadata } from 'astro';
+import { getImage, Picture } from 'astro:assets';
+import couplePng from '../assets/images/moncycle_app_couple_web.png';
+import coupleCropPng from '../assets/images/moncycle_app_couple_crop_web.png';
+import capture1 from '../assets/screenshots/capture1.png';
+import { urls } from '../data/site';
+
+// Art direction: the tall drawing from 48rem, the cropped one below (webp first, png as fallback)
+const optimise = async (image: ImageMetadata) => ({
+	image,
+	webp: (await getImage({ src: image, format: 'webp' })).src,
+});
+const couple = await optimise(couplePng);
+const coupleCrop = await optimise(coupleCropPng);
+---
+<!-- Hero -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+	<div class="container hero-grid">
+		<div>
+			<p class="eyebrow rise">Billings · FertilityCare · Température</p>
+			<h1 id="hero-title" class="rise rise-2">moncycle.app, le carnet de suivi de cycle féminin au service des méthodes de régulation naturelle des naissances !</h1>
+			<p class="lead rise rise-3">Chaque soir, vous notez vos observations de la journée&nbsp;: glaire cervicale, règles et, si vous la mesurez, température. L’application les présente sous la forme d’un tableau clair, lisible par vous comme par votre moniteur ou votre instructrice. Elle est gratuite, sans publicité et ne fait aucune prédiction.</p>
+			<div class="hero-actions rise rise-4">
+				<a class="button button-primary" href={urls.register} target="_blank" rel="noopener">Créer mon compte</a>
+				<a class="button button-secondary" href="#demo">Essayer la démo</a>
+			</div>
+			<p class="hero-small rise rise-4">Application web pour téléphone et ordinateur, hébergée en France. Développée et distribuée par l’association Tech&nbsp;4&nbsp;Fertility.</p>
+		</div>
+		<div class="hero-visual">
+			<picture>
+					<source media="(min-width: 48rem)" type="image/webp" srcset={couple.webp} width={couple.image.width} height={couple.image.height}>
+					<source media="(min-width: 48rem)" srcset={couple.image.src} width={couple.image.width} height={couple.image.height}>
+					<source type="image/webp" srcset={coupleCrop.webp} width={coupleCrop.image.width} height={coupleCrop.image.height}>
+					<img src={coupleCrop.image.src} width={coupleCrop.image.width} height={coupleCrop.image.height} fetchpriority="high" alt="Dessin d’un jeune couple. L’homme pose la main sur l’épaule de la femme, qui tient son téléphone et se tourne vers lui en souriant.">
+				</picture>
+			<div class="hero-squares" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+			<div class="hero-screen device">
+				<Picture
+						src={capture1}
+						alt="Tableau d’un cycle Billings dans moncycle.app : une ligne par jour, avec le tampon de couleur et les sensations et observations saisies."
+						formats={['webp']}
+						fallbackFormat="png"
+						widths={[360, 720]}
+						sizes="(min-width: 48rem) 10rem, 9rem"
+						loading="eager"
+					/>
+			</div>
+		</div>
+	</div>
+</section>

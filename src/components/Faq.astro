@@ -1,0 +1,25 @@
+---
+import { faq } from '../data/faq';
+---
+<!-- FAQ -->
+<section class="section" id="faq" aria-labelledby="faq-title">
+	<div class="container faq-layout">
+		<div class="section-head">
+			<h2 id="faq-title">Questions fréquentes</h2>
+			<p class="lead">Retrouvez ici les réponses aux questions les plus courantes. Pour aller plus loin, nos <a href="/ToS/term_of_service_fr.html">conditions d’utilisation</a> détaillent le fonctionnement de l’application et la protection de vos données.</p>
+		</div>
+
+		<div class="faq-main">
+			<div class="faq-list">
+				{faq.map(({ id, question, answer }) => (
+					<details id={id}>
+						<summary><h3 set:html={question} /></summary>
+						<div class="faq-answer" set:html={answer.join('\n')} />
+					</details>
+				))}
+			</div>
+
+			<p class="note prose"><strong>Avertissement.</strong> moncycle.app est un outil de notation. Ce n’est ni un dispositif médical, ni un moyen de contraception&nbsp;; elle ne remplace ni la formation à une méthode de régulation naturelle des naissances, ni l’avis d’un professionnel de santé. Pour toute question relative à votre fertilité ou aux règles de la méthode, adressez-vous à votre moniteur ou à votre instructrice&nbsp;; pour toute question de santé, consultez un professionnel de santé. En cas d’urgence, composez le 112.</p>
+		</div>
+	</div>
+</section>

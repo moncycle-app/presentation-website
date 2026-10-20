@@ -1,0 +1,54 @@
+---
+import '../styles/legal.css';
+import { legalPages, type LegalPage } from '../data/legal';
+
+interface Props {
+	page: LegalPage;
+}
+
+const { page } = Astro.props;
+const other = legalPages[page.switchLang.lang];
+---
+<!doctype html>
+<html lang={page.lang}>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="color-scheme" content="light dark">
+	<meta name="description" content={page.description}>
+	<title>{page.title}</title>
+	<link rel="canonical" href={new URL(`/ToS/term_of_service_${page.lang}.html`, Astro.site)}>
+	<link rel="alternate" hreflang={page.lang} href={new URL(`/ToS/term_of_service_${page.lang}.html`, Astro.site)}>
+	<link rel="alternate" hreflang={other.lang} href={new URL(`/ToS/term_of_service_${other.lang}.html`, Astro.site)}>
+</head>
+<body>
+
+	<header>
+		<h1>{page.h1[0]}<br>{page.h1[1]}</h1>
+		<p>{page.version}</p>
+	</header>
+
+	<nav aria-label={page.switchLang.label}>
+		<a href={`term_of_service_${page.switchLang.lang}.html`} hreflang={page.switchLang.lang} lang={page.switchLang.lang}>{page.switchLang.text}</a>
+	</nav>
+
+	<nav aria-label={page.contents.label}>
+		<b>{page.contents.title}</b>
+		<ol>
+			{page.contents.sections.map(({ id, title }) => <li><a href={`#${id}`}>{title}</a></li>)}
+		</ol>
+	</nav>
+
+	<main>
+		<slot />
+	</main>
+
+	<footer>
+		<p>{page.footer}</p>
+	</footer>
+
+	<script>
+		import '../scripts/email';
+	</script>
+</body>
+</html>

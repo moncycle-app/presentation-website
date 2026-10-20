@@ -1,0 +1,12 @@
+---
+import type { IconName } from '../data/icons';
+
+interface Props {
+	name: IconName;
+	class?: string;
+}
+
+const { name, class: className } = Astro.props;
+const id = name === 'logo' ? 'logo' : `i-${name}`;
+---
+<svg class:list={[name === 'logo' ? 'logo' : 'icon', className]} aria-hidden="true" focusable="false"><use href={`#${id}`}/></svg>

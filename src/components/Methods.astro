@@ -1,0 +1,35 @@
+---
+import { methods } from '../data/methods';
+---
+<!-- Natural methods -->
+<section class="section" id="methods" aria-labelledby="methods-title">
+	<div class="container">
+		<div class="section-head">
+			<h2 id="methods-title">Les méthodes de régulation naturelle des naissances</h2>
+		</div>
+
+		<blockquote class="methods-quote prose" cite="https://www.methodes-naturelles.fr/">
+			<p>«&nbsp;Ce sont des méthodes basées sur la connaissance des signes de fertilité du cycle féminin. Le couple peut ainsi connaître avec précision les périodes fertiles ou infertiles qu’il traverse. En fonction de son projet d’enfant, il peut ainsi connaitre le meilleur moment pour transmettre la vie, ou quelles sont ses périodes infertiles lorsqu’il souhaite espacer ou limiter les naissances.&nbsp;»</p>
+			<footer>Source&nbsp;: <cite><a href="https://www.methodes-naturelles.fr/" target="_blank" rel="noopener">methodes-naturelles.fr</a></cite></footer>
+		</blockquote>
+
+		<p class="prose">Plusieurs méthodes existent, enseignées par différentes associations. Voici le niveau de compatibilité de moncycle.app avec les plus répandues en France (liste non exhaustive).</p>
+
+		<div class="methods-grid">
+		<ul class="method-list">
+					{methods.map(({ name, compatibility, badge, text }) => (
+						<li>
+							<h3>{name}</h3>
+							<span class={`badge badge-${compatibility}`}>{badge}</span>
+							<p set:html={text} />
+						</li>
+					))}
+				</ul>
+
+		<div class="brain">
+			<h3>L’interprétation de votre tableau vous appartient</h3>
+			<p>moncycle.app ne cherche ni à prédire, ni à vérifier l’application des règles de la méthode, et ne remplace pas votre moniteur ou votre instructrice. C’est un support numérique, au même titre que le carnet papier. Si vous découvrez les méthodes de régulation naturelle des naissances, ou si une règle soulève une question, adressez-vous à un moniteur ou à une instructrice de l’association qui enseigne la méthode que vous suivez.</p>
+		</div>
+		</div>
+	</div>
+</section>

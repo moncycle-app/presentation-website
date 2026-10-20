@@ -1,0 +1,10 @@
+---
+import { endpoints, urls } from '../data/site';
+---
+<!-- News banner: filled and revealed by scripts/news.ts -->
+<aside class="news-banner" aria-label="Dernière actualité" data-news-src={endpoints.news} hidden>
+	<div class="container news-banner-inner">
+		<p class="news-banner-text"><strong class="news-banner-tag">Actualité</strong> <span data-news="banner-title"></span></p>
+		<a class="button button-small news-banner-button" data-news="banner-link" href={urls.tech4fertility} target="_blank" rel="noopener">Lire l’article</a>
+	</div>
+</aside>

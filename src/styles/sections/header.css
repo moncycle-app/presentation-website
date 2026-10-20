@@ -1,0 +1,112 @@
+@layer sections {
+	/* Header ----------------------------------------------------------- */
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 50;
+		background: color-mix(in srgb, var(--bg) 88%, transparent);
+		backdrop-filter: saturate(1.4) blur(10px);
+		-webkit-backdrop-filter: saturate(1.4) blur(10px);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.header-inner {
+		display: flex;
+		align-items: center;
+		gap: var(--space-4);
+		min-height: var(--header-h);
+	}
+
+	.brand {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-3);
+		min-height: var(--tap);
+		text-decoration: none;
+		margin-right: auto;
+	}
+
+	.header-inner.container { width: min(100% - 2 * var(--space-5), 84rem); }
+
+	@media (min-width: 84rem) {
+		.site-nav { order: 1; }
+		.site-nav a { padding-inline: var(--space-2); }
+		.header-actions { order: 2; }
+	}
+
+	.nav-toggle {
+		display: none;
+		align-items: center;
+		gap: var(--space-2);
+		min-height: var(--tap);
+		padding: var(--space-2) var(--space-4);
+		border: 1px solid var(--border);
+		border-radius: 999px;
+		background: var(--surface);
+		color: var(--text);
+		font: inherit;
+		font-weight: 600;
+		cursor: pointer;
+	}
+
+	.nav-toggle .icon { width: 1.25rem; height: 1.25rem; }
+
+	.site-nav ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-1);
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.site-nav a {
+		display: inline-flex;
+		align-items: center;
+		min-height: var(--tap);
+		padding-inline: var(--space-3);
+		border-radius: var(--radius-s);
+		color: var(--text);
+		font-size: var(--step--1);
+		font-weight: 500;
+		text-decoration: none;
+	}
+
+	.site-nav a:hover { background: var(--surface-2); color: var(--primary); }
+
+	.header-actions { display: flex; gap: var(--space-2); }
+
+	@media (max-width: 83.99rem) {
+		/* pin the first row to the header height: once the menu wraps open,
+		   the flex line would otherwise shrink to its content and jump up */
+		.header-inner {
+			flex-wrap: wrap;
+			align-content: flex-start;
+			padding-block: calc((var(--header-h) - var(--tap)) / 2);
+		}
+		.js .nav-toggle { display: inline-flex; }
+		/* the hero repeats « Créer mon compte » right below; returning users need their board */
+		.header-actions .header-register { display: none; }
+
+		.site-nav { flex-basis: 100%; order: 3; }
+		.js .site-nav:not(.is-open) { display: none; }
+
+		.site-nav ul {
+			flex-direction: column;
+			padding-bottom: var(--space-4);
+		}
+
+		.site-nav a { width: 100%; font-size: var(--step-0); }
+	}
+
+	/* keep logo, « Mon tableau » and the menu on a single line */
+	@media (max-width: 36rem) {
+		.header-inner { gap: var(--space-2); }
+		.nav-toggle { padding-inline: var(--space-3); }
+		.nav-toggle span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+	}
+
+	@media (max-width: 26rem) {
+		.brand .wordmark { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+	}
+}

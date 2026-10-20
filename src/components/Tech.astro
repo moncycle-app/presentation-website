@@ -1,0 +1,22 @@
+---
+import Icon from './Icon.astro';
+import { techLinks } from '../data/tech';
+---
+<!-- Technical -->
+<section class="section" id="tech" aria-labelledby="tech-title">
+	<div class="container">
+		<div class="section-head">
+			<h2 id="tech-title">Informations techniques</h2>
+			<p class="lead">moncycle.app est un logiciel open source&nbsp;: une application web en HTML, CSS et JavaScript, sans étape de compilation, et une API HTTP en PHP reposant sur une base MariaDB.</p>
+		</div>
+		<ul class="tech-list">
+				{techLinks.map(({ icon, href, title, text }) => (
+					<li>
+						<Icon name={icon} />
+						<h3><a href={href} target="_blank" rel="noopener" set:html={title} /></h3>
+						<p set:html={text} />
+					</li>
+				))}
+			</ul>
+	</div>
+</section>

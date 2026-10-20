@@ -1,0 +1,13 @@
+---
+import email from '../assets/images/email.jpg';
+
+// The address is rebuilt in the browser by scripts/email.ts so that it never appears in clear in the HTML.
+// Without JavaScript, the span keeps its fallback content: an image of the address.
+interface Props {
+	alt: string;
+	width?: number;
+}
+
+const { alt, width } = Astro.props;
+---
+<span class="email"><img src={email.src} alt={alt} width={width} height="22"></span>

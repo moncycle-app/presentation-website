@@ -1,0 +1,82 @@
+@layer tokens {
+	:root {
+		color-scheme: light dark;
+
+		/* Brand: the four colours of the logo, never altered */
+		--logo-red: #ac2333;
+		--logo-yellow: #fbca0b;
+		--logo-green: #1e824c;
+		--logo-white: #ffffff;
+
+		/* Light theme (contrast ratios against --bg in comments) */
+		--bg: #fbfaf6;
+		--surface: #ffffff;
+		--surface-2: #f2f1ea;
+		--text: #1d2420;            /* 15.2:1 */
+		--muted: #57605a;           /* 6.2:1 */
+		--border: #e2e0d6;
+		--primary: #1e824c;         /* 4.6:1, links and accents */
+		--primary-strong: #176a3d;  /* text on tinted surfaces */
+		--primary-soft: #e6f1ea;
+		--button-bg: #1e824c;       /* white text: 4.8:1 */
+		--button-bg-hover: #176a3d;
+		--button-text: #ffffff;
+		--accent: #ac2333;
+		--paper: #fffdf8;           /* disc behind the drawing */
+		--shadow: 0 1px 2px rgb(29 36 32 / 6%), 0 8px 24px rgb(29 36 32 / 8%);
+		--footer-bg: #145c35;
+		--footer-text: #ffffff;
+		--footer-muted: #cfe6d8;
+
+		/* Type */
+		--font-heading: var(--font-montserrat);
+		--font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+		--step--1: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+		--step-0: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+		--step-1: clamp(1.125rem, 1.07rem + 0.3vw, 1.3125rem);
+		--step-2: clamp(1.375rem, 1.25rem + 0.6vw, 1.75rem);
+		--step-3: clamp(1.75rem, 1.5rem + 1.2vw, 2.5rem);
+		--step-4: clamp(2.125rem, 1.7rem + 2vw, 3.375rem);
+
+		/* Space (4px base) */
+		--space-1: 0.25rem;
+		--space-2: 0.5rem;
+		--space-3: 0.75rem;
+		--space-4: 1rem;
+		--space-5: 1.5rem;
+		--space-6: 2rem;
+		--space-7: 3rem;
+		--space-8: clamp(3.5rem, 2.5rem + 4vw, 6rem);
+
+		--radius-s: 0.5rem;
+		--radius-m: 0.875rem;
+		--radius-l: 1.5rem;
+		--container: 72rem;
+		--prose: 42rem;
+		--header-h: 4rem;
+		--tap: 2.75rem;             /* 44px touch targets */
+		--ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--bg: #101512;
+			--surface: #18201b;
+			--surface-2: #141b17;
+			--text: #e7ebe8;        /* 15.3:1 */
+			--muted: #a3ada6;       /* 8.0:1 */
+			--border: #2c3630;
+			--primary: #5cc48b;     /* 8.5:1; #1e824c would only reach 3.8:1 */
+			--primary-strong: #7fd3a4;
+			--primary-soft: #163020;
+			--button-bg: #1e824c;
+			--button-bg-hover: #23935a;
+			--accent: #e8707b;
+			--paper: #f3efe4;
+			--shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 8px 24px rgb(0 0 0 / 35%);
+			--footer-bg: #0b2a1a;
+		}
+	}
+}
+
+/* ------------------------------------------------------------------ */

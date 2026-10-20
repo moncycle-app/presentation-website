@@ -1,0 +1,9 @@
+---
+import { icons } from '../data/icons';
+---
+<!-- Icon sprite: decorative, referenced with <use href="#…"> (see Icon.astro) -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+	{Object.entries(icons).map(([name, { viewBox, body }]) => (
+		<symbol id={name === 'logo' ? 'logo' : `i-${name}`} viewBox={viewBox} set:html={body} />
+	))}
+</svg>

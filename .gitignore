@@ -2,3 +2,19 @@
 CLAUDE.md
 gitignore/
 TODO.md
+
+# Astro build output
+dist/
+.astro/
+
+# Dependencies (installed in the Docker volume, never on the host)
+node_modules/
+
+# Local dev environment
+docker-compose.yml
+.dockerignore
+
+# Environment variables
+.env
+.env.*
+!.env.example

@@ -1,0 +1,72 @@
+@layer sections {
+	/* How it works ------------------------------------------------------ */
+	.steps {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 var(--space-7);
+		display: grid;
+		gap: var(--space-4);
+		counter-reset: step;
+	}
+
+	.steps li {
+		counter-increment: step;
+		position: relative;
+		padding: var(--space-5);
+		padding-top: calc(var(--space-5) + 2.75rem);
+		background: var(--surface);
+		border: 1px solid var(--border);
+		border-radius: var(--radius-m);
+	}
+
+	.steps li::before {
+		content: counter(step);
+		position: absolute;
+		top: var(--space-5);
+		left: var(--space-5);
+		display: grid;
+		place-items: center;
+		width: 2.25rem;
+		height: 2.25rem;
+		border-radius: 50%;
+		background: var(--primary-soft);
+		color: var(--primary-strong);
+		font-family: var(--font-heading);
+		font-weight: 700;
+	}
+
+	.steps li:nth-child(2)::before { background: color-mix(in srgb, var(--logo-yellow) 30%, var(--surface)); color: var(--text); }
+	.steps li:nth-child(3)::before { background: color-mix(in srgb, var(--logo-red) 16%, var(--surface)); color: var(--text); }
+
+	.steps h3 { margin-bottom: var(--space-2); }
+	.steps p { margin: 0; color: var(--muted); }
+
+	@media (min-width: 40rem) { .steps { grid-template-columns: repeat(2, 1fr); } }
+	@media (min-width: 64rem) { .steps { grid-template-columns: repeat(4, 1fr); } }
+
+	.install {
+		display: grid;
+		gap: var(--space-6);
+		align-items: start;
+	}
+
+	.install-shots {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 11rem));
+		gap: var(--space-4);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.install-shots figure { margin: 0; }
+
+	.install-shots figcaption {
+		margin-top: var(--space-2);
+		font-size: var(--step--1);
+		color: var(--muted);
+		text-align: center;
+	}
+
+	@media (min-width: 48rem) { .install { grid-template-columns: 1fr auto; } }
+}

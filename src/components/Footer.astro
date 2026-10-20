@@ -1,0 +1,67 @@
+---
+import { Image, Picture } from 'astro:assets';
+import EmailLink from './EmailLink.astro';
+import Icon from './Icon.astro';
+import coupleCrop from '../assets/images/moncycle_app_couple_crop_web.png';
+import licenseBadge from '../assets/images/by-nc-sa.png';
+import { urls } from '../data/site';
+---
+<footer class="site-footer">
+	<div class="container">
+		<div class="footer-top">
+			<div class="footer-brand">
+				<a class="brand" href="#top">
+					<Icon name="logo" />
+					<span class="wordmark">mon<b>cycle</b>.app</span>
+				</a>
+				<Picture
+					src={coupleCrop}
+					class="footer-couple"
+					alt="Le couple dessiné de moncycle.app, en buste, qui se sourit."
+					formats={['webp']}
+					fallbackFormat="png"
+					widths={[236, 472]}
+					sizes="7rem"
+				/>
+				<p>moncycle.app est développée et distribuée par Tech&nbsp;4&nbsp;Fertility, association française à but non lucratif.</p>
+			</div>
+			<div class="footer-col">
+				<h2>Tech 4 Fertility</h2>
+				<ul>
+					<li><a href={urls.tech4fertility} target="_blank" rel="noopener">tech4fertility.org</a></li>
+					<li><a href="#support">Faire un don</a></li>
+					<li><a href="/ToS/term_of_service_fr.html">Conditions d’utilisation</a></li>
+					<li data-news-nav hidden><a href="#news">Actualités</a></li>
+				</ul>
+			</div>
+			<div class="footer-col">
+				<h2>Liens techniques</h2>
+				<ul>
+					<li><a href={urls.github} target="_blank" rel="noopener">Code source</a></li>
+					<li><a href="https://tableau.moncycle.app/api" target="_blank" rel="noopener">Documentation de l’API</a></li>
+					<li><a href={urls.docker} target="_blank" rel="noopener">Image Docker</a></li>
+					<li><a href={urls.yunohost} target="_blank" rel="noopener">YunoHost</a></li>
+					<li><a href={urls.status} target="_blank" rel="noopener">État du service</a></li>
+				</ul>
+			</div>
+			<div class="footer-col">
+				<h2>Se faire accompagner</h2>
+				<ul>
+					<li><a href={urls.billingsTrainers} target="_blank" rel="noopener">Centre Billings France</a></li>
+					<li><a href={urls.fertilityCareInstructors} target="_blank" rel="noopener">FertilityCare France</a></li>
+					<li><a href="#faq">Questions fréquentes</a></li>
+				</ul>
+			</div>
+			<div class="footer-col">
+				<h2>Nous contacter</h2>
+				<ul>
+					<li><EmailLink alt="Adresse e-mail de contact (image)" width={166} /></li>
+				</ul>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<p>Dessin&nbsp;: <a href="https://by-bm.fr" target="_blank" rel="noopener">by.bm</a>. Hébergement&nbsp;: OVH, en France. Surveillance&nbsp;: updown.io.</p>
+			<p><a href={urls.licenseDeed} target="_blank" rel="noopener"><Image src={licenseBadge} alt="Licence Creative Commons BY-NC-SA 4.0" format="png" /></a></p>
+		</div>
+	</div>
+</footer>

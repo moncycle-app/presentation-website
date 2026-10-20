@@ -1,0 +1,19 @@
+---
+import type { GetStaticPaths } from 'astro';
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import TermsFr from '../../components/legal/TermsFr.astro';
+import TermsEn from '../../components/legal/TermsEn.astro';
+import { legalPages, type LegalLang } from '../../data/legal';
+
+// /ToS/term_of_service_fr.html and /ToS/term_of_service_en.html (build.format is 'file')
+export const getStaticPaths = (() => [
+	{ params: { lang: 'fr' } },
+	{ params: { lang: 'en' } },
+]) satisfies GetStaticPaths;
+
+const lang = Astro.params.lang as LegalLang;
+const Terms = lang === 'fr' ? TermsFr : TermsEn;
+---
+<LegalLayout page={legalPages[lang]}>
+	<Terms />
+</LegalLayout>

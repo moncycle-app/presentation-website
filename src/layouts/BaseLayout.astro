@@ -1,0 +1,80 @@
+---
+import { Font } from 'astro:assets';
+import '../styles/global.css';
+import IconSprite from '../components/IconSprite.astro';
+import { siteName } from '../data/site';
+
+interface Props {
+	title: string;
+	description: string;
+	/** Open Graph / Twitter title, if different from the page title */
+	socialTitle?: string;
+	socialDescription?: string;
+	socialImageAlt?: string;
+	/** Keep the page out of search engines */
+	noindex?: boolean;
+}
+
+const {
+	title,
+	description,
+	socialTitle = title,
+	socialDescription = description,
+	socialImageAlt = 'Dessin d’un couple souriant au-dessus du nom moncycle.app',
+	noindex = false,
+} = Astro.props;
+
+// build.format is 'file': the home page is /index.html on disk but must be canonical as /
+const canonical = new URL(Astro.url.pathname.replace(/index\.html$/, ''), Astro.site);
+const socialImage = new URL('/image/preview.png', Astro.site);
+---
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{title}</title>
+	<meta name="description" content={description}>
+	<link rel="canonical" href={canonical}>
+	{noindex && <meta name="robots" content="noindex">}
+	<meta name="color-scheme" content="light dark">
+	<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfaf6">
+	<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101512">
+	<meta name="author" content="Tech 4 Fertility">
+
+	<link rel="icon" href="/favicon.ico" sizes="any">
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+	<link rel="apple-touch-icon" href="/image/apple-touch-icon.png">
+
+	<meta property="og:type" content="website">
+	<meta property="og:locale" content="fr_FR">
+	<meta property="og:site_name" content={siteName}>
+	<meta property="og:url" content={canonical}>
+	<meta property="og:title" content={socialTitle}>
+	<meta property="og:description" content={socialDescription}>
+	<meta property="og:image" content={socialImage}>
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:image:alt" content={socialImageAlt}>
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content={socialTitle}>
+	<meta name="twitter:description" content={socialDescription}>
+	<meta name="twitter:image" content={socialImage}>
+
+	<Font cssVariable="--font-montserrat" preload />
+	<script is:inline>document.documentElement.classList.replace('no-js', 'js');</script>
+	<slot name="head" />
+</head>
+<body>
+	<a class="skip-link" href="#main">Aller au contenu</a>
+
+	<IconSprite />
+
+	<slot />
+
+	<script>
+		import '../scripts/main';
+		import '../scripts/email';
+	</script>
+</body>
+</html>

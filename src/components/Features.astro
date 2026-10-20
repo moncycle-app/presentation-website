@@ -1,0 +1,42 @@
+---
+import Icon from './Icon.astro';
+import { featureGroups } from '../data/features';
+import { endpoints } from '../data/site';
+---
+<!-- Features -->
+<section class="section" id="features" aria-labelledby="features-title">
+	<div class="container">
+		<div class="section-head">
+			<h2 id="features-title">Pourquoi choisir moncycle.app</h2>
+			<p class="lead">Conçue pour les femmes et les couples qui suivent une méthode de régulation naturelle des naissances, elle remplace le carnet papier sans jamais interpréter à votre place.</p>
+		</div>
+
+		<div class="feature-groups">
+			{featureGroups.map(({ title, features }) => (
+				<div class="feature-group">
+					<h3>{title}</h3>
+					<ul class="feature-list">
+						{features.map((feature) => (
+							<li><Icon name={feature.icon} /><p><strong set:html={feature.title} /> <span set:html={feature.text} /></p></li>
+						))}
+					</ul>
+				</div>
+			))}
+		</div>
+
+		<!--
+				CONFIG: key figures, refreshed on load from data-stats-src (rounded by the server), counted up when scrolled into view.
+				Both formats are read: v1 https://tableau.moncycle.app/api/pub_stat
+				and v2 https://dev.moncycle.app/api/v2/pub_stat ((data object)).
+				The numbers and date below are the fallback when the API cannot be reached.
+				The URL comes from PUBLIC_STATS_URL (see .env.example).
+			-->
+		<h3 class="visually-hidden" id="figures-title">moncycle.app en chiffres</h3>
+		<dl class="figures" aria-labelledby="figures-title" data-stats-src={endpoints.stats}>
+			<div><dt>comptes ouverts</dt><dd data-stat="accounts">2&nbsp;190</dd></div>
+			<div><dt>cycles enregistrés</dt><dd data-stat="cycles">18&nbsp;000</dd></div>
+			<div><dt>observations notées</dt><dd data-stat="observations">372&nbsp;700</dd></div>
+		</dl>
+		<p class="figures-date">Chiffres arrondis au <time data-stats-date datetime="2026-10-19">19&nbsp;octobre&nbsp;2026</time>.</p>
+	</div>
+</section>

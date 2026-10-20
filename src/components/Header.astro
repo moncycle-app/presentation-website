@@ -1,0 +1,26 @@
+---
+import Icon from './Icon.astro';
+import { navLinks } from '../data/nav';
+import { urls } from '../data/site';
+---
+<header class="site-header">
+	<div class="container header-inner">
+		<a class="brand" href="#top">
+			<Icon name="logo" />
+			<span class="wordmark">mon<b>cycle</b>.app</span>
+		</a>
+		<div class="header-actions">
+			<a class="button button-secondary button-small header-board" href={urls.app} target="_blank" rel="noopener">Mon tableau</a>
+			<a class="button button-primary button-small header-register" href={urls.register} target="_blank" rel="noopener">Créer mon compte</a>
+		</div>
+		<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+			<Icon name="menu" />
+			<span>Menu</span>
+		</button>
+		<nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+			<ul>
+				{navLinks.map(({ href, label }) => <li><a href={href}>{label}</a></li>)}
+			</ul>
+		</nav>
+	</div>
+</header>

@@ -1,0 +1,55 @@
+@layer sections {
+	/* Methods ----------------------------------------------------------- */
+	.methods-quote {
+		margin: 0 0 var(--space-6);
+		padding: 0 0 0 var(--space-5);
+		border-left: 4px solid var(--logo-yellow);
+		font-size: var(--step-1);
+		font-style: italic;
+	}
+
+	.methods-quote p { margin-bottom: var(--space-2); }
+	.methods-quote footer { font-size: var(--step--1); font-style: normal; color: var(--muted); }
+
+	.method-list {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 var(--space-6);
+		display: grid;
+		gap: var(--space-3);
+	}
+
+	.method-list li {
+		display: grid;
+		gap: var(--space-1) var(--space-4);
+		padding: var(--space-4) var(--space-5);
+		background: var(--surface);
+		border: 1px solid var(--border);
+		border-radius: var(--radius-m);
+	}
+
+	.method-list h3 { margin: 0; font-size: var(--step-0); }
+	.method-list p { margin: 0; color: var(--muted); font-size: var(--step--1); }
+
+	@media (min-width: 40rem) {
+		.method-list li { grid-template-columns: 1fr auto; align-items: center; }
+		.method-list .badge { grid-column: 2; grid-row: 1; }
+		.method-list p { grid-column: 1 / -1; }
+	}
+
+	@media (min-width: 64rem) {
+		.methods-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--space-7); align-items: start; }
+		.methods-grid .brain { position: sticky; top: calc(var(--header-h) + var(--space-5)); }
+	}
+
+	.brain {
+		display: grid;
+		gap: var(--space-4);
+		padding: var(--space-6);
+		border-radius: var(--radius-l);
+		background: var(--primary-soft);
+	}
+
+	.brain h3 { font-size: var(--step-2); color: var(--primary-strong); margin: 0; }
+	.brain p { margin: 0; }
+}

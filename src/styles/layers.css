@@ -1,0 +1,7 @@
+/*
+** moncycle.app -- presentation website.
+** One stylesheet, split in cascade layers: tokens, base, components, sections.
+** No text lives here: every visible string is in the markup.
+*/
+
+@layer tokens, base, components, sections;

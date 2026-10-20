@@ -1,0 +1,41 @@
+---
+import { Picture } from 'astro:assets';
+import Icon from './Icon.astro';
+import { screenshots } from '../data/screenshots';
+---
+<div class="gallery" data-gallery>
+		<div class="gallery-head">
+			<h3 id="gallery-title">Captures d’écran</h3>
+			<div class="gallery-controls" hidden>
+				<button type="button" data-gallery-prev aria-controls="gallery-track" aria-label="Captures précédentes"><Icon name="left" /></button>
+				<button type="button" data-gallery-next aria-controls="gallery-track" aria-label="Captures suivantes"><Icon name="right" /></button>
+			</div>
+		</div>
+		<ul class="gallery-track" id="gallery-track" tabindex="0" aria-labelledby="gallery-title">
+			{screenshots.map(({ image, alt, caption, wide }) => (
+				<li class:list={{ 'gallery-wide': wide }}><figure>
+					<a href={image.src}>
+						<Picture
+							src={image}
+							alt={alt}
+							formats={['webp']}
+							fallbackFormat="png"
+							widths={wide ? [720, 1440] : [360, 720]}
+							sizes={wide ? '28rem' : '14rem'}
+							pictureAttributes={{ class: 'device' }}
+						/>
+					</a>
+					<figcaption>{caption}</figcaption>
+				</figure></li>
+			))}
+		</ul>
+		<dialog class="lightbox" aria-label="Capture d’écran agrandie">
+			<figure>
+				<img alt="">
+				<figcaption></figcaption>
+			</figure>
+			<button type="button" class="lightbox-close" data-lightbox-close aria-label="Fermer"><Icon name="close" /></button>
+			<button type="button" class="lightbox-prev" data-lightbox-prev aria-label="Capture précédente"><Icon name="left" /></button>
+			<button type="button" class="lightbox-next" data-lightbox-next aria-label="Capture suivante"><Icon name="right" /></button>
+		</dialog>
+	</div>

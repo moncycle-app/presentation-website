@@ -1,0 +1,29 @@
+@layer sections {
+	/* Terms ------------------------------------------------------------- */
+	.terms-list {
+		max-width: 48rem;
+		margin: 0 0 var(--space-5);
+		padding: 0;
+		list-style: none;
+		counter-reset: term;
+		display: grid;
+		gap: var(--space-3);
+	}
+
+	.terms-list li {
+		counter-increment: term;
+		display: grid;
+		grid-template-columns: 2rem 1fr;
+		gap: var(--space-3);
+	}
+
+	.terms-list p { margin: 0; }
+
+	.terms-list li::before {
+		content: counter(term);
+		font-family: var(--font-heading);
+		font-weight: 700;
+		color: var(--primary);
+		text-align: right;
+	}
+}

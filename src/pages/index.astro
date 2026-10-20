@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import NewsBanner from '../components/NewsBanner.astro';
+import Hero from '../components/Hero.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Features from '../components/Features.astro';
+import Demo from '../components/Demo.astro';
+import Methods from '../components/Methods.astro';
+import Billings from '../components/Billings.astro';
+import Faq from '../components/Faq.astro';
+import Support from '../components/Support.astro';
+import Tech from '../components/Tech.astro';
+import News from '../components/News.astro';
+import Terms from '../components/Terms.astro';
+import Footer from '../components/Footer.astro';
+import { faqPage, siteGraph } from '../data/structured-data';
+import { screenshots } from '../data/screenshots';
+
+const structuredData = [siteGraph(Astro.site!, screenshots[0].image.src), faqPage()];
+---
+<BaseLayout
+	title="moncycle.app · carnet de suivi de cycle gratuit pour les méthodes Billings et FertilityCare"
+	description="moncycle.app est une application web gratuite qui permet de noter chaque jour vos observations de glaire cervicale et de température, et de tenir votre tableau selon la méthode Billings ou FertilityCare. Sans publicité, sans prédiction, hébergée en France."
+	socialTitle="moncycle.app · le carnet de suivi de cycle au service des méthodes de régulation naturelle des naissances"
+	socialDescription="Notez vos observations de glaire cervicale et de température, et retrouvez votre tableau Billings ou FertilityCare sur tous vos appareils. Gratuit, sans publicité et sans prédiction."
+>
+	{structuredData.map((data) => (
+		<script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(data)} />
+	))}
+
+	<Header />
+	<NewsBanner />
+
+	<main id="main">
+		<Hero />
+		<HowItWorks />
+		<Features />
+		<Demo />
+		<Methods />
+		<Billings />
+		<Faq />
+		<Support />
+		<Tech />
+		<News />
+		<Terms />
+	</main>
+
+	<Footer />
+</BaseLayout>

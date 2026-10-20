@@ -1,0 +1,17 @@
+---
+import { urls } from '../data/site';
+---
+<!-- News: filled and revealed by scripts/news.ts; stays hidden if there is nothing recent to show -->
+<section class="section section-alt news" id="news" aria-labelledby="news-title" hidden>
+	<div class="container">
+		<div class="section-head">
+			<h2 id="news-title">Actualités</h2>
+		</div>
+		<article class="news-box">
+			<h3 data-news="title"></h3>
+			<time data-news="date"></time>
+			<p data-news="description"></p>
+			<a class="button button-primary" data-news="link" href={urls.tech4fertility} target="_blank" rel="noopener">Lire la suite</a>
+		</article>
+	</div>
+</section>
