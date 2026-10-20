@@ -26,6 +26,10 @@ function copy(source, target) {
 		if (tag === 'a') {
 			const url = new URL(element.getAttribute('href') ?? '', document.baseURI);
 			if (!['http:', 'https:', 'mailto:'].includes(url.protocol)) element.removeAttribute('href');
+			else if (url.protocol !== 'mailto:' && url.origin !== location.origin) {
+				element.target = '_blank';
+				element.rel = 'noopener';
+			}
 		}
 		copy(node, element);
 		target.append(element);
