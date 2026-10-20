@@ -7,10 +7,10 @@ TODO.md
 dist/
 .astro/
 
-# Dependencies (installed in the Docker volume, never on the host)
+# Dependencies
 node_modules/
 
-# Local dev environment
+# Local dev environment (see CLAUDE.md)
 docker-compose.yml
 .dockerignore
 

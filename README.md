@@ -4,15 +4,14 @@ Static site built with [Astro](https://astro.build): the landing page (French) a
 
 ## Development
 
-Nothing to install on the host; the dev server runs in Docker:
+Requires Node 22 (see `.nvmrc`).
 
 ```sh
-docker compose up -d                 # http://localhost:8007/
-docker compose logs -f
-docker compose exec dev npm run build   # astro check + astro build → dist/
+npm install
+npm run dev      # http://localhost:4321/
+npm run build    # astro check + astro build → dist/
+npm run preview  # serve dist/
 ```
-
-(`docker-compose.yml` is local and git-ignored.) Without Docker: `npm install && npm run dev`.
 
 Optional `.env` (see `.env.example`): `PUBLIC_NEWS_URL` and `PUBLIC_STATS_URL` point the browser to other JSON sources.
 
