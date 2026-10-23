@@ -13,7 +13,7 @@ npm run build    # astro check + astro build → dist/
 npm run preview  # serve dist/
 ```
 
-Optional `.env` (see `.env.example`): `PUBLIC_NEWS_URL` and `PUBLIC_STATS_URL` point the browser to other JSON sources.
+Optional `.env` (see `.env.example`): `PUBLIC_NEWS_URL` and `PUBLIC_STATS_URL` point the browser to other JSON sources .
 
 ## Structure
 
