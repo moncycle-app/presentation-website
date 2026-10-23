@@ -28,5 +28,5 @@ export const legal: LegalPage = {
 		],
 	},
 	footer: 'moncycle.app is an application of Tech 4 Fertility, a French non-profit association (law of 1901) – RNA W271007328.',
-	lastmod: '2026-10-15',
+	lastmod: '2026-10-23',
 };

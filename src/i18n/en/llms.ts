@@ -14,7 +14,7 @@ Key facts (reference: the terms of service, version 2.0, in effect from 1 Novemb
 - Users must be at least 18 years old and must have completed training in the method they follow. They must not enter any information that identifies them, nor any medical health data.
 - An account with no activity for 4 years is deleted, after a reminder and a warning. An unconfirmed account is deleted after 7 days.
 - Public demo accounts, reset every hour: demo.bl@moncycle.app (Billings) and demo.fc@moncycle.app (FertilityCare), password “demo”.
-- Open-source code under the CC BY-NC-SA 4.0 licence (PHP and JavaScript). It can be self-hosted with Docker or YunoHost.
+- Open-source code under the AGPL-3.0-or-later licence (PHP and JavaScript). It can be self-hosted with Docker or YunoHost.
 
 ## The website
 

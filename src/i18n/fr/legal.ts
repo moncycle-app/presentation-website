@@ -28,5 +28,5 @@ export const legal: LegalPage = {
 		],
 	},
 	footer: 'moncycle.app est une application de Tech 4 Fertility, association loi 1901 – RNA W271007328.',
-	lastmod: '2026-10-15',
+	lastmod: '2026-10-23',
 };

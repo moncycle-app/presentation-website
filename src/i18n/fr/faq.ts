@@ -23,7 +23,7 @@ export const faq: FaqEntry[] = [
 		question: `Que signifie «&nbsp;open source&nbsp;»&nbsp;?`,
 		answer: [
 			`<p>Une application open source (ou «&nbsp;à code source ouvert&nbsp;») est une application dont le code source, c’est-à-dire les instructions qui la font fonctionner, est public. Chacun peut le lire, l’exécuter sur son propre serveur, étudier son fonctionnement et proposer des améliorations. Les conditions en sont fixées par une licence.</p>`,
-			`<p>moncycle.app est publiée sous <a href='${urls.license}' target='_blank' rel='noopener'>licence CC&nbsp;BY-NC-SA&nbsp;4.0</a>&nbsp;: vous pouvez réutiliser et adapter le code, à condition de citer les auteurs, de ne pas en faire un usage commercial et de partager vos modifications sous la même licence. Le code est disponible sur <a href='${urls.github}' target='_blank' rel='noopener'>GitHub</a>.</p>`,
+			`<p>moncycle.app est publiée sous <a href='${urls.license}' target='_blank' rel='noopener'>licence AGPL-3.0-or-later</a>&nbsp;: vous pouvez utiliser, étudier, modifier et redistribuer le code, à condition de conserver cette même licence et de mettre le code source, y compris vos modifications, à disposition des utilisateurs du service, même lorsqu’il est accessible uniquement par le réseau. Le code est disponible sur <a href='${urls.github}' target='_blank' rel='noopener'>GitHub</a>.</p>`,
 		],
 	},
 	{

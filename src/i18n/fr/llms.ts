@@ -14,7 +14,7 @@ Faits à retenir (référence : les conditions d’utilisation, version 2.0, en 
 - Il faut avoir au moins 18 ans et avoir suivi une formation à la méthode pratiquée. Aucune information permettant d’identifier l’utilisatrice ni aucune donnée de santé médicale ne doit être saisie.
 - Un compte sans activité pendant 4 ans est supprimé, après rappel et avertissement. Un compte non confirmé est supprimé après 7 jours.
 - Comptes de démonstration publics, remis à zéro toutes les heures : demo.bl@moncycle.app (Billings) et demo.fc@moncycle.app (FertilityCare), mot de passe « demo ».
-- Code open source sous licence CC BY-NC-SA 4.0 (PHP et JavaScript), auto-hébergeable avec Docker ou YunoHost.
+- Code open source sous licence AGPL-3.0-or-later (PHP et JavaScript), auto-hébergeable avec Docker ou YunoHost.
 
 ## Le site
 

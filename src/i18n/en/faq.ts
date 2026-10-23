@@ -23,7 +23,7 @@ export const faq: FaqEntry[] = [
 		question: `What does “open source” mean?`,
 		answer: [
 			`<p>An open source application is one whose source code, the instructions that make it work, is public. Anyone can read it, run it on their own server, study how it works and suggest improvements. The terms are set by a licence.</p>`,
-			`<p>moncycle.app is published under the <a href='${urls.license}' target='_blank' rel='noopener'>CC&nbsp;BY-NC-SA&nbsp;4.0 licence</a>: you may reuse and adapt the code, provided that you credit the authors, do not use it commercially and share your changes under the same licence. The code is on <a href='${urls.github}' target='_blank' rel='noopener'>GitHub</a>.</p>`,
+			`<p>moncycle.app is published under the <a href='${urls.license}' target='_blank' rel='noopener'>AGPL-3.0-or-later licence</a>: you may use, study, modify and redistribute the code, provided that you keep the same licence and make the source code, including your changes, available to the users of the service, even when it is only accessible over a network. The code is on <a href='${urls.github}' target='_blank' rel='noopener'>GitHub</a>.</p>`,
 		],
 	},
 	{

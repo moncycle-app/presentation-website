@@ -27,8 +27,8 @@ export const techLinks: TechLink[] = [
 	},
 	{
 		icon: 'file',
-		href: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en',
-		title: 'CC BY-NC-SA 4.0 licence',
+		href: 'https://www.gnu.org/licenses/agpl-3.0.en.html',
+		title: 'AGPL-3.0-or-later licence',
 		text: 'It applies to the code. Your data remains yours.',
 	},
 	{
