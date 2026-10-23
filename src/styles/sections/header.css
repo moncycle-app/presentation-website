@@ -30,7 +30,10 @@
 
 	@media (min-width: 84rem) {
 		.site-nav { order: 1; }
-		.site-nav a { padding-inline: var(--space-2); }
+		.site-nav ul { flex-wrap: nowrap; }
+		.site-nav a { padding-inline: var(--space-2); white-space: nowrap; }
+		.header-inner .lang-switch ul { flex-wrap: nowrap; }
+		.header-inner > * { flex-shrink: 0; }
 		.header-actions { order: 2; }
 	}
 

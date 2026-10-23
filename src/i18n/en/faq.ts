@@ -15,7 +15,23 @@ export const faq: FaqEntry[] = [
 		id: 'faq-who',
 		question: `Who develops moncycle.app?`,
 		answer: [
-			`<p>The application is developed and distributed by <a href='${urls.tech4fertility}' target='_blank' rel='noopener'>Tech&nbsp;4&nbsp;Fertility</a>, a French non-profit association (under the law of 1901) based in Vernon (Eure, France). The association has owned the application since October 2026. The source code is public and available on <a href='${urls.github}' target='_blank' rel='noopener'>GitHub</a>.</p>`,
+			`<p>The application is developed and distributed by <a href='${urls.tech4fertility}' target='_blank' rel='noopener'>Tech&nbsp;4&nbsp;Fertility</a>, a French non-profit association (under the law of 1901) based in Vernon (Eure, France). The source code is public and available on <a href='${urls.github}' target='_blank' rel='noopener'>GitHub</a>.</p>`,
+		],
+	},
+	{
+		id: 'faq-opensource',
+		question: `What does “open source” mean?`,
+		answer: [
+			`<p>An open source application is one whose source code, the instructions that make it work, is public. Anyone can read it, run it on their own server, study how it works and suggest improvements. The terms are set by a licence.</p>`,
+			`<p>moncycle.app is published under the <a href='${urls.license}' target='_blank' rel='noopener'>CC&nbsp;BY-NC-SA&nbsp;4.0 licence</a>: you may reuse and adapt the code, provided that you credit the authors, do not use it commercially and share your changes under the same licence. The code is on <a href='${urls.github}' target='_blank' rel='noopener'>GitHub</a>.</p>`,
+		],
+	},
+	{
+		id: 'faq-opensource-benefits',
+		question: `What are the benefits of moncycle.app being open source?`,
+		answer: [
+			`<p>For an application that holds intimate data, being open source brings several guarantees:</p>`,
+			`<ul> <li><strong>Transparency:</strong> anyone can check what the application does with your data, and that it contains no tracking tools. Our commitments can be verified, not just read.</li> <li><strong>Independence:</strong> you can <a href='#tech'>host your own instance</a>, with Docker or YunoHost, and keep your data at home. The application does not depend on a single company.</li> <li><strong>Durability:</strong> if the association stopped its activity, the code would remain available and the application could continue to exist.</li> <li><strong>Quality:</strong> more eyes on the code means that mistakes and security flaws are found and fixed more easily, and anyone can propose improvements.</li> </ul>`,
 		],
 	},
 	{
@@ -66,7 +82,7 @@ export const faq: FaqEntry[] = [
 			`<p>Cycle data is among the most intimate information that a person can store on a phone. Before you choose an app, two questions often make things clear: who pays for it, and where is the data stored?</p>`,
 			`<p>For moncycle.app:</p>`,
 			`<ul> <li>It is funded by donations, with no advertising and no tracking tools. Your data is never sold or passed on to anyone.</li> <li>The servers are located in France, at OVH. No data leaves the European Union, and the processing complies with the GDPR.</li> <li>No member of the association looks at your observations. Apart from the hosting provider, they are only sent to the email addresses that you have added yourself and, with your consent, used for research. The authorities can only access them with a legal order.</li> <li>Taking part in research is optional. It requires separate consent, and the shared data contains no email address, no pseudonym and no free text.</li> <li>The connection is encrypted (HTTPS), passwords are stored as hashes, two-factor authentication is available, and you receive an email alert for each new login.</li> </ul>`,
-			`<p>One point needs your attention. If you turn on email delivery of your cycles (this option is off by default), these messages travel like any other email. They are not end-to-end encrypted. You can turn this option off at any time in “My account”. The code is open, so anyone can check these commitments.</p>`,
+			`<p>One point needs your attention. If you turn on email delivery of your cycles (this option is off by default), these messages travel like any other email. They are not end-to-end encrypted. You can turn this option off at any time in “Settings”. The code is open, so anyone can check these commitments.</p>`,
 			`<p>Finally, do not enter your name or any medical data (illness, treatment, diagnosis). The application is not designed to receive them.</p>`,
 		],
 	},
@@ -74,7 +90,7 @@ export const faq: FaqEntry[] = [
 		id: 'faq-export',
 		question: `Can I export, sync or delete my data?`,
 		answer: [
-			`<p>Yes, and you do not need to ask anyone. From “My account”, you can export your cycles as PDF, CSV or NFP files, download all the raw data of your account, import data and delete your account. Deletion is immediate and permanent. The data is erased from backups within 90&nbsp;days.</p>`,
+			`<p>Yes, and you do not need to ask anyone. From “Settings”, you can export your cycles as PDF, CSV or NFP files, download all the raw data of your account, import data and delete your account. Deletion is immediate and permanent. The data is erased from backups within 90&nbsp;days.</p>`,
 			`<p>Your data is synchronised across all your devices. If you prefer to keep it at home, you can also <a href='#tech'>host the application yourself</a> with Docker or YunoHost.</p>`,
 		],
 	},
@@ -121,7 +137,7 @@ export const faq: FaqEntry[] = [
 		id: 'faq-share',
 		question: `Can I share my chart with my partner, my teacher or my instructor?`,
 		answer: [
-			`<p>Yes. You can export a cycle as a PDF, CSV or NFP file and send it to the person of your choice. You can also turn on automatic email delivery in “My account” (it is off by default) and add up to 5&nbsp;notification addresses. These addresses then receive the full export of each completed cycle. This makes regular follow-up with your teacher or instructor easier. Only add people who have agreed to this, because they will receive your cycle data. You can remove an address at any time.</p>`,
+			`<p>Yes. You can export a cycle as a PDF, CSV or NFP file and send it to the person of your choice. You can also turn on automatic email delivery in “Settings” (it is off by default) and add up to 5&nbsp;notification addresses. These addresses then receive the full export of each completed cycle. This makes regular follow-up with your teacher or instructor easier. Only add people who have agreed to this, because they will receive your cycle data. You can remove an address at any time.</p>`,
 		],
 	},
 	{

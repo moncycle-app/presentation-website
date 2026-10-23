@@ -16,7 +16,7 @@ export const home = {
 		lead: 'There is nothing to download from an app store. Once you have learned the method from a teacher or instructor, one entry a day is enough.',
 		steps: [
 			{ title: 'You create your account', text: 'Choose the method you follow, a pseudonym (your initials are enough) and an email address that does not reveal your name. Then click the confirmation link that you receive by email: your chart is ready.' },
-			{ title: 'Every evening, you record the day', text: 'You enter your sensations and observations, your period, your temperature if you measure it and, if needed, a comment. Then you choose the colour stamp that matches the day.' },
+			{ title: 'Every evening, you record the day', text: 'You enter your sensations and observations, your period, and your temperature if you measure it. Then you choose the colour stamp that matches the day.' },
 			{ title: 'Your chart takes shape', text: 'Day after day, in the official notation of the method you have chosen. If you measure your temperature, its curve is displayed above the cycle.' },
 			{ title: 'You export or share it', text: 'Export your cycles as PDF, CSV or NFP files at any time. You can also turn on automatic email delivery of each completed cycle, to your own address and to up to five recipients, such as your partner, your teacher or your instructor.' },
 		],
@@ -63,7 +63,7 @@ export const home = {
 		quote: '“These methods are based on knowledge of the signs of fertility in a woman’s cycle. In this way, the couple can know precisely which fertile or infertile times they are going through. Depending on their wish for a child, they can know the best time to conceive, or which times are infertile when they wish to space or limit births.”',
 		quoteSource: 'Source: <cite><a href="https://www.methodes-naturelles.fr/" target="_blank" rel="noopener">methodes-naturelles.fr</a></cite> (translated from French)',
 		quoteUrl: 'https://www.methodes-naturelles.fr/',
-		intro: 'Several methods exist, and different associations teach them. Here is how compatible moncycle.app is with the most common methods in France (this list is not complete).',
+		intro: 'Several methods exist, and different organisation teach them. Here is how compatible moncycle.app is with the most common methods in France (this list is not complete).',
 		interpretation: {
 			title: 'The interpretation of your chart is yours',
 			text: 'moncycle.app does not try to make predictions or to check that you follow the rules of the method. It does not replace your teacher or instructor. It is a digital aid, just like the paper notebook. If you are new to natural family planning, or if you have a question about a rule, contact a teacher or instructor from the association that teaches your method.',
@@ -102,7 +102,7 @@ export const home = {
 	faq: {
 		title: 'Frequently asked questions',
 		lead: 'Here you will find answers to the most common questions. To learn more, our <a href="{terms}">terms of service</a> explain how the application works and how your data is protected.',
-		warning: '<strong>Important notice.</strong> moncycle.app is a charting tool. It is not a medical device or a method of contraception. It does not replace training in a natural family planning method, nor the advice of a health professional. For any question about your fertility or the rules of your method, contact your teacher or instructor. For any medical question, see a health professional. In an emergency, call 112.',
+		warning: '<strong>Important notice.</strong> moncycle.app is a charting tool. It is not a medical device or a method of contraception. It does not replace training in a natural family planning method, nor the advice of a health professional. For any question about your fertility or the rules of your method, contact your teacher or instructor. For any medical question, see a health professional.',
 	},
 	support: {
 		title: 'Support moncycle.app',
@@ -127,11 +127,11 @@ export const home = {
 			'You must be at least <strong>18&nbsp;years old</strong> and have <strong>completed training</strong> in the natural family planning method you follow. The decisions are yours.',
 			'Do not enter <strong>any information that identifies you</strong> or <strong>any medical health data</strong>.',
 			'The application is free, with no advertising and no tracking. Your data is never sold, and it is hosted in France.',
-			'You can view, export, change or delete your data at any time from “My account”.',
+			'You can view, export, change or delete your data at any time from “Settings”.',
 			'An account with no activity for 4&nbsp;years is deleted, after a warning.',
 		],
 		// {terms} is replaced by the link to the terms of use of the page language
 		more: 'Please read the <a href="{terms}">full terms of service and privacy policy</a> (version&nbsp;2.0, in effect from 1&nbsp;November&nbsp;2026) before you create an account.',
-		alsoAvailable: 'They are also available in:',
+		alsoAvailable: 'The French version prevails. The terms are also available in:',
 	},
 };

@@ -22,7 +22,7 @@ export const urls = {
 	license: 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
 	tech4fertility: 'https://tech4fertility.org/',
 	billingsTrainers: 'https://www.methode-billings.com/trouver-un-formateur',
-	fertilityCareInstructors: 'https://www.fertilitycare.fr/instructrices-et-medecins',
+	fertilityCareInstructors: 'https://napro.fr/contacter-une-instructrice/',
 	billingsInternational: 'https://woombinternational.org/',
 	fertilityCareInternational: 'https://www.fertilitycare.org/',
 } as const;

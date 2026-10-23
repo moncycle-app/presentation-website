@@ -15,7 +15,23 @@ export const faq: FaqEntry[] = [
 		id: 'faq-who',
 		question: `Qui développe moncycle.app&nbsp;?`,
 		answer: [
-			`<p>L’application est développée et distribuée par <a href='${urls.tech4fertility}' target='_blank' rel='noopener'>Tech&nbsp;4&nbsp;Fertility</a>, une association française à but non lucratif (loi de 1901) dont le siège se trouve à Vernon (Eure). L’association en est propriétaire depuis octobre 2026. Le code source est public et disponible sur <a href='${urls.github}' target='_blank' rel='noopener'>GitHub</a>.</p>`,
+			`<p>L’application est développée et distribuée par <a href='${urls.tech4fertility}' target='_blank' rel='noopener'>Tech&nbsp;4&nbsp;Fertility</a>, une association française à but non lucratif (loi de 1901) dont le siège se trouve à Vernon (Eure). Le code source est public et disponible sur <a href='${urls.github}' target='_blank' rel='noopener'>GitHub</a>.</p>`,
+		],
+	},
+	{
+		id: 'faq-opensource',
+		question: `Que signifie «&nbsp;open source&nbsp;»&nbsp;?`,
+		answer: [
+			`<p>Une application open source (ou «&nbsp;à code source ouvert&nbsp;») est une application dont le code source, c’est-à-dire les instructions qui la font fonctionner, est public. Chacun peut le lire, l’exécuter sur son propre serveur, étudier son fonctionnement et proposer des améliorations. Les conditions en sont fixées par une licence.</p>`,
+			`<p>moncycle.app est publiée sous <a href='${urls.license}' target='_blank' rel='noopener'>licence CC&nbsp;BY-NC-SA&nbsp;4.0</a>&nbsp;: vous pouvez réutiliser et adapter le code, à condition de citer les auteurs, de ne pas en faire un usage commercial et de partager vos modifications sous la même licence. Le code est disponible sur <a href='${urls.github}' target='_blank' rel='noopener'>GitHub</a>.</p>`,
+		],
+	},
+	{
+		id: 'faq-opensource-benefits',
+		question: `Quels sont les avantages d’une application moncycle.app open source&nbsp;?`,
+		answer: [
+			`<p>Pour une application qui contient des données intimes, l’ouverture du code apporte plusieurs garanties&nbsp;:</p>`,
+			`<ul> <li><strong>la transparence&nbsp;:</strong> chacun peut vérifier ce que l’application fait de vos données et qu’elle ne contient aucun outil de pistage. Nos engagements ne sont pas seulement affichés, ils sont vérifiables&nbsp;;</li> <li><strong>l’indépendance&nbsp;:</strong> vous pouvez <a href='#tech'>héberger votre propre instance</a>, avec Docker ou YunoHost, et garder vos données chez vous. L’application ne dépend pas d’une seule entreprise&nbsp;;</li> <li><strong>la pérennité&nbsp;:</strong> si l’association cessait son activité, le code resterait disponible et l’application pourrait continuer d’exister&nbsp;;</li> <li><strong>la qualité&nbsp;:</strong> davantage de regards sur le code, ce sont des erreurs et des failles de sécurité repérées et corrigées plus facilement, et la possibilité pour chacun de proposer des améliorations.</li> </ul>`,
 		],
 	},
 	{
@@ -66,7 +82,7 @@ export const faq: FaqEntry[] = [
 			`<p>Les données de cycle comptent parmi les plus intimes que l’on puisse confier à un téléphone. Avant de choisir une application, deux questions permettent souvent d’y voir clair&nbsp;: qui la finance, et où les données sont-elles stockées&nbsp;?</p>`,
 			`<p>Concernant moncycle.app&nbsp;:</p>`,
 			`<ul> <li>elle est financée par les dons, sans publicité ni outil de pistage, et vos données ne sont ni vendues ni cédées&nbsp;;</li> <li>les serveurs sont situés en France, chez OVH&nbsp;: aucune donnée ne quitte l’Union européenne et le traitement est conforme au RGPD&nbsp;;</li> <li>aucun membre de l’association ne consulte vos observations. En dehors de l’hébergeur, elles ne sont transmises qu’aux adresses e-mail que vous avez vous-même ajoutées et, avec votre accord, à des fins de recherche. Les autorités ne peuvent y accéder que sur réquisition légale&nbsp;;</li> <li>la participation à la recherche est facultative&nbsp;: elle nécessite un consentement distinct, et les données transmises ne comportent ni adresse e-mail, ni pseudonyme, ni texte libre&nbsp;;</li> <li>la connexion est chiffrée (HTTPS), les mots de passe sont stockés sous forme d’empreinte, la double authentification est disponible et chaque nouvelle connexion vous est signalée par e-mail.</li> </ul>`,
-			`<p>Un point de vigilance&nbsp;: si vous activez l’envoi des cycles par e-mail (option désactivée par défaut), ces messages transitent comme tout autre e-mail, sans chiffrement de bout en bout. Vous pouvez désactiver cet envoi à tout moment dans «&nbsp;Mon compte&nbsp;». Le code étant ouvert, chacun peut vérifier ces engagements.</p>`,
+			`<p>Un point de vigilance&nbsp;: si vous activez l’envoi des cycles par e-mail (option désactivée par défaut), ces messages transitent comme tout autre e-mail, sans chiffrement de bout en bout. Vous pouvez désactiver cet envoi à tout moment dans «&nbsp;Réglage&nbsp;». Le code étant ouvert, chacun peut vérifier ces engagements.</p>`,
 			`<p>Enfin, ne saisissez ni votre nom, ni aucune donnée médicale (maladie, traitement, diagnostic)&nbsp;: l’application n’est pas conçue pour les recevoir.</p>`,
 		],
 	},
@@ -74,7 +90,7 @@ export const faq: FaqEntry[] = [
 		id: 'faq-export',
 		question: `Puis-je exporter, synchroniser ou supprimer mes données&nbsp;?`,
 		answer: [
-			`<p>Oui, sans avoir à en faire la demande. Depuis «&nbsp;Mon compte&nbsp;», vous pouvez exporter vos cycles en PDF, CSV ou NFP, récupérer l’ensemble des données brutes de votre compte, importer des données et supprimer votre compte. La suppression est immédiate et définitive&nbsp;; les données sont effacées des sauvegardes sous 90&nbsp;jours au plus.</p>`,
+			`<p>Oui, sans avoir à en faire la demande. Depuis «&nbsp;Réglage&nbsp;», vous pouvez exporter vos cycles au format PDF, CSV ou NFP, récupérer l’ensemble des données brutes de votre compte, importer des données et supprimer votre compte. La suppression est immédiate et définitive&nbsp;; les données sont effacées des sauvegardes sous 90&nbsp;jours au plus.</p>`,
 			`<p>Vos données sont synchronisées entre tous vos appareils. Si vous préférez les conserver chez vous, l’application peut également être <a href='#tech'>auto-hébergée</a> avec Docker ou YunoHost.</p>`,
 		],
 	},
@@ -121,7 +137,7 @@ export const faq: FaqEntry[] = [
 		id: 'faq-share',
 		question: `Puis-je partager mon tableau avec mon conjoint, mon moniteur ou mon instructrice&nbsp;?`,
 		answer: [
-			`<p>Oui. Vous pouvez exporter un cycle en PDF, CSV ou NFP et le transmettre à la personne de votre choix. Vous pouvez également activer, dans «&nbsp;Mon compte&nbsp;», l’envoi automatique par e-mail (désactivé par défaut) et indiquer jusqu’à 5&nbsp;adresses de notification&nbsp;: ces adresses reçoivent alors l’export complet de chaque cycle terminé, ce qui facilite un suivi régulier avec votre moniteur ou votre instructrice. N’ajoutez que des personnes qui y ont consenti, puisqu’elles recevront vos données de cycle. Vous pouvez retirer une adresse à tout moment.</p>`,
+			`<p>Oui. Vous pouvez exporter un cycle en PDF, CSV ou NFP et le transmettre à la personne de votre choix. Vous pouvez également activer, dans «&nbsp;Réglage&nbsp;», l’envoi automatique par e-mail (désactivé par défaut) et indiquer jusqu’à 5&nbsp;adresses de notification&nbsp;: ces adresses reçoivent alors l’export complet de chaque cycle terminé, ce qui facilite un suivi régulier avec votre moniteur ou votre instructrice. N’ajoutez que des personnes qui y ont consenti, puisqu’elles recevront vos données de cycle. Vous pouvez retirer une adresse à tout moment.</p>`,
 		],
 	},
 	{

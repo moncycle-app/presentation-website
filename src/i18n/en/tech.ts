@@ -11,7 +11,7 @@ export const techLinks: TechLink[] = [
 		icon: 'book',
 		href: 'https://tableau.moncycle.app/api/',
 		title: 'API documentation',
-		text: 'API v2, described in the OpenAPI 3.0 format. You can use it with your own account, with an access token created in “My account”.',
+		text: 'API v2, described in the OpenAPI 3.0 format. You can use it with your own account, with an access token created in “Settings”.',
 	},
 	{
 		icon: 'box',

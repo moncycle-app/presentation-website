@@ -66,14 +66,12 @@ export const ui = {
 			title: 'Se faire accompagner',
 			links: [
 				{ label: 'Centre Billings France', href: 'https://www.methode-billings.com/trouver-un-formateur' },
-				{ label: 'FertilityCare France', href: 'https://www.fertilitycare.fr/instructrices-et-medecins' },
+				{ label: 'FertilityCare France', href: 'https://napro.fr/contacter-une-instructrice/' },
 			],
 			faq: 'Questions fréquentes',
 		},
 		contact: { title: 'Nous contacter', emailAlt: 'Adresse e-mail de contact (image)' },
 		credits: 'Dessin&nbsp;: <a href="https://by-bm.fr" target="_blank" rel="noopener">by.bm</a>. Hébergement&nbsp;: OVH, en France. Surveillance&nbsp;: updown.io.',
-		licenseAlt: 'Licence Creative Commons BY-NC-SA 4.0',
-		licenseDeed: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr',
 	},
 	gallery: {
 		title: 'Captures d’écran',

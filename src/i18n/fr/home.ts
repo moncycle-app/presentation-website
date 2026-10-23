@@ -16,9 +16,9 @@ export const home = {
 		lead: 'Rien à télécharger depuis un magasin d’applications. Une fois la méthode apprise auprès d’un moniteur ou d’une instructrice, une saisie quotidienne suffit.',
 		steps: [
 			{ title: 'Vous créez votre compte', text: 'Choisissez la méthode suivie, un pseudonyme (vos initiales suffisent) et une adresse e-mail qui ne révèle pas votre nom. Cliquez ensuite sur le lien de confirmation reçu par e-mail&nbsp;: votre tableau est prêt.' },
-			{ title: 'Chaque soir, vous notez la journée', text: 'Vous saisissez vos sensations et vos observations, vos règles, votre température si vous la mesurez et, si nécessaire, un commentaire. Vous choisissez ensuite le tampon de couleur correspondant à la journée.' },
+			{ title: 'Chaque soir, vous notez la journée', text: 'Vous saisissez vos sensations et vos observations, vos règles, et votre température si vous la mesurez. Vous choisissez ensuite le tampon de couleur correspondant à la journée.' },
 			{ title: 'Le tableau se construit', text: 'Jour après jour, dans la notation officielle de la méthode choisie. Si vous mesurez votre température, sa courbe s’affiche au-dessus du cycle.' },
-			{ title: 'Vous l’exportez ou le partagez', text: 'Exportez vos cycles en PDF, CSV ou NFP à tout moment. Vous pouvez aussi activer l’envoi automatique par e-mail de chaque cycle terminé, à votre adresse et à cinq destinataires au plus, comme votre conjoint, votre moniteur ou votre instructrice.' },
+			{ title: 'Vous l’exportez ou le partagez', text: 'Exportez vos cycles en au format PDF, CSV ou NFP à tout moment. Vous pouvez aussi activer l’envoi automatique par e-mail de chaque cycle terminé, à votre adresse et à cinq destinataires au plus, comme votre conjoint, votre moniteur ou votre instructrice.' },
 		],
 		install: {
 			title: 'Installer l’application sur votre téléphone',
@@ -102,7 +102,7 @@ export const home = {
 	faq: {
 		title: 'Questions fréquentes',
 		lead: 'Retrouvez ici les réponses aux questions les plus courantes. Pour aller plus loin, nos <a href="{terms}">conditions d’utilisation</a> détaillent le fonctionnement de l’application et la protection de vos données.',
-		warning: '<strong>Avertissement.</strong> moncycle.app est un outil de notation. Ce n’est ni un dispositif médical, ni un moyen de contraception&nbsp;; il ne remplace ni la formation à une méthode de régulation naturelle des naissances, ni l’avis d’un professionnel de santé. Pour toute question relative à votre fertilité ou aux règles de la méthode, adressez-vous à votre moniteur ou à votre instructrice&nbsp;; pour toute question médicale, consultez un professionnel de santé. En cas d’urgence, composez le 112.',
+		warning: '<strong>Avertissement.</strong> moncycle.app est un outil de notation. Ce n’est ni un dispositif médical, ni un moyen de contraception&nbsp;; il ne remplace ni la formation à une méthode de régulation naturelle des naissances, ni l’avis d’un professionnel de santé. Pour toute question relative à votre fertilité ou aux règles de la méthode, adressez-vous à votre moniteur ou à votre instructrice&nbsp;; pour toute question médicale, consultez un professionnel de santé.',
 	},
 	support: {
 		title: 'Soutenir moncycle.app',
@@ -127,7 +127,7 @@ export const home = {
 			'Vous devez avoir au moins <strong>18&nbsp;ans</strong> et avoir <strong>suivi une formation</strong> à la méthode de régulation naturelle des naissances que vous pratiquez. Les décisions vous appartiennent.',
 			'Ne saisissez <strong>aucune information qui vous identifie</strong>, ni <strong>aucune donnée de santé médicale</strong>.',
 			'Application gratuite, sans publicité ni pistage&nbsp;: vos données ne sont jamais vendues et sont hébergées en France.',
-			'Vous consultez, exportez, modifiez ou supprimez vos données à tout moment depuis «&nbsp;Mon compte&nbsp;».',
+			'Vous consultez, exportez, modifiez ou supprimez vos données à tout moment depuis «&nbsp;Réglage&nbsp;».',
 			'Un compte sans activité pendant 4&nbsp;ans est supprimé, après avertissement.',
 		],
 		// {terms} is replaced by the link to the terms of use of the page language

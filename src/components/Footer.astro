@@ -1,10 +1,9 @@
 ---
-import { Image, Picture } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import EmailLink from './EmailLink.astro';
 import Icon from './Icon.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import coupleCrop from '../assets/images/moncycle_app_couple_crop_web.png';
-import licenseBadge from '../assets/images/by-nc-sa.png';
 import { getMessages } from '../i18n';
 import { homePath, langs, legalPath, type Lang } from '../i18n/config';
 import { urls } from '../data/site';
@@ -72,7 +71,6 @@ const paths = Object.fromEntries(langs.map((code) => [code, homePath(code)])) as
 		<div class="footer-bottom">
 			<p set:html={footer.credits} />
 			<LanguageSwitcher lang={lang} paths={paths} variant="footer" />
-			<p><a href={footer.licenseDeed} target="_blank" rel="noopener"><Image src={licenseBadge} alt={footer.licenseAlt} format="png" /></a></p>
 		</div>
 	</div>
 </footer>

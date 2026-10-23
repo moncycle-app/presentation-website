@@ -17,7 +17,7 @@ export const featureGroups: FeatureGroup[] = [
 			{ icon: 'phone', title: 'Pensée pour le téléphone', text: `Et tout aussi lisible sur ordinateur.` },
 			{ icon: 'moon', title: 'Mode sombre', text: `Idéal pour la saisie du soir.` },
 			{ icon: 'sync', title: 'Sur tous vos appareils', text: `Vos données sont synchronisées entre le téléphone, la tablette et l’ordinateur.` },
-			{ icon: 'download', title: 'Export PDF, CSV et NFP', text: `Pour imprimer, conserver une copie ou changer d’outil.` },
+			{ icon: 'download', title: 'Export PDF, CSV et NFP', text: `Pour imprimer, conserver une copie ou changer d’outil avec le format NFP.` },
 			{ icon: 'mail', title: 'Envoi par e-mail, en option', text: `Une fois l’option activée, chaque cycle terminé est envoyé à votre adresse et aux destinataires de votre choix.` },
 		],
 	},

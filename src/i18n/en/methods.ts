@@ -8,10 +8,10 @@ export const methods: Method[] = [
 		text: '<a href="https://www.methode-billings.com/trouver-un-formateur" target="_blank" rel="noopener">Find a teaching couple</a> through the Centre Billings France (website in French).',
 	},
 	{
-		name: 'FertilityCare (NaProTECHNOLOGY)',
+		name: 'FertilityCare',
 		compatibility: 'full',
 		badge: '100% compatible',
-		text: '<a href="https://www.fertilitycare.fr/instructrices-et-medecins" target="_blank" rel="noopener">Find an instructor</a> through FertilityCare France (website in French).',
+		text: '<a href="https://napro.fr/contacter-une-instructrice/" target="_blank" rel="noopener">Find an instructor</a> through FertilityCare France (website in French).',
 	},
 	{
 		name: 'Cyclamen (symptothermal)',

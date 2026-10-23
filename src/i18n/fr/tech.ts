@@ -11,7 +11,7 @@ export const techLinks: TechLink[] = [
 		icon: 'book',
 		href: 'https://tableau.moncycle.app/api/',
 		title: 'Documentation de l’API',
-		text: 'API v2 décrite au format OpenAPI 3.0. Vous pouvez l’utiliser avec votre propre compte, grâce à un jeton d’accès créé dans «&nbsp;Mon compte&nbsp;».',
+		text: 'API v2 décrite au format OpenAPI 3.0. Vous pouvez l’utiliser avec votre propre compte, grâce à un jeton d’accès créé dans «&nbsp;Réglage&nbsp;».',
 	},
 	{
 		icon: 'box',

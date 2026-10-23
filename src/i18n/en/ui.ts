@@ -66,14 +66,12 @@ export const ui = {
 			title: 'Find guidance',
 			links: [
 				{ label: 'Centre Billings France', href: 'https://www.methode-billings.com/trouver-un-formateur' },
-				{ label: 'FertilityCare France', href: 'https://www.fertilitycare.fr/instructrices-et-medecins' },
+				{ label: 'FertilityCare France', href: 'https://napro.fr/contacter-une-instructrice/' },
 			],
 			faq: 'Frequently asked questions',
 		},
 		contact: { title: 'Contact us', emailAlt: 'Contact email address (image)' },
 		credits: 'Drawing: <a href="https://by-bm.fr" target="_blank" rel="noopener">by.bm</a>. Hosting: OVH, in France. Monitoring: updown.io.',
-		licenseAlt: 'Creative Commons BY-NC-SA 4.0 licence',
-		licenseDeed: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en',
 	},
 	gallery: {
 		title: 'Screenshots',
