@@ -1,5 +1,6 @@
 import { urls } from '../../data/site';
 import type { FaqEntry } from '../types';
+import { publisherLink } from './publisher';
 
 // Frequently asked questions. The visible FAQ and the FAQPage JSON-LD are both generated from this list.
 export const faq: FaqEntry[] = [
@@ -7,7 +8,7 @@ export const faq: FaqEntry[] = [
 		id: 'faq-what',
 		question: `What is moncycle.app?`,
 		answer: [
-			`<p>moncycle.app is a cycle charting notebook designed for natural family planning methods: Billings and FertilityCare, with or without temperature. You enter your observations. The application presents them as a chart and lets you export them. This free web application works on both phones and computers.</p>`,
+			`<p>moncycle.app is a cycle charting notebook designed for natural family planning methods: Billings (CBF) and FertilityCare, with or without temperature. You enter your observations. The application presents them as a chart and lets you export them. This free web application works on both phones and computers.</p>`,
 			`<p>It is a wellness tool. It is not a medical device, a method of contraception or a diagnostic tool.</p>`,
 		],
 	},
@@ -15,7 +16,7 @@ export const faq: FaqEntry[] = [
 		id: 'faq-who',
 		question: `Who develops moncycle.app?`,
 		answer: [
-			`<p>The application is developed and distributed by <a href='${urls.tech4fertility}' target='_blank' rel='noopener'>Tech&nbsp;4&nbsp;Fertility</a>, a French non-profit association (under the law of 1901) based in Vernon (Eure, France). The source code is public and available on <a href='${urls.github}' target='_blank' rel='noopener'>GitHub</a>.</p>`,
+			`<p>The application is developed and distributed by ${publisherLink}, a French non-profit association (under the law of 1901) based in Vernon (Eure, France). The source code is public and available on <a href='${urls.github}' target='_blank' rel='noopener'>GitHub</a>.</p>`,
 		],
 	},
 	{
@@ -38,7 +39,7 @@ export const faq: FaqEntry[] = [
 		id: 'faq-free',
 		question: `Is the application really free?`,
 		answer: [
-			`<p>Yes. There is no subscription, no paid version and no advertising, and your data is never sold. The application is funded by donations to Tech&nbsp;4&nbsp;Fertility. These donations cover hosting, the domain name and the time spent on maintenance.</p>`,
+			`<p>Yes. There is no subscription, no paid version and no advertising, and your data is never sold. The application is funded by donations to ${publisherLink}. These donations cover hosting, the domain name and the time spent on maintenance.</p>`,
 		],
 	},
 	{
@@ -55,7 +56,7 @@ export const faq: FaqEntry[] = [
 		question: `How do I install moncycle.app on an iPhone or an Android phone?`,
 		answer: [
 			`<p>moncycle.app is a web application. It is not available on the App Store or on Google Play. Log in, open your chart, then add the page to your home screen. On iPhone, in Safari, tap the Share button, then “Add to Home Screen”. On Android, in Chrome, open the menu, then choose “Add to Home screen”. The new icon opens the application directly.</p>`,
-			`<p>Tech&nbsp;4&nbsp;Fertility is preparing apps for iPhone and Android. Their release will be announced on this website.</p>`,
+			`<p>${publisherLink} is preparing apps for iPhone and Android. Their release will be announced on this website.</p>`,
 		],
 	},
 	{
@@ -105,7 +106,7 @@ export const faq: FaqEntry[] = [
 		id: 'faq-natural',
 		question: `What is a natural family planning method? Is it the same as the Ogino method?`,
 		answer: [
-			`<p>No. This confusion partly explains why many people distrust these methods. The Ogino method, also called the calendar or rhythm method, works out the fertile days from the length of previous cycles. Observation methods, such as Billings or FertilityCare, rely day by day on the signs of the current cycle: changes in cervical mucus and, for some methods, the waking temperature. Nothing is predicted. The signs are observed when they appear.</p>`,
+			`<p>No. This confusion partly explains why many people distrust these methods. The Ogino method, also called the calendar or rhythm method, works out the fertile days from the length of previous cycles. Observation methods rely day by day on the signs of the current cycle: changes in cervical mucus and, for some methods, the waking temperature. Nothing is predicted. The signs are observed when they appear.</p>`,
 			`<p>moncycle.app is designed for this second type of method. To learn more, read the presentation of <a href='#methods'>natural family planning methods</a> and <a href='#billings'>the story of John and Evelyn Billings</a>.</p>`,
 		],
 	},
@@ -114,7 +115,7 @@ export const faq: FaqEntry[] = [
 		question: `Do I need training to follow a natural family planning method?`,
 		answer: [
 			`<p>Yes. Learning to observe your cervical mucus takes a few cycles with guidance. The rules of the method must also be taught: how to identify the start of the fertile phase, how to recognise the Peak day and how to interpret a disturbed cycle. Our terms of service also require you to have completed training.</p>`,
-			`<p>moncycle.app does not teach the method and does not correct your interpretation. In France, the <a href='${urls.billingsTrainers}' target='_blank' rel='noopener'>Centre Billings France</a> and <a href='${urls.fertilityCareInstructors}' target='_blank' rel='noopener'>FertilityCare France</a> can direct you to teachers, teaching couples or instructors near you (both websites are in French).</p>`,
+			`<p>moncycle.app does not teach the method and does not correct your interpretation. In France, the <a href='${urls.billingsTrainers}' target='_blank' rel='noopener'>Centre Billings France</a> and <a href='${urls.fertilityCareInstructors}' target='_blank' rel='noopener'>Napro France</a> can direct you to teachers, teaching couples or instructors near you (both websites are in French).</p>`,
 		],
 	},
 	{

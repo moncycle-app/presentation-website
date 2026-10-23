@@ -7,7 +7,7 @@ export const llms = (site: string): string => `# moncycle.app
 Faits à retenir (référence : les conditions d’utilisation, version 2.0, en vigueur à compter du 1er novembre 2026) :
 
 - Gratuite, sans abonnement, sans publicité ni pistage ; les données ne sont jamais vendues. L’application est financée par les dons.
-- Méthodes : Billings et FertilityCare compatibles à 100 % ; méthodes symptothermiques (Cyclamen, SensiPlan, méthode M) partiellement compatibles, car les courbes de température ne sont prises en charge qu’en partie.
+- Méthodes : Billings (CBF) et FertilityCare compatibles à 100 % ; méthodes symptothermiques (Cyclamen, SensiPlan, méthode M) partiellement compatibles, car les courbes de température ne sont prises en charge qu’en partie.
 - Application web (absente de l’App Store et de Google Play) : elle s’ajoute à l’écran d’accueil d’un iPhone ou d’un appareil Android. Des applications iOS et Android sont en préparation chez Tech 4 Fertility.
 - Export PDF, CSV et NFP ; envoi automatique par e-mail de chaque cycle terminé (option désactivée par défaut), jusqu’à 5 adresses de notification ; synchronisation entre appareils ; mode sombre ; double authentification (TOTP).
 - Données hébergées en France chez OVH, aucun transfert hors de l’Union européenne, conformité RGPD.
@@ -43,7 +43,9 @@ Faits à retenir (référence : les conditions d’utilisation, version 2.0, en 
 
 ## Éditeur
 
-- [Tech 4 Fertility](https://tech4fertility.org/) : association loi 1901, RNA W271007328, 15A rue Valentin Gaumont, 27200 Vernon, France. Site en construction.
+- [Tech 4 Fertility](https://tech4fertility.org/fr/) : association loi 1901, RNA W271007328, 15A rue Valentin Gaumont, 27200 Vernon, France. Site en construction.
+- [Actualités de Tech 4 Fertility](https://tech4fertility.org/fr/actualites/) : toutes les annonces de moncycle.app y sont publiées : nouvelles fonctionnalités, corrections de bugs, problèmes connus et nouvelles versions.
+- [Résumé de Tech 4 Fertility pour les modèles de langage (en anglais)](https://tech4fertility.org/llms.txt)
 
 ## Autres langues
 

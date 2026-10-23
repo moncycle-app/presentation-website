@@ -3,7 +3,7 @@
 // strings used as attributes (alt, label…) are plain text.
 export const ui = {
 	meta: {
-		title: 'moncycle.app · free cycle charting notebook for the Billings and FertilityCare methods',
+		title: 'moncycle.app · free cycle charting notebook for the Billings (CBF) and FertilityCare methods',
 		description: 'moncycle.app is a free web application. Record your cervical mucus and temperature observations each day, and keep your chart according to the Billings or FertilityCare method. No advertising, no predictions, hosted in France.',
 		socialTitle: 'moncycle.app · the cycle charting notebook for natural family planning methods',
 		socialDescription: 'Record your cervical mucus and temperature observations, and find your Billings or FertilityCare chart on all your devices. Free, with no advertising and no predictions.',
@@ -19,7 +19,7 @@ export const ui = {
 		features: [
 			'Cervical mucus and period tracking',
 			'Basal body temperature tracking (optional)',
-			'Billings and FertilityCare notation',
+			'Billings (CBF) and FertilityCare notation',
 			'PDF, CSV and NFP export',
 			'Email delivery of completed cycles (optional)',
 			'Sync across devices',
@@ -66,7 +66,7 @@ export const ui = {
 			title: 'Find guidance',
 			links: [
 				{ label: 'Centre Billings France', href: 'https://www.methode-billings.com/trouver-un-formateur' },
-				{ label: 'FertilityCare France', href: 'https://napro.fr/contacter-une-instructrice/' },
+				{ label: 'Napro France', href: 'https://napro.fr/contacter-une-instructrice/' },
 			],
 			faq: 'Frequently asked questions',
 		},
@@ -91,7 +91,7 @@ export const ui = {
 	},
 	// Block of this language on the selector page shown at "/"
 	selector: {
-		title: 'moncycle.app · cycle charting notebook for the Billings and FertilityCare methods',
+		title: 'moncycle.app · cycle charting notebook for the Billings (CBF) and FertilityCare methods',
 		description: 'moncycle.app is a free cycle charting notebook for natural family planning methods (Billings, FertilityCare). Choose your language.',
 		text: 'Free cycle charting notebook for natural family planning methods (Billings, FertilityCare).',
 		cta: 'Continue in English',

@@ -4,7 +4,7 @@
 
 	.timeline {
 		list-style: none;
-		margin: 0 0 var(--space-6);
+		margin: 0;
 		padding: 0;
 		position: relative;
 	}
@@ -48,7 +48,35 @@
 		color: var(--primary);
 	}
 
+	.timeline li:last-child { padding-bottom: 0; }
 	.timeline p { margin: 0; }
+
+	/* Turning point: the conclusion of the timeline, across the whole width.
+	   The left strip repeats the colours of the timeline markers. */
+	.turning-point {
+		display: grid;
+		gap: var(--space-5);
+		margin-top: var(--space-7);
+		padding: var(--space-6);
+		padding-left: calc(var(--space-6) + 6px);
+		border-radius: var(--radius-l);
+		background:
+			linear-gradient(var(--logo-green) 0 33%, var(--logo-yellow) 33% 67%, var(--logo-red) 67%) left / 6px 100% no-repeat,
+			var(--primary-soft);
+	}
+
+	.turning-point h3 { color: var(--primary-strong); }
+	.turning-point p { margin: 0; }
+
+	.turning-point-statement {
+		align-self: center;
+		font-family: var(--font-heading);
+		font-size: var(--step-2);
+		font-weight: 600;
+		line-height: 1.35;
+		color: var(--primary-strong);
+		text-wrap: balance;
+	}
 
 	.reference {
 		padding: var(--space-5);
@@ -65,5 +93,6 @@
 	@media (min-width: 60rem) {
 		.billings-grid { grid-template-columns: 1.4fr 1fr; }
 		.billings-aside { position: sticky; top: calc(var(--header-h) + var(--space-5)); }
+		.turning-point { grid-template-columns: 1.4fr 1fr; gap: var(--space-7); padding: var(--space-7); padding-left: calc(var(--space-7) + 6px); }
 	}
 }

@@ -1,13 +1,15 @@
+import { publisherLink } from './publisher';
+
 // Text of the sections of the home page. Same convention as ui.ts: element content may contain HTML,
 // attributes (alt, label…) are plain text.
 export const home = {
 	hero: {
-		eyebrow: 'Billings · FertilityCare · Temperature',
+		eyebrow: 'Billings (CBF) · FertilityCare · Temperature',
 		title: 'moncycle.app, the women’s cycle charting notebook for natural family planning methods',
 		lead: 'Every evening, you record your observations of the day: your cervical mucus and your sensations. The application presents them as a clear chart, easy to read for you and for your teacher or instructor. It is free, has no advertising and makes no predictions.',
 		primary: 'Create my account',
 		secondary: 'Try the demo',
-		small: 'Web application for phones and computers, hosted in France. Developed and distributed by Tech&nbsp;4&nbsp;Fertility, a non-profit association.',
+		small: `Web application for phones and computers, hosted in France. Developed and distributed by ${publisherLink}, a non-profit association.`,
 		coupleAlt: 'Drawing of a young couple. The man rests his hand on the woman’s shoulder. She holds her phone and turns towards him with a smile.',
 		screenshotAlt: 'Chart of a Billings cycle in moncycle.app: one row per day, with the colour stamp, the sensations and the observations entered.',
 	},
@@ -24,7 +26,7 @@ export const home = {
 			title: 'Install the application on your phone',
 			intro: 'moncycle.app is a web application. It is not available on the App Store or on Google Play. From your chart, add the page to your home screen. An icon appears, and the application then opens like any other app.',
 			steps: '<strong>On iPhone</strong>, in Safari: tap the Share button, then “Add to Home Screen”.<br>\n\t\t\t\t<strong>On Android</strong>, in Chrome: open the menu at the top right, then choose “Add to Home screen”.',
-			note: 'Tech&nbsp;4&nbsp;Fertility is preparing apps for iPhone and Android. Their release will be announced here. Until then, the web application is the only version available.',
+			note: `${publisherLink} is preparing apps for iPhone and Android. Their release will be announced here. Until then, the web application is the only version available.`,
 			iphoneAlt: 'Safari share menu on iPhone, with the “Add to Home Screen” option circled.',
 			iphoneCaption: 'iPhone',
 			androidAlt: 'Chrome menu on Android, with the “Add to Home screen” option circled.',
@@ -52,7 +54,7 @@ export const home = {
 		accounts: {
 			title: 'Try a demo account',
 			text: 'Choose the account that matches the method you are interested in, and log in with the details below. These accounts are public: anyone can view and change them, and they are reset every hour. Do not enter any personal information in them.',
-			billings: 'Billings',
+			billings: 'Billings (CBF)',
 			fertilityCare: 'FertilityCare',
 			password: 'Password',
 			button: 'Open the login page',
@@ -72,18 +74,18 @@ export const home = {
 	billings: {
 		eyebrow: 'History',
 		title: 'John and Evelyn Billings, the doctors who learned to read cervical mucus',
-		lead: 'The Billings method is named after a couple of doctors from Melbourne, Australia. Their work moved cycle tracking away from calculating dates and towards reading the signs of the body.',
-		timeline: [
-			{ datetime: '1953', label: '1953', text: 'At the request of Father Maurice Catarinich, the neurologist John Billings began to search for a natural family planning method. The Ogino-Knaus method, based on calendar calculations, was considered too imprecise. His intuition: cervical mucus, whose appearance and texture change during the cycle, shows the approach of ovulation better than any calculation.' },
-			{ datetime: '1964-12', label: 'December 1964', text: 'John Billings published his first book, <cite lang="en">The Ovulation Method</cite>. His wife Evelyn, also a doctor, had proofread the manuscript. This is how she became interested in his work.' },
-			{ datetime: '1965', label: '1965', text: 'From then on, Evelyn Billings worked with him, especially on cycles that were difficult to read. In women’s charts, she learned to recognise the patterns of dryness and mucus that come before ovulation, and also the patterns that show the infertile days.' },
-			{ datetime: '1972-02-05', label: '5 February 1972', text: '<cite lang="en">The Lancet</cite> published the study by John and Evelyn Billings. It was co-signed by H.&nbsp;G.&nbsp;Burger and by the researcher James Brown, who had come to Melbourne in 1962 to set up the endocrinology unit of the Royal Women’s Hospital. Hormone measurements confirmed what women had observed: changes in the mucus follow the changes in oestrogen and progesterone.' },
-		],
-		turningPoint: {
-			title: 'A turning point',
-			paragraphs: [
-				'This double confirmation, by observation and by hormone measurements, gave natural family planning methods a scientific basis. They no longer relied only on calculating dates. The Billings method inspired the symptothermal method, which combines mucus observation with temperature measurement. The work of John and Evelyn Billings is also at the origin of today’s fertility awareness methods, which combine several signs of the body.',
-				'More than seventy years after John Billings began his research, knowing how to observe one’s cervical mucus remains one of the foundations of understanding one’s cycle.',
+		lead: 'In Melbourne, Australia, a couple of doctors, John and Evelyn Billings, profoundly changed the way the cycle is tracked. Their work moved cycle tracking away from calculating dates and towards reading the signs of the body.',
+				timeline: [
+					{ datetime: '1953', label: '1953', text: 'At the request of Father Maurice Catarinich, the neurologist John Billings began to search for a natural family planning method. The Ogino-Knaus method, based on calendar calculations, was considered too imprecise. His intuition: cervical mucus, whose appearance and texture change during the cycle, shows the approach of ovulation better than any calculation.' },
+					{ datetime: '1964-12', label: 'December 1964', text: 'John Billings published his first book, <cite lang="en">The Ovulation Method</cite>. His wife Evelyn, also a doctor, had proofread the manuscript. This is how she became interested in his work.' },
+					{ datetime: '1965', label: '1965', text: 'From then on, Evelyn Billings worked with him, especially on cycles that were difficult to read. In women’s charts, she learned to recognise the patterns of dryness and mucus that come before ovulation, and also the patterns that show the infertile days.' },
+					{ datetime: '1972-02-05', label: '5 February 1972', text: '<cite lang="en">The Lancet</cite> published the study by John and Evelyn Billings. It was co-signed by H.&nbsp;G.&nbsp;Burger and by the researcher James Brown, who had come to Melbourne in 1962 to set up the endocrinology unit of the Royal Women’s Hospital. Hormone measurements confirmed what women had observed: changes in the mucus follow the changes in oestrogen and progesterone.' },
+				],
+				turningPoint: {
+					title: 'A turning point',
+					paragraphs: [
+						'This double confirmation, by observation and by hormone measurements, gave natural family planning methods a scientific basis. They no longer relied only on calculating dates. The work of John and Evelyn Billings did much to make cervical mucus a central marker. Today it is found in the symptothermal method, which combines mucus observation with temperature measurement, as well as in other fertility awareness methods.',
+						'More than seventy years after John Billings began his research, knowing how to observe one’s cervical mucus remains one of the foundations of understanding one’s cycle.',
 			],
 		},
 		reference: {
@@ -94,7 +96,7 @@ export const home = {
 				{ href: 'https://en.wikipedia.org/wiki/John_and_Evelyn_Billings', hreflang: 'en', label: 'John and Evelyn Billings, Wikipedia' },
 				{ href: 'https://fr.wikipedia.org/wiki/M%C3%A9thode_Billings', label: 'Méthode Billings, Wikipedia (in French)' },
 				{ href: "https://www.sfsc.fr/pdf/La%20m%C3%A9thode%20de%20l'ovulation%20Billings.pdf", label: 'La méthode de l’ovulation Billings, SFSC (PDF, in French)' },
-				{ href: 'https://link.springer.com/article/10.1007/BF01849421', hreflang: 'en', label: 'Fertility awareness in the 1990s: the Billings Ovulation Method, Springer' },
+				{ href: 'https://link.springer.com/article/10.1007/BF01849421', hreflang: 'en', label: 'Fertility awareness in the 1990s, Springer' },
 				{ href: 'http://www.cmq.org.uk/CMQ/2015/May/symptothermal_method_of_natural.html', hreflang: 'en', label: 'The Symptothermal Method of Natural Family Planning, Catholic Medical Quarterly' },
 			] as { href: string; hreflang?: string; label: string }[],
 		},
@@ -107,7 +109,7 @@ export const home = {
 	support: {
 		title: 'Support moncycle.app',
 		intro: 'moncycle.app is free: no subscription, no advertising and no sale of data. It depends entirely on your donations.',
-		details: 'These donations pay for the servers and the sending of emails at OVH, the domain name, and the time needed to fix, secure and improve the application over the years. They go to Tech&nbsp;4&nbsp;Fertility, the association behind the project.',
+		details: `These donations pay for the servers and the sending of emails at OVH, the domain name, and the time needed to fix, secure and improve the application over the years. They go to ${publisherLink}, the association behind the project.`,
 		button: 'Donate',
 		note: 'Secure payment through HelloAsso, a French donation platform for non-profit associations.',
 	},
@@ -117,6 +119,9 @@ export const home = {
 	},
 	news: {
 		title: 'News',
+		lead: `All the news about moncycle.app and the association is published on the ${publisherLink} website, with an RSS feed to follow it.`,
+		all: 'All the news',
+		allUrl: 'https://tech4fertility.org/en/news/',
 		button: 'Read more',
 	},
 	terms: {

@@ -7,7 +7,7 @@ export const featureGroups: FeatureGroup[] = [
 		features: [
 			{ icon: 'drop', title: 'La glaire cervicale et les règles', text: `Sensation, aspect, flux&nbsp;: tout ce que la méthode vous a appris à observer.` },
 			{ icon: 'thermo', title: 'La température, si vous la mesurez', text: `Elle s’ajoute au tableau, accompagnée de sa courbe. Dans le cas contraire, elle n’apparaît pas.` },
-			{ icon: 'list', title: 'Billings et FertilityCare', text: `Compatibles à 100&nbsp;%, chacune avec sa notation officielle.` },
+			{ icon: 'list', title: 'Billings (CBF) et FertilityCare', text: `Compatibles à 100&nbsp;%, chacune avec sa notation officielle.` },
 			{ icon: 'ban', title: 'Sans IA, sans prédiction', text: `Aucun calcul ne détermine votre fertilité&nbsp;: le tableau présente uniquement ce que vous avez saisi.` },
 		],
 	},

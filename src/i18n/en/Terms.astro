@@ -1,5 +1,6 @@
 ---
 import EmailLink from '../../components/EmailLink.astro';
+import { publisherUrl } from './publisher';
 ---
 <!-- ============================================================ -->
 <section id="summary">
@@ -21,19 +22,19 @@ import EmailLink from '../../components/EmailLink.astro';
 	<h2>1. Who is behind moncycle.app?</h2>
 	<p><b>moncycle.app</b> (“the App”) means the web application <a href="https://tableau.moncycle.app" target="_blank" rel="noopener">tableau.moncycle.app</a> and its API. It is published by:</p>
 	<ul>
-		<li><b>Tech 4 Fertility</b>, a French non-profit association (law of 1 July 1901) – <a href="https://tech4fertility.org" target="_blank" rel="noopener">tech4fertility.org</a></li>
+		<li><b><a href={publisherUrl} target="_blank" rel="noopener">Tech 4 Fertility</a></b>, a French non-profit association (law of 1 July 1901) – <a href={publisherUrl} target="_blank" rel="noopener">tech4fertility.org</a></li>
 		<li>RNA number: W271007328</li>
 		<li>Registered office: 15A rue Valentin Gaumont, 27200 Vernon, FRANCE</li>
 		<li>Contact, including for your personal data: <EmailLink alt="Contact e-mail address (image)" /></li>
 	</ul>
 	<p><b>Host:</b> OVH SAS, 2 rue Kellermann, 59100 Roubaix, France (RCS Lille Métropole 424 761 419). The servers and the data are in France.</p>
-	<p>Tech 4 Fertility is the <b>controller</b> of your personal data. The association is too small to have a data protection officer (DPO): any question about your data goes to the address above.</p>
+	<p><a href={publisherUrl} target="_blank" rel="noopener">Tech 4 Fertility</a> is the <b>controller</b> of your personal data. The association is too small to have a data protection officer (DPO): any question about your data goes to the address above.</p>
 </section>
 
 <!-- ============================================================ -->
 <section id="scope">
 	<h2>2. Purpose and acceptance</h2>
-	<p>These terms govern your use of the App. They form a contract between you and Tech 4 Fertility. By ticking the boxes at sign-up you confirm that you have read and accept them. If you do not agree, do not create an account.</p>
+	<p>These terms govern your use of the App. They form a contract between you and <a href={publisherUrl} target="_blank" rel="noopener">Tech 4 Fertility</a>. By ticking the boxes at sign-up you confirm that you have read and accept them. If you do not agree, do not create an account.</p>
 	<p>The App is <b>free and ad-free</b>.</p>
 </section>
 
@@ -89,7 +90,7 @@ import EmailLink from '../../components/EmailLink.astro';
 <section id="liability">
 	<h2>6. Liability</h2>
 	<h3>Your decisions</h3>
-	<p>The App is a recording aid. The decision, and the responsibility for how you use your method, rest with you and, where applicable, your partner. Neither Tech 4 Fertility, nor its members, volunteers or developers can be held liable for:</p>
+	<p>The App is a recording aid. The decision, and the responsibility for how you use your method, rest with you and, where applicable, your partner. Neither <a href={publisherUrl} target="_blank" rel="noopener">Tech 4 Fertility</a>, nor its members, volunteers or developers can be held liable for:</p>
 	<ul>
 		<li>an <b>unintended pregnancy</b>;</li>
 		<li>the <b>absence of pregnancy</b> when that is the couple's goal;</li>
@@ -164,7 +165,7 @@ import EmailLink from '../../components/EmailLink.astro';
 
 	<h3 id="data-recipients">7.3 Who receives your data</h3>
 	<ul>
-		<li><b>Tech 4 Fertility.</b> Your observations are not consulted: the association has no reason to read them. In a very exceptional case (a serious technical incident), work on the database is done anonymously, with no link to the account's identifier or identity.</li>
+		<li><b><a href={publisherUrl} target="_blank" rel="noopener">Tech 4 Fertility</a>.</b> Your observations are not consulted: the association has no reason to read them. In a very exceptional case (a serious technical incident), work on the database is done anonymously, with no link to the account's identifier or identity.</li>
 		<li><b>OVH SAS</b>, our processor (art. 28), which hosts the servers (in France) and sends the e-mails.</li>
 		<li><b>The e-mail addresses you added</b>, which receive your cycles.</li>
 		<li><b>Research</b>, only with your agreement: the sign-up box is optional, you can untick it at any time in “Settings”, and a second consent will be asked of you before your cycles are used for a research programme on natural methods or the menstrual cycle. These exports contain no e-mail, no nickname and no free text (comments, descriptions). They are never sold or handed over for commercial purposes. Once the box is unticked, your cycles are left out of later exports; what has already been shared cannot be taken back.</li>

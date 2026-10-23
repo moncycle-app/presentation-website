@@ -7,7 +7,8 @@ interface Props {
 }
 
 const { billings } = getMessages(Astro.props.lang).home;
-const { reference } = billings;
+const { reference, turningPoint } = billings;
+const [summary, ...conclusion] = turningPoint.paragraphs;
 ---
 <!-- John and Evelyn Billings -->
 <section class="section" id="billings" aria-labelledby="billings-title">
@@ -28,9 +29,6 @@ const { reference } = billings;
 						</li>
 					))}
 				</ol>
-
-				<h3>{billings.turningPoint.title}</h3>
-				{billings.turningPoint.paragraphs.map((paragraph) => <p set:html={paragraph} />)}
 			</div>
 
 			<aside class="billings-aside" aria-labelledby="billings-ref-title">
@@ -43,6 +41,14 @@ const { reference } = billings;
 					</ul>
 				</div>
 			</aside>
+		</div>
+
+		<div class="turning-point">
+			<div>
+				<h3>{turningPoint.title}</h3>
+				<p set:html={summary} />
+			</div>
+			{conclusion.map((paragraph) => <p class="turning-point-statement" set:html={paragraph} />)}
 		</div>
 	</div>
 </section>

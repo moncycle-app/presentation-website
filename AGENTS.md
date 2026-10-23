@@ -52,6 +52,7 @@ src/
     index.ts               Registry: getMessages(lang), getTerms(lang)
     types.ts               Shapes of the per-language content
     <lang>/                ui.ts home.ts faq.ts features.ts methods.ts tech.ts screenshots.ts legal.ts llms.ts
+                           publisher.ts (Tech 4 Fertility site URL and link in that language)
                            index.ts (assembles them) and Terms.astro (text of the terms of use)
   layouts/
     BaseLayout.astro       <head> (SEO, hreflang, Open Graph, fonts, scripts), skip link, icon sprite

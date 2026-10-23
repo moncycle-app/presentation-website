@@ -3,7 +3,7 @@
 // strings used as attributes (alt, label…) are plain text.
 export const ui = {
 	meta: {
-		title: 'moncycle.app · carnet de suivi de cycle gratuit pour les méthodes Billings et FertilityCare',
+		title: 'moncycle.app · carnet de suivi de cycle gratuit pour les méthodes Billings (CBF) et FertilityCare',
 		description: 'moncycle.app est une application web gratuite qui permet de noter chaque jour vos observations de glaire cervicale et de température, et de tenir votre tableau selon la méthode Billings ou FertilityCare. Sans publicité, sans prédiction, hébergée en France.',
 		socialTitle: 'moncycle.app · le carnet de suivi de cycle au service des méthodes de régulation naturelle des naissances',
 		socialDescription: 'Notez vos observations de glaire cervicale et de température, et retrouvez votre tableau Billings ou FertilityCare sur tous vos appareils. Gratuit, sans publicité et sans prédiction.',
@@ -19,7 +19,7 @@ export const ui = {
 		features: [
 			'Suivi de la glaire cervicale et des règles',
 			'Suivi de la température basale (facultatif)',
-			'Notation Billings et FertilityCare',
+			'Notation Billings (CBF) et FertilityCare',
 			'Export PDF, CSV et NFP',
 			'Envoi des cycles terminés par e-mail (option)',
 			'Synchronisation entre appareils',
@@ -66,7 +66,7 @@ export const ui = {
 			title: 'Se faire accompagner',
 			links: [
 				{ label: 'Centre Billings France', href: 'https://www.methode-billings.com/trouver-un-formateur' },
-				{ label: 'FertilityCare France', href: 'https://napro.fr/contacter-une-instructrice/' },
+				{ label: 'Napro France', href: 'https://napro.fr/contacter-une-instructrice/' },
 			],
 			faq: 'Questions fréquentes',
 		},
@@ -91,7 +91,7 @@ export const ui = {
 	},
 	// Block of this language on the selector page shown at "/"
 	selector: {
-		title: 'moncycle.app · carnet de suivi de cycle pour les méthodes Billings et FertilityCare',
+		title: 'moncycle.app · carnet de suivi de cycle pour les méthodes Billings (CBF) et FertilityCare',
 		description: 'moncycle.app est un carnet de suivi de cycle gratuit pour les méthodes de régulation naturelle des naissances (Billings, FertilityCare). Choisissez votre langue.',
 		text: 'Carnet de suivi de cycle gratuit pour les méthodes de régulation naturelle des naissances (Billings, FertilityCare).',
 		cta: 'Continuer en français',

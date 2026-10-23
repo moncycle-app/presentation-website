@@ -2,16 +2,16 @@ import type { Method } from '../types';
 
 export const methods: Method[] = [
 	{
-		name: 'Billings Ovulation Method',
+		name: 'Billings from Centre Billings France',
 		compatibility: 'full',
 		badge: '100% compatible',
-		text: '<a href="https://www.methode-billings.com/trouver-un-formateur" target="_blank" rel="noopener">Find a teaching couple</a> through the Centre Billings France (website in French).',
+		text: '<a href="https://www.methode-billings.com/trouver-un-formateur" target="_blank" rel="noopener">Find a teaching couple</a> through the Centre Billings France (aka CBF, website in French).',
 	},
 	{
 		name: 'FertilityCare',
 		compatibility: 'full',
 		badge: '100% compatible',
-		text: '<a href="https://napro.fr/contacter-une-instructrice/" target="_blank" rel="noopener">Find an instructor</a> through FertilityCare France (website in French).',
+		text: '<a href="https://napro.fr/contacter-une-instructrice/" target="_blank" rel="noopener">Find an instructor</a> through Napro France (website in French).',
 	},
 	{
 		name: 'Cyclamen (symptothermal)',

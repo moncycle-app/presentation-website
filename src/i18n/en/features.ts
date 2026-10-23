@@ -7,7 +7,7 @@ export const featureGroups: FeatureGroup[] = [
 		features: [
 			{ icon: 'drop', title: 'Cervical mucus and periods', text: `Sensation, appearance, flow: everything your method has taught you to observe.` },
 			{ icon: 'thermo', title: 'Temperature, if you measure it', text: `It is added to the chart, together with its curve. If you do not measure it, it does not appear.` },
-			{ icon: 'list', title: 'Billings and FertilityCare', text: `100% compatible, each with its official notation.` },
+			{ icon: 'list', title: 'Billings (CBF) and FertilityCare', text: `100% compatible, each with its official notation.` },
 			{ icon: 'ban', title: 'No AI, no predictions', text: `No calculation decides your fertility. The chart shows only what you have entered.` },
 		],
 	},

@@ -1,5 +1,6 @@
 ---
 import EmailLink from '../../components/EmailLink.astro';
+import { publisherUrl } from './publisher';
 ---
 <!-- ============================================================ -->
 <section id="summary">
@@ -21,19 +22,19 @@ import EmailLink from '../../components/EmailLink.astro';
 	<h2>1. Qui est derrière moncycle.app ?</h2>
 	<p><b>moncycle.app</b> (« l'Application ») désigne l'application web <a href="https://tableau.moncycle.app" target="_blank" rel="noopener">tableau.moncycle.app</a> et son API. Elle est éditée par :</p>
 	<ul>
-		<li><b>Tech 4 Fertility</b>, association française à but non lucratif (loi du 1<sup>er</sup> juillet 1901) – <a href="https://tech4fertility.org" target="_blank" rel="noopener">tech4fertility.org</a></li>
+		<li><b><a href={publisherUrl} target="_blank" rel="noopener">Tech 4 Fertility</a></b>, association française à but non lucratif (loi du 1<sup>er</sup> juillet 1901) – <a href={publisherUrl} target="_blank" rel="noopener">tech4fertility.org</a></li>
 		<li>N° RNA : W271007328</li>
 		<li>Siège social : 15A rue Valentin Gaumont, 27200 Vernon, FRANCE</li>
 		<li>Contact, y compris pour vos données personnelles : <EmailLink alt="Adresse e-mail de contact (image)" /></li>
 	</ul>
 	<p><b>Hébergeur :</b> OVH SAS, 2 rue Kellermann, 59100 Roubaix, France (RCS Lille Métropole 424 761 419). Les serveurs et les données sont en France.</p>
-	<p>Tech 4 Fertility est le <b>responsable du traitement</b> de vos données personnelles. L'association est trop petite pour avoir un délégué à la protection des données (DPO) : toute question sur vos données va à l'adresse ci-dessus.</p>
+	<p><a href={publisherUrl} target="_blank" rel="noopener">Tech 4 Fertility</a> est le <b>responsable du traitement</b> de vos données personnelles. L'association est trop petite pour avoir un délégué à la protection des données (DPO) : toute question sur vos données va à l'adresse ci-dessus.</p>
 </section>
 
 <!-- ============================================================ -->
 <section id="scope">
 	<h2>2. Objet et acceptation</h2>
-	<p>Ces conditions régissent l'utilisation de l'Application. Elles forment un contrat entre vous et Tech 4 Fertility. En cochant les cases prévues lors de l'inscription, vous confirmez les avoir lues et les acceptez. Si vous n'êtes pas d'accord, ne créez pas de compte.</p>
+	<p>Ces conditions régissent l'utilisation de l'Application. Elles forment un contrat entre vous et <a href={publisherUrl} target="_blank" rel="noopener">Tech 4 Fertility</a>. En cochant les cases prévues lors de l'inscription, vous confirmez les avoir lues et les acceptez. Si vous n'êtes pas d'accord, ne créez pas de compte.</p>
 	<p>L'Application est <b>gratuite et sans publicité</b>.</p>
 </section>
 
@@ -89,7 +90,7 @@ import EmailLink from '../../components/EmailLink.astro';
 <section id="liability">
 	<h2>6. Responsabilité</h2>
 	<h3>Vos décisions</h3>
-	<p>L'Application est un support de notation. La décision et la responsabilité de l'usage de votre méthode vous reviennent, à vous et, le cas échéant, à votre partenaire. Ni Tech 4 Fertility, ni ses membres, bénévoles ou développeurs ne peuvent être tenus responsables :</p>
+	<p>L'Application est un support de notation. La décision et la responsabilité de l'usage de votre méthode vous reviennent, à vous et, le cas échéant, à votre partenaire. Ni <a href={publisherUrl} target="_blank" rel="noopener">Tech 4 Fertility</a>, ni ses membres, bénévoles ou développeurs ne peuvent être tenus responsables :</p>
 	<ul>
 		<li>d'une <b>grossesse non désirée</b> ;</li>
 		<li>de l'<b>absence de grossesse</b> lorsque c'est le projet du couple ;</li>
@@ -164,7 +165,7 @@ import EmailLink from '../../components/EmailLink.astro';
 
 	<h3 id="data-recipients">7.3 Qui reçoit vos données</h3>
 	<ul>
-		<li><b>Tech 4 Fertility.</b> Vos observations ne sont pas consultées : l'association n'a aucune raison de les lire. Dans un cas très exceptionnel (incident technique grave), une intervention sur la base de données se fait de façon anonyme, sans lien avec l'identifiant ni l'identité du compte.</li>
+		<li><b><a href={publisherUrl} target="_blank" rel="noopener">Tech 4 Fertility</a>.</b> Vos observations ne sont pas consultées : l'association n'a aucune raison de les lire. Dans un cas très exceptionnel (incident technique grave), une intervention sur la base de données se fait de façon anonyme, sans lien avec l'identifiant ni l'identité du compte.</li>
 		<li><b>OVH SAS</b>, notre sous-traitant (art. 28), qui héberge les serveurs (en France) et assure l'envoi des e-mails.</li>
 		<li><b>Les adresses e-mail que vous avez ajoutées</b>, qui reçoivent vos cycles.</li>
 		<li><b>La recherche</b>, uniquement avec votre accord : la case de l'inscription est facultative, vous pouvez la décocher à tout moment dans « Réglage », et un second consentement vous sera demandé avant que vos cycles servent à un programme de recherche sur les méthodes naturelles ou le cycle féminin. Ces exports ne contiennent ni e-mail, ni pseudo, ni texte libre (commentaires, descriptions). Ils ne sont jamais vendus ni cédés à des fins commerciales. Une fois la case décochée, vos cycles sortent des exports suivants ; ce qui a déjà été transmis ne peut pas être repris.</li>

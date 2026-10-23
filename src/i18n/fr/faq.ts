@@ -1,5 +1,6 @@
 import { urls } from '../../data/site';
 import type { FaqEntry } from '../types';
+import { publisherLink } from './publisher';
 
 // Frequently asked questions. The visible FAQ and the FAQPage JSON-LD are both generated from this list.
 export const faq: FaqEntry[] = [
@@ -7,7 +8,7 @@ export const faq: FaqEntry[] = [
 		id: 'faq-what',
 		question: `Qu’est-ce que moncycle.app&nbsp;?`,
 		answer: [
-			`<p>moncycle.app est un carnet de suivi de cycle conçu pour les méthodes de régulation naturelle des naissances&nbsp;: Billings et FertilityCare, avec ou sans température. Vous saisissez vos observations&nbsp;; l’application les présente sous forme de tableau et permet de les exporter. Cette application web gratuite s’utilise aussi bien sur téléphone que sur ordinateur.</p>`,
+			`<p>moncycle.app est un carnet de suivi de cycle conçu pour les méthodes de régulation naturelle des naissances&nbsp;: Billings (CBF) et FertilityCare, avec ou sans température. Vous saisissez vos observations&nbsp;; l’application les présente sous forme de tableau et permet de les exporter. Cette application web gratuite s’utilise aussi bien sur téléphone que sur ordinateur.</p>`,
 			`<p>Il s’agit d’un outil de bien-être&nbsp;: ce n’est ni un dispositif médical, ni un moyen de contraception, ni un outil de diagnostic.</p>`,
 		],
 	},
@@ -15,7 +16,7 @@ export const faq: FaqEntry[] = [
 		id: 'faq-who',
 		question: `Qui développe moncycle.app&nbsp;?`,
 		answer: [
-			`<p>L’application est développée et distribuée par <a href='${urls.tech4fertility}' target='_blank' rel='noopener'>Tech&nbsp;4&nbsp;Fertility</a>, une association française à but non lucratif (loi de 1901) dont le siège se trouve à Vernon (Eure). Le code source est public et disponible sur <a href='${urls.github}' target='_blank' rel='noopener'>GitHub</a>.</p>`,
+			`<p>L’application est développée et distribuée par ${publisherLink}, une association française à but non lucratif (loi de 1901) dont le siège se trouve à Vernon (Eure). Le code source est public et disponible sur <a href='${urls.github}' target='_blank' rel='noopener'>GitHub</a>.</p>`,
 		],
 	},
 	{
@@ -38,7 +39,7 @@ export const faq: FaqEntry[] = [
 		id: 'faq-free',
 		question: `L’application est-elle vraiment gratuite&nbsp;?`,
 		answer: [
-			`<p>Oui. Il n’y a ni abonnement, ni version payante, ni publicité, et vos données ne sont jamais vendues. L’application est financée par les dons versés à Tech&nbsp;4&nbsp;Fertility&nbsp;: ils couvrent l’hébergement, le nom de domaine et le temps consacré à sa maintenance.</p>`,
+			`<p>Oui. Il n’y a ni abonnement, ni version payante, ni publicité, et vos données ne sont jamais vendues. L’application est financée par les dons versés à ${publisherLink}&nbsp;: ils couvrent l’hébergement, le nom de domaine et le temps consacré à sa maintenance.</p>`,
 		],
 	},
 	{
@@ -55,7 +56,7 @@ export const faq: FaqEntry[] = [
 		question: `Comment installer moncycle.app sur iPhone ou Android&nbsp;?`,
 		answer: [
 			`<p>moncycle.app n’est disponible ni sur l’App Store, ni sur Google Play&nbsp;: il s’agit d’une application web. Connectez-vous, ouvrez votre tableau, puis ajoutez la page à l’écran d’accueil. Sur iPhone, dans Safari, touchez le bouton Partager, puis «&nbsp;Sur l’écran d’accueil&nbsp;». Sur Android, dans Chrome, ouvrez le menu, puis choisissez «&nbsp;Ajouter à l’écran d’accueil&nbsp;». L’icône ainsi créée ouvre directement l’application.</p>`,
-			`<p>Tech&nbsp;4&nbsp;Fertility prépare des applications pour iPhone et Android. Leur sortie sera annoncée sur ce site.</p>`,
+			`<p>${publisherLink} prépare des applications pour iPhone et Android. Leur sortie sera annoncée sur ce site.</p>`,
 		],
 	},
 	{
@@ -105,7 +106,7 @@ export const faq: FaqEntry[] = [
 		id: 'faq-natural',
 		question: `Qu’est-ce qu’une méthode de régulation naturelle des naissances&nbsp;? Est-ce la même chose que la méthode Ogino&nbsp;?`,
 		answer: [
-			`<p>Non, et cette confusion explique en partie la méfiance dont ces méthodes font l’objet. La méthode Ogino, dite méthode du calendrier, déduit les jours fertiles de la durée des cycles précédents. Les méthodes d’observation, comme Billings ou FertilityCare, s’appuient jour après jour sur les signes du cycle en cours&nbsp;: l’évolution de la glaire cervicale et, pour certaines, la température au réveil. Rien n’est prédit&nbsp;: les signes sont observés au moment où ils apparaissent.</p>`,
+			`<p>Non, et cette confusion explique en partie la méfiance dont ces méthodes font l’objet. La méthode Ogino, dite méthode du calendrier, déduit les jours fertiles de la durée des cycles précédents. Les méthodes d’observation s’appuient jour après jour sur les signes du cycle en cours&nbsp;: l’évolution de la glaire cervicale et, pour certaines, la température au réveil. Rien n’est prédit&nbsp;: les signes sont observés au moment où ils apparaissent.</p>`,
 			`<p>moncycle.app est conçue pour ce second type de méthodes. Pour en savoir plus, consultez la présentation des <a href='#methods'>méthodes de régulation naturelle des naissances</a> et <a href='#billings'>l’histoire des docteurs Billings</a>.</p>`,
 		],
 	},
@@ -114,7 +115,7 @@ export const faq: FaqEntry[] = [
 		question: `Faut-il une formation pour suivre une méthode de régulation naturelle des naissances&nbsp;?`,
 		answer: [
 			`<p>Oui. Apprendre à observer sa glaire cervicale demande quelques cycles d’accompagnement, et les règles de la méthode doivent être enseignées&nbsp;: comment identifier le début de la phase fertile, repérer le jour sommet ou interpréter un cycle perturbé. Nos conditions d’utilisation exigent d’ailleurs que vous ayez suivi une formation.</p>`,
-			`<p>moncycle.app ne dispense aucun enseignement et ne corrige pas votre interprétation. En France, le <a href='${urls.billingsTrainers}' target='_blank' rel='noopener'>Centre Billings France</a> et <a href='${urls.fertilityCareInstructors}' target='_blank' rel='noopener'>FertilityCare France</a> peuvent vous orienter vers des moniteurs, des couples formateurs ou des instructrices près de chez vous.</p>`,
+			`<p>moncycle.app ne dispense aucun enseignement et ne corrige pas votre interprétation. En France, le <a href='${urls.billingsTrainers}' target='_blank' rel='noopener'>Centre Billings France</a> et <a href='${urls.fertilityCareInstructors}' target='_blank' rel='noopener'>Napro France</a> (entre autres) peuvent vous orienter vers des moniteurs, des couples formateurs ou des instructrices près de chez vous.</p>`,
 		],
 	},
 	{

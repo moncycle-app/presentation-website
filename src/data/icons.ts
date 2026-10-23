@@ -25,6 +25,7 @@ export const icons = {
 	menu: { viewBox: '0 0 24 24', body: '<path d="M4 7h16M4 12h16M4 17h16"/>' },
 	left: { viewBox: '0 0 24 24', body: '<path d="M15 5l-7 7 7 7"/>' },
 	right: { viewBox: '0 0 24 24', body: '<path d="M9 5l7 7-7 7"/>' },
+	rss: { viewBox: '0 0 24 24', body: '<path d="M5 11a8 8 0 0 1 8 8M5 5a14 14 0 0 1 14 14"/><circle cx="6" cy="18" r="1.2"/>' },
 	close: { viewBox: '0 0 24 24', body: '<path d="M6 6l12 12M18 6L6 18"/>' },
 } as const;
 

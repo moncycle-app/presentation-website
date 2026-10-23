@@ -2,20 +2,25 @@
 import { getMessages } from '../i18n';
 import type { Lang } from '../i18n/config';
 import { urls } from '../data/site';
+import Icon from './Icon.astro';
 
 interface Props {
 	lang: Lang;
 }
 
-const { news } = getMessages(Astro.props.lang).home;
+const { home, ui } = getMessages(Astro.props.lang);
+const { news } = home;
 ---
 <!-- News: filled and revealed by scripts/news.ts; stays hidden if there is nothing recent to show -->
 <section class="section news" id="news" aria-labelledby="news-title" hidden>
-	<div class="container">
+	<div class="container news-layout">
 		<div class="section-head">
 			<h2 id="news-title">{news.title}</h2>
+			<p class="lead" set:html={news.lead} />
+			<a class="button button-secondary" href={news.allUrl} target="_blank" rel="noopener"><Icon name="rss" />{news.all}</a>
 		</div>
 		<article class="news-box">
+			<p class="eyebrow">{ui.newsBanner.label}</p>
 			<h3 data-news="title"></h3>
 			<time data-news="date"></time>
 			<p data-news="description"></p>

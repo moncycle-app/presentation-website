@@ -7,7 +7,7 @@ export const llms = (site: string): string => `# moncycle.app
 Key facts (reference: the terms of service, version 2.0, in effect from 1 November 2026):
 
 - Free, with no subscription, no advertising and no tracking. The data is never sold. The application is funded by donations.
-- Methods: Billings and FertilityCare are 100% compatible. Symptothermal methods (Cyclamen, SensiPlan, Méthode M) are partly compatible, because temperature curves are only partly supported.
+- Methods: Billings (CBF) and FertilityCare are 100% compatible. Symptothermal methods (Cyclamen, SensiPlan, Méthode M) are partly compatible, because temperature curves are only partly supported.
 - Web application (not on the App Store or Google Play): it can be added to the home screen of an iPhone or an Android device. Tech 4 Fertility is preparing iOS and Android apps.
 - PDF, CSV and NFP export; automatic email delivery of each completed cycle (off by default), to up to 5 notification addresses; sync across devices; dark mode; two-factor authentication (TOTP).
 - Data hosted in France at OVH, no transfer outside the European Union, GDPR compliance.
@@ -43,7 +43,9 @@ Key facts (reference: the terms of service, version 2.0, in effect from 1 Novemb
 
 ## Publisher
 
-- [Tech 4 Fertility](https://tech4fertility.org/): non-profit association (French law of 1901), RNA W271007328, 15A rue Valentin Gaumont, 27200 Vernon, France. Website under construction.
+- [Tech 4 Fertility](https://tech4fertility.org/en/): non-profit association (French law of 1901), RNA W271007328, 15A rue Valentin Gaumont, 27200 Vernon, France. Website under construction.
+- [Tech 4 Fertility news](https://tech4fertility.org/en/news/): where every moncycle.app announcement is published: new features, bug fixes, known issues and releases.
+- [Tech 4 Fertility summary for language models](https://tech4fertility.org/llms.txt)
 
 ## Other languages
 

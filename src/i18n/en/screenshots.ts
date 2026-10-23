@@ -36,7 +36,7 @@ export const screenshots: Record<ScreenshotId, ScreenshotText> = {
 	},
 	'pdf-billings': {
 		alt: 'PDF export of a Billings cycle: a table that shows, for each day, the date, the stamp, the Peak, intercourse, sensations, observations and the comment.',
-		caption: 'PDF of a Billings cycle',
+		caption: 'PDF of a cycle',
 	},
 	'pdf-fertilitycare': {
 		alt: 'FertilityCare PDF export in landscape format: one row per cycle. Each day shows the coloured sticker, the Peak, bleeding, mucus and comments, as on a paper chart.',

@@ -1,13 +1,15 @@
+import { publisherLink } from './publisher';
+
 // Text of the sections of the home page. Same convention as ui.ts: element content may contain HTML,
 // attributes (alt, label…) are plain text.
 export const home = {
 	hero: {
-		eyebrow: 'Billings · FertilityCare · Température',
+		eyebrow: 'Billings (CBF) · FertilityCare · Température',
 		title: 'moncycle.app, le carnet de suivi de cycle féminin au service des méthodes de régulation naturelle des naissances',
 		lead: 'Chaque soir, vous notez vos observations de la journée&nbsp;: glaire cervicale et vos sensations. L’application les présente sous la forme d’un tableau clair, lisible par vous comme par votre moniteur ou votre instructrice. Elle est gratuite, sans publicité et ne fait aucune prédiction.',
 		primary: 'Créer mon compte',
 		secondary: 'Essayer la démo',
-		small: 'Application web pour téléphone et ordinateur, hébergée en France. Développée et distribuée par l’association Tech&nbsp;4&nbsp;Fertility.',
+		small: `Application web pour téléphone et ordinateur, hébergée en France. Développée et distribuée par l’association ${publisherLink}.`,
 		coupleAlt: 'Dessin d’un jeune couple. L’homme pose la main sur l’épaule de la femme, qui tient son téléphone et se tourne vers lui en souriant.',
 		screenshotAlt: 'Tableau d’un cycle Billings dans moncycle.app : une ligne par jour, avec le tampon de couleur, les sensations et les observations saisies.',
 	},
@@ -24,7 +26,7 @@ export const home = {
 			title: 'Installer l’application sur votre téléphone',
 			intro: 'moncycle.app est une application web&nbsp;: elle n’est disponible ni sur l’App Store, ni sur Google Play. Depuis votre tableau, ajoutez la page à l’écran d’accueil&nbsp;: une icône apparaît, et l’application s’ouvre ensuite comme n’importe quelle autre.',
 			steps: '<strong>Sur iPhone</strong>, dans Safari&nbsp;: touchez le bouton Partager, puis «&nbsp;Sur l’écran d’accueil&nbsp;».<br>\n\t\t\t\t<strong>Sur Android</strong>, dans Chrome&nbsp;: ouvrez le menu en haut à droite, puis choisissez «&nbsp;Ajouter à l’écran d’accueil&nbsp;».',
-			note: 'Tech&nbsp;4&nbsp;Fertility prépare des applications pour iPhone et Android. Leur sortie sera annoncée ici&nbsp;; en attendant, l’application web reste la seule version disponible.',
+			note: `${publisherLink} prépare des applications pour iPhone et Android. Leur sortie sera annoncée ici&nbsp;; en attendant, l’application web reste la seule version disponible.`,
 			iphoneAlt: 'Menu de partage de Safari sur iPhone, avec l’option « Sur l’écran d’accueil » entourée.',
 			iphoneCaption: 'iPhone',
 			androidAlt: 'Menu de Chrome sur Android, avec l’option « Ajouter à l’écran d’accueil » entourée.',
@@ -52,7 +54,7 @@ export const home = {
 		accounts: {
 			title: 'Essayer avec un compte de démonstration',
 			text: 'Choisissez le compte correspondant à la méthode qui vous intéresse et connectez-vous avec les identifiants ci-dessous. Ces comptes sont publics&nbsp;: chacun peut les consulter et les modifier, et ils sont réinitialisés toutes les heures. N’y saisissez aucune information personnelle.',
-			billings: 'Billings',
+			billings: 'Billings (CBF)',
 			fertilityCare: 'FertilityCare',
 			password: 'Mot de passe',
 			button: 'Ouvrir la page de connexion',
@@ -72,7 +74,7 @@ export const home = {
 	billings: {
 		eyebrow: 'Histoire',
 		title: 'John et Evelyn Billings, les médecins qui ont appris à lire la glaire',
-		lead: 'La méthode Billings doit son nom à un couple de médecins de Melbourne, en Australie. Leurs travaux ont fait passer le suivi du cycle du calcul des dates à la lecture des signes du corps.',
+		lead: 'À Melbourne, en Australie, un couple de médecins, John et Evelyn Billings, a profondément changé la manière de suivre le cycle. Leurs travaux ont fait passer ce suivi du calcul des dates à la lecture des signes du corps.',
 		timeline: [
 			{ datetime: '1953', label: '1953', text: 'À la demande du père Maurice Catarinich, le neurologue John Billings entreprend de rechercher une méthode de régulation naturelle des naissances. La méthode Ogino-Knaus, fondée sur un calcul de calendrier, est jugée trop imprécise. Son intuition&nbsp;: la glaire cervicale, dont l’aspect et la texture changent au fil du cycle, renseigne mieux que n’importe quel calcul sur l’approche de l’ovulation.' },
 			{ datetime: '1964-12', label: 'Décembre 1964', text: 'John Billings publie son premier livre, <cite lang="en">The Ovulation Method</cite>. Son épouse Evelyn, elle aussi médecin, en a relu le manuscrit&nbsp;: c’est ainsi qu’elle s’intéresse à ses travaux.' },
@@ -82,7 +84,7 @@ export const home = {
 		turningPoint: {
 			title: 'Un tournant',
 			paragraphs: [
-				'Cette double validation, par l’observation et par les dosages hormonaux, a donné aux méthodes de régulation naturelle des naissances une base scientifique qui ne reposait plus sur le seul calcul des dates. La méthode Billings a inspiré la méthode symptothermique, qui associe l’observation de la glaire à la mesure de la température. Les travaux des Billings sont aussi à l’origine des méthodes actuelles d’observation de la fertilité, qui croisent plusieurs signes du corps.',
+				'Cette double validation, par l’observation et par les dosages hormonaux, a donné aux méthodes de régulation naturelle des naissances une base scientifique qui ne reposait plus sur le seul calcul des dates. Les travaux des Billings ont largement contribué à faire de la glaire cervicale un repère central. On la retrouve aujourd’hui dans la méthode symptothermique, qui l’associe à la mesure de la température, comme dans les autres méthodes d’observation de la fertilité.',
 				'Plus de soixante-dix ans après les premières recherches de John Billings, savoir observer sa glaire cervicale demeure l’un des fondements de la connaissance de son cycle.',
 			],
 		},
@@ -94,7 +96,7 @@ export const home = {
 				{ href: 'https://en.wikipedia.org/wiki/John_and_Evelyn_Billings', hreflang: 'en', label: 'John and Evelyn Billings, Wikipédia (anglais)' },
 				{ href: 'https://fr.wikipedia.org/wiki/M%C3%A9thode_Billings', label: 'Méthode Billings, Wikipédia' },
 				{ href: "https://www.sfsc.fr/pdf/La%20m%C3%A9thode%20de%20l'ovulation%20Billings.pdf", label: 'La méthode de l’ovulation Billings, SFSC (PDF)' },
-				{ href: 'https://link.springer.com/article/10.1007/BF01849421', hreflang: 'en', label: 'Fertility awareness in the 1990s: the Billings Ovulation Method, Springer (anglais)' },
+				{ href: 'https://link.springer.com/article/10.1007/BF01849421', hreflang: 'en', label: 'Fertility awareness in the 1990s, Springer (anglais)' },
 				{ href: 'http://www.cmq.org.uk/CMQ/2015/May/symptothermal_method_of_natural.html', hreflang: 'en', label: 'The Symptothermal Method of Natural Family Planning, Catholic Medical Quarterly (anglais)' },
 			] as { href: string; hreflang?: string; label: string }[],
 		},
@@ -107,7 +109,7 @@ export const home = {
 	support: {
 		title: 'Soutenir moncycle.app',
 		intro: 'moncycle.app est gratuite&nbsp;: ni abonnement, ni publicité, ni revente de données. Son fonctionnement repose entièrement sur vos dons.',
-		details: 'Ces dons financent les serveurs et l’envoi des e-mails chez OVH, le nom de domaine, ainsi que le temps nécessaire pour corriger, sécuriser et faire évoluer l’application au fil des années. Ils sont versés à Tech&nbsp;4&nbsp;Fertility, l’association qui porte le projet.',
+		details: `Ces dons financent les serveurs et l’envoi des e-mails chez OVH, le nom de domaine, ainsi que le temps nécessaire pour corriger, sécuriser et faire évoluer l’application au fil des années. Ils sont versés à ${publisherLink}, l’association qui porte le projet.`,
 		button: 'Faire un don',
 		note: 'Paiement sécurisé via HelloAsso, plateforme française de dons aux associations.',
 	},
@@ -117,6 +119,9 @@ export const home = {
 	},
 	news: {
 		title: 'Actualités',
+		lead: `Toutes les actualités de moncycle.app et de l’association sont publiées sur le site de ${publisherLink}, avec un flux RSS pour les suivre.`,
+		all: 'Toutes les actualités',
+		allUrl: 'https://tech4fertility.org/fr/actualites/',
 		button: 'Lire la suite',
 	},
 	terms: {
