@@ -1,0 +1,39 @@
+@layer sections {
+	/* 404 page ------------------------------------------------------------ */
+	.not-found { min-height: 75svh; display: grid; align-content: center; text-align: center; }
+	.not-found .prose { margin-inline: auto; }
+
+	.not-found-code {
+		margin: 0 0 var(--space-5);
+		font-family: var(--font-heading);
+		font-size: clamp(6rem, 4rem + 14vw, 12rem);
+		font-weight: 800;
+		line-height: 1;
+		letter-spacing: -0.04em;
+		color: var(--primary);
+	}
+
+	/* Logo colors running through the digits, where background-clip: text is supported */
+	@supports (background-clip: text) or (-webkit-background-clip: text) {
+		.not-found-code {
+			background: linear-gradient(120deg, var(--accent), var(--logo-yellow), var(--primary), var(--accent));
+			background-size: 300% 100%;
+			-webkit-background-clip: text;
+			background-clip: text;
+			color: transparent;
+			animation: not-found-shift 8s linear infinite;
+		}
+	}
+
+	@keyframes not-found-shift {
+		to { background-position: 300% 0; }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.not-found-code { animation: none; }
+	}
+
+	.not-found-lang + .not-found-lang { margin-top: var(--space-6); }
+	.not-found-lang[hidden] { display: none; }
+	.not-found-lang h2 { margin-bottom: var(--space-2); }
+}

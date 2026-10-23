@@ -17,7 +17,7 @@ export const defaultLang: Lang = 'fr';
 /** Language of the pages that belong to no language: the selector at "/" and the 404 page */
 export const internationalLang: Lang = 'en';
 
-/** Language of /llms.txt, the summary read by language models (the other languages are /llms-<lang>.txt) */
+/** Language of /llms.txt, the summary read by language models (the other languages are /<lang>/llms.txt) */
 export const llmsLang: Lang = 'en';
 
 /** The other languages, in the order of `locales` */

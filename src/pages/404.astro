@@ -1,23 +1,45 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
 import { getMessages } from '../i18n';
 import { homePath, internationalLang, langs, locales } from '../i18n/config';
 
-// GitHub Pages serves a single 404.html for every language: it speaks all of them.
+// GitHub Pages serves a single 404.html for every missing URL: without JavaScript (or outside a language
+// folder) it speaks every language, with the footer of the international language. Under /<lang>/… the
+// inline script below keeps only that language, and its footer.
 const { notFound } = getMessages(internationalLang).ui;
 ---
 <BaseLayout lang={internationalLang} title={notFound.title} description={notFound.description} skipLink={false} noindex>
-	<main id="main" class="section">
+	<main id="main" class="not-found section">
 		<div class="container prose">
-			{langs.map((code, i) => {
+			<h1 class="not-found-code">404</h1>
+			{langs.map((code) => {
 				const text = getMessages(code).ui.notFound;
+				const { htmlLang, dir } = locales[code];
 				return (
-					<section lang={locales[code].htmlLang}>
-						{i === 0 ? <h1>{text.heading}</h1> : <h2>{text.heading}</h2>}
-						<p>{text.text} <a href={homePath(code)} hreflang={locales[code].htmlLang}>{text.link}</a>.</p>
+					<section class="not-found-lang" lang={htmlLang} dir={dir} data-not-found={code} data-title={text.title}>
+						<h2>{text.heading}</h2>
+						<p>{text.text} <a href={homePath(code)} hreflang={htmlLang}>{text.link}</a>.</p>
 					</section>
 				);
 			})}
 		</div>
 	</main>
+	{langs.map((code) => (
+		<div data-not-found={code} hidden={code !== internationalLang}>
+			<Footer lang={code} onHome={false} />
+		</div>
+	))}
+	<!-- Inline (not bundled) so that it runs before the first paint: no flash of the other languages -->
+	<script is:inline>
+		(() => {
+			const code = location.pathname.split('/')[1];
+			const match = document.querySelector(`section[data-not-found="${CSS.escape(code)}"]`);
+			if (!code || !match) return;
+			document.querySelectorAll('[data-not-found]').forEach((el) => { el.hidden = el.dataset.notFound !== code; });
+			document.documentElement.lang = match.lang;
+			document.documentElement.dir = match.dir;
+			document.title = match.dataset.title;
+		})();
+	</script>
 </BaseLayout>

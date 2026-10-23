@@ -10,9 +10,12 @@ import { donationsEnabled, urls } from '../data/site';
 
 interface Props {
 	lang: Lang;
+	/** Whether the footer sits on the home page; elsewhere its in-page anchors point to the home page */
+	onHome?: boolean;
 }
 
-const { lang } = Astro.props;
+const { lang, onHome = true } = Astro.props;
+const home = onHome ? '' : homePath(lang);
 const { footer } = getMessages(lang).ui;
 const paths = Object.fromEntries(langs.map((code) => [code, homePath(code)])) as Record<Lang, string>;
 ---
@@ -20,7 +23,7 @@ const paths = Object.fromEntries(langs.map((code) => [code, homePath(code)])) as
 	<div class="container">
 		<div class="footer-top">
 			<div class="footer-brand">
-				<a class="brand" href="#top">
+				<a class="brand" href={`${home}#top`}>
 					<Icon name="logo" />
 					<span class="wordmark">mon<b>cycle</b>.app</span>
 				</a>
@@ -39,9 +42,9 @@ const paths = Object.fromEntries(langs.map((code) => [code, homePath(code)])) as
 				<h2>{footer.organization.title}</h2>
 				<ul>
 					<li><a href={urls.tech4fertility} target="_blank" rel="noopener">tech4fertility.org</a></li>
-					{donationsEnabled && <li><a href="#support">{footer.organization.donate}</a></li>}
+					{donationsEnabled && <li><a href={`${home}#support`}>{footer.organization.donate}</a></li>}
 					<li><a href={legalPath(lang)}>{footer.organization.terms}</a></li>
-					<li data-news-nav hidden><a href="#news">{footer.organization.news}</a></li>
+					<li data-news-nav hidden><a href={`${home}#news`}>{footer.organization.news}</a></li>
 				</ul>
 			</div>
 			<div class="footer-col">
@@ -58,7 +61,7 @@ const paths = Object.fromEntries(langs.map((code) => [code, homePath(code)])) as
 				<h2>{footer.help.title}</h2>
 				<ul>
 					{footer.help.links.map(({ label, href }) => <li><a href={href} target="_blank" rel="noopener">{label}</a></li>)}
-					<li><a href="#faq">{footer.help.faq}</a></li>
+					<li><a href={`${home}#faq`}>{footer.help.faq}</a></li>
 				</ul>
 			</div>
 			<div class="footer-col">

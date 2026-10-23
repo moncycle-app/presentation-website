@@ -14,7 +14,7 @@ The application itself is French only; the English pages say so.
 Pages: a language selector at `/` (the `x-default`, no redirect), the home page of each language (`/fr/`, `/en/`),
 the terms of use of each language (`/fr/term_of_service.html`, `/en/term_of_service.html`) and a multilingual
 404 page. The former `/ToS/term_of_service_{fr,en}.html` URLs remain as canonical + refresh stubs.
-Generated files: `/sitemap.xml`, `/robots.txt`, `/llms.txt` (English) and `/llms-<lang>.txt` (other languages).
+Generated files: `/sitemap.xml`, `/robots.txt`, `/llms.txt` (English) and `/<lang>/llms.txt` (other languages).
 
 ## Commands
 
@@ -63,7 +63,7 @@ src/
     [lang]/term_of_service.astro   Terms of use of each language
     ToS/term_of_service_[lang].astro   Former URLs, canonical + refresh stubs (do not add languages)
     404.astro              Multilingual 404
-    sitemap.xml.ts  robots.txt.ts  llms.txt.ts  llms-[lang].txt.ts   Generated from the site URL and the languages
+    sitemap.xml.ts  robots.txt.ts  llms.txt.ts  [lang]/llms.txt.ts   Generated from the site URL and the languages
   scripts/                 Browser scripts in TypeScript (main.ts is the entry point); no text lives in them
   styles/
     global.css             Imports the files below, in this order
@@ -99,7 +99,7 @@ use `langs`, `otherLangs()`, `homePath()`, `legalPath()` and `alternates()`.
    of the French reference) and `llms.ts`.
 3. Register it in `src/i18n/index.ts`.
 4. Run `npm run build`: TypeScript lists what is missing. Nothing else changes: the routes, hreflang, sitemap,
-   switcher, banner, selector page, 404 and `/llms-<lang>.txt` follow. For a right-to-left language set `dir: 'rtl'`
+   switcher, banner, selector page, 404 and `/<lang>/llms.txt` follow. For a right-to-left language set `dir: 'rtl'`
    and check the styles (logical properties).
 5. Adapt what is local: external resources (e.g. where to find a teacher), the licence deed link, date and number
    formats of the fallback key figures.
@@ -148,7 +148,7 @@ component, with their text in `home.ts`.
   (use `npm run preview` locally; opening the HTML from disk does not work).
 - The sitemap is a custom endpoint (not `@astrojs/sitemap`) to control the hreflang alternates. Update
   `homeLastmod` (`site.ts`) and `lastmod` (each `i18n/<lang>/legal.ts`) when the content changes.
-- `/llms.txt` is the English summary (`llmsLang`), `/llms-<lang>.txt` the others, each a template in
+- `/llms.txt` is the English summary (`llmsLang`), `/<lang>/llms.txt` the others, each a template in
   `src/i18n/<lang>/llms.ts`: keep them consistent with the page content.
 
 ## Deployment

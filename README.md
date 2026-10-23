@@ -27,7 +27,7 @@ src/
                    features, methods, tech links, screenshots texts, terms of use, llms summary
   layouts/         BaseLayout (home pages) and LegalLayout (terms)
   pages/           index (language selector), [lang]/index, [lang]/term_of_service, 404, and generated
-                   sitemap.xml, robots.txt, llms.txt, llms-[lang].txt
+                   sitemap.xml, robots.txt, llms.txt, [lang]/llms.txt
   scripts/         browser scripts (TypeScript), bundled by Astro
   styles/          global.css (cascade layers: tokens, base, components, sections/*) and legal.css
   utils/
@@ -40,7 +40,7 @@ src/
 - **Screenshots**: add the PNG to `src/assets/screenshots/`, an entry in `src/data/screenshots.ts` and its texts in each `src/i18n/<lang>/screenshots.ts`.
 - **Terms**: text in `src/i18n/<lang>/Terms.astro`; titles, table of contents and `lastmod` in `src/i18n/<lang>/legal.ts`.
 - **Sitemap dates**: `homeLastmod` in `src/data/site.ts` and `lastmod` in each `legal.ts`.
-- `llms.txt` (English) and `llms-<lang>.txt` are templates in `src/i18n/<lang>/llms.ts`; keep them in sync with the content.
+- `llms.txt` (English) and `<lang>/llms.txt` are templates in `src/i18n/<lang>/llms.ts`; keep them in sync with the content.
 
 ## Deployment
 
