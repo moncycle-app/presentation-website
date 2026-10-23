@@ -25,7 +25,6 @@ Key facts (reference: the terms of service, version 2.0, in effect from 1 Novemb
 - [Natural family planning methods](${site}en/#methods): compatibility of the application with each method.
 - [John and Evelyn Billings](${site}en/#billings): history of the Billings method, with the 1972 Lancet article and the sources.
 - [Frequently asked questions](${site}en/#faq)
-- [Support moncycle.app](${site}en/#support)
 - [News](${site}en/#news)
 
 ## Terms of service

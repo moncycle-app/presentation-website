@@ -6,7 +6,7 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
 import coupleCrop from '../assets/images/moncycle_app_couple_crop_web.png';
 import { getMessages } from '../i18n';
 import { homePath, langs, legalPath, type Lang } from '../i18n/config';
-import { urls } from '../data/site';
+import { donationsEnabled, urls } from '../data/site';
 
 interface Props {
 	lang: Lang;
@@ -39,7 +39,7 @@ const paths = Object.fromEntries(langs.map((code) => [code, homePath(code)])) as
 				<h2>{footer.organization.title}</h2>
 				<ul>
 					<li><a href={urls.tech4fertility} target="_blank" rel="noopener">tech4fertility.org</a></li>
-					<li><a href="#support">{footer.organization.donate}</a></li>
+					{donationsEnabled && <li><a href="#support">{footer.organization.donate}</a></li>}
 					<li><a href={legalPath(lang)}>{footer.organization.terms}</a></li>
 					<li data-news-nav hidden><a href="#news">{footer.organization.news}</a></li>
 				</ul>

@@ -10,7 +10,7 @@ interface Props {
 const { news } = getMessages(Astro.props.lang).home;
 ---
 <!-- News: filled and revealed by scripts/news.ts; stays hidden if there is nothing recent to show -->
-<section class="section section-alt news" id="news" aria-labelledby="news-title" hidden>
+<section class="section news" id="news" aria-labelledby="news-title" hidden>
 	<div class="container">
 		<div class="section-head">
 			<h2 id="news-title">{news.title}</h2>

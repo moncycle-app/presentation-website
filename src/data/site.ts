@@ -7,6 +7,9 @@ export const publisherName = 'Tech 4 Fertility';
 /** Last modification of the home pages, for the sitemap */
 export const homeLastmod = '2026-10-23';
 
+/** Show the donation section (#support) and the links to it; off while the HelloAsso page does not exist */
+export const donationsEnabled = false;
+
 /** Date of the fallback key figures written in the HTML of the home page (the texts are in src/i18n/<lang>/home.ts) */
 export const figuresDate = '2026-10-19';
 

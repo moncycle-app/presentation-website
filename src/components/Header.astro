@@ -3,7 +3,7 @@ import Icon from './Icon.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import { getMessages } from '../i18n';
 import { homePath, langs, type Lang } from '../i18n/config';
-import { urls } from '../data/site';
+import { donationsEnabled, urls } from '../data/site';
 
 interface Props {
 	lang: Lang;
@@ -11,6 +11,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const { header } = getMessages(lang).ui;
+const links = header.links.filter(({ href }) => donationsEnabled || href !== '#support');
 const paths = Object.fromEntries(langs.map((code) => [code, homePath(code)])) as Record<Lang, string>;
 ---
 <header class="site-header">
@@ -30,7 +31,7 @@ const paths = Object.fromEntries(langs.map((code) => [code, homePath(code)])) as
 		</button>
 		<nav class="site-nav" id="site-nav" aria-label={header.navLabel}>
 			<ul>
-				{header.links.map(({ href, label }) => <li><a href={href}>{label}</a></li>)}
+				{links.map(({ href, label }) => <li><a href={href}>{label}</a></li>)}
 			</ul>
 		</nav>
 	</div>

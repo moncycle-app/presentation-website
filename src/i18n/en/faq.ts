@@ -36,9 +36,9 @@ export const faq: FaqEntry[] = [
 	},
 	{
 		id: 'faq-free',
-		question: `Is the application really free? How can I support it?`,
+		question: `Is the application really free?`,
 		answer: [
-			`<p>Yes. There is no subscription, no paid version and no advertising, and your data is never sold. The application is funded by donations to Tech&nbsp;4&nbsp;Fertility. These donations cover hosting, the domain name and the time spent on maintenance. To make a donation, go to the <a href='#support'>Support moncycle.app</a> section.</p>`,
+			`<p>Yes. There is no subscription, no paid version and no advertising, and your data is never sold. The application is funded by donations to Tech&nbsp;4&nbsp;Fertility. These donations cover hosting, the domain name and the time spent on maintenance.</p>`,
 		],
 	},
 	{

@@ -25,7 +25,6 @@ Faits à retenir (référence : les conditions d’utilisation, version 2.0, en 
 - [Les méthodes de régulation naturelle des naissances](${site}fr/#methods) : compatibilité de l’application avec chaque méthode.
 - [John et Evelyn Billings](${site}fr/#billings) : histoire de la méthode Billings, avec l’article du Lancet de 1972 et les sources.
 - [Questions fréquentes](${site}fr/#faq)
-- [Soutenir moncycle.app](${site}fr/#support)
 - [Actualités](${site}fr/#news)
 
 ## Conditions d’utilisation

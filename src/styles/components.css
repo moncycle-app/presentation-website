@@ -152,8 +152,10 @@
 
 	/* Section shell */
 	.section { padding-block: var(--space-8); }
-	/* #1e824c only reaches 4.3:1 on --surface-2: the alternate sections use the stronger green */
-	.section-alt { background: var(--surface-2); --primary: var(--primary-strong); }
+	/* Every other visible section gets the alternate background, counted from the sections actually shown
+	   (the donation section can be switched off, the news section is hidden until there is news).
+	   #1e824c only reaches 4.3:1 on --surface-2: the alternate sections use the stronger green */
+	main > .section:nth-child(odd of .section:not([hidden])) { background: var(--surface-2); --primary: var(--primary-strong); }
 
 	.section-head { max-width: var(--prose); margin-bottom: var(--space-6); }
 	.section-head > :last-child { margin-bottom: 0; }

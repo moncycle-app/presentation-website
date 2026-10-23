@@ -36,9 +36,9 @@ export const faq: FaqEntry[] = [
 	},
 	{
 		id: 'faq-free',
-		question: `L’application est-elle vraiment gratuite&nbsp;? Comment la soutenir&nbsp;?`,
+		question: `L’application est-elle vraiment gratuite&nbsp;?`,
 		answer: [
-			`<p>Oui. Il n’y a ni abonnement, ni version payante, ni publicité, et vos données ne sont jamais vendues. L’application est financée par les dons versés à Tech&nbsp;4&nbsp;Fertility&nbsp;: ils couvrent l’hébergement, le nom de domaine et le temps consacré à sa maintenance. Pour faire un don, rendez-vous dans la rubrique <a href='#support'>Soutenir moncycle.app</a>.</p>`,
+			`<p>Oui. Il n’y a ni abonnement, ni version payante, ni publicité, et vos données ne sont jamais vendues. L’application est financée par les dons versés à Tech&nbsp;4&nbsp;Fertility&nbsp;: ils couvrent l’hébergement, le nom de domaine et le temps consacré à sa maintenance.</p>`,
 		],
 	},
 	{

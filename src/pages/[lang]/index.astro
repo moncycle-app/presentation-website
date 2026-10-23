@@ -18,6 +18,7 @@ import Terms from '../../components/Terms.astro';
 import Footer from '../../components/Footer.astro';
 import { getMessages } from '../../i18n';
 import { homePath, langs, type Lang } from '../../i18n/config';
+import { donationsEnabled } from '../../data/site';
 import { faqPage, siteGraph } from '../../data/structured-data';
 import { screenshots } from '../../data/screenshots';
 
@@ -53,7 +54,7 @@ const structuredData = [siteGraph(Astro.site!, lang, screenshots[0].image.src), 
 		<Methods lang={lang} />
 		<Billings lang={lang} />
 		<Faq lang={lang} />
-		<Support lang={lang} />
+		{donationsEnabled && <Support lang={lang} />}
 		<Tech lang={lang} />
 		<News lang={lang} />
 		<Terms lang={lang} />
