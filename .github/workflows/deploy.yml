@@ -1,3 +1,6 @@
+# Builds the site on every push and pull request (a passing build means `astro check` passed too)
+# and deploys pushes to the `webpage` branch to GitHub Pages.
+# Repository setting required: Settings → Pages → Source = "GitHub Actions".
 name: Build and deploy
 
 on:
@@ -6,27 +9,33 @@ on:
   pull_request:
   workflow_dispatch:
 
+# Least privilege by default; the deploy job asks for more.
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
+# One run per branch or PR: a newer push supersedes an older build of the same ref,
+# but a pull request never cancels a production deployment.
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
+
       - run: npm ci
+
       - run: npm run build
-      - uses: actions/upload-pages-artifact@v3
+
+      - if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v5
         with:
           path: dist
 
@@ -34,9 +43,12 @@ jobs:
     if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
