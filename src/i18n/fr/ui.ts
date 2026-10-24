@@ -5,8 +5,8 @@ export const ui = {
 	meta: {
 		title: 'moncycle.app · carnet de suivi de cycle gratuit pour les méthodes Billings (CBF) et FertilityCare',
 		description: 'moncycle.app est une application web gratuite qui permet de noter chaque jour vos observations de glaire cervicale et de température, et de tenir votre tableau selon la méthode Billings ou FertilityCare. Sans publicité, sans prédiction, hébergée en France.',
-		socialTitle: 'moncycle.app · le carnet de suivi de cycle au service des méthodes de régulation naturelle des naissances',
-		socialDescription: 'Notez vos observations de glaire cervicale et de température, et retrouvez votre tableau Billings ou FertilityCare sur tous vos appareils. Gratuit, sans publicité et sans prédiction.',
+		socialTitle: 'Votre carnet de cycle, simple et gratuit · moncycle.app',
+		socialDescription: 'Notez votre glaire cervicale et votre température, retrouvez votre tableau Billings ou FertilityCare partout. Gratuit, sans publicité ni prédiction.',
 		socialImageAlt: 'Carte d’aperçu moncycle.app : « Votre carnet de cycle, simple et gratuit », avec une capture du tableau de l’application',
 	},
 	// schema.org descriptions (JSON-LD)

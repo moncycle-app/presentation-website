@@ -1,0 +1,40 @@
+---
+// Link preview tags (Open Graph, Twitter), shared by every page. Placed right after <meta charset> and
+// viewport: some crawlers (WhatsApp) only read the beginning of the document. Exactly one og:image.
+import { getMessages } from '../i18n';
+import { locales, otherLangs, type Lang } from '../i18n/config';
+import { siteName } from '../data/site';
+import { ogImagePath, ogImageSize, ogImageType } from '../data/og';
+
+interface Props {
+	lang: Lang;
+	/** Canonical URL of the page */
+	url: URL | string;
+	title: string;
+	description: string;
+	/** List the other languages as og:locale:alternate (pages that exist in every language) */
+	localeAlternates?: boolean;
+}
+
+const { lang, url, title, description, localeAlternates = false } = Astro.props;
+const image = new URL(ogImagePath(lang), Astro.site);
+const imageAlt = getMessages(lang).ui.meta.socialImageAlt;
+---
+<meta property="og:type" content="website">
+<meta property="og:url" content={url}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:site_name" content={siteName}>
+<meta property="og:locale" content={locales[lang].ogLocale}>
+{localeAlternates && otherLangs(lang).map((code) => <meta property="og:locale:alternate" content={locales[code].ogLocale}>)}
+<meta property="og:image" content={image}>
+<meta property="og:image:secure_url" content={image}>
+<meta property="og:image:type" content={ogImageType}>
+<meta property="og:image:width" content={String(ogImageSize.width)}>
+<meta property="og:image:height" content={String(ogImageSize.height)}>
+<meta property="og:image:alt" content={imageAlt}>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content={title}>
+<meta name="twitter:description" content={description}>
+<meta name="twitter:image" content={image}>
+<meta name="twitter:image:alt" content={imageAlt}>

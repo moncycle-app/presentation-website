@@ -48,6 +48,8 @@ export interface ScreenshotText {
 
 export interface LegalPage {
 	title: string;
+	/** Open Graph / Twitter title, kept short for link previews */
+	socialTitle: string;
 	description: string;
 	/** Heading, one entry per line */
 	h1: string[];

@@ -3,6 +3,7 @@ import type { LegalPage } from '../types';
 // Terms of use and privacy policy. French is the reference version; the text lives in Terms.astro.
 export const legal: LegalPage = {
 	title: "moncycle.app – Terms of service and privacy policy",
+	socialTitle: "Terms of service and privacy · moncycle.app",
 	description: "Terms of service and privacy policy of moncycle.app, the cycle charting application for natural family planning methods.",
 	h1: ['moncycle.app', "Terms of service and privacy policy"],
 	version: 'Version 2.0 · in effect from 1 November 2026',

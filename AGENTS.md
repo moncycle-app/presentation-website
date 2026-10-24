@@ -14,7 +14,8 @@ The application itself is French only; the English pages say so.
 Pages: a language selector at `/` (the `x-default`, no redirect), the home page of each language (`/fr/`, `/en/`),
 the terms of use of each language (`/fr/term_of_service.html`, `/en/term_of_service.html`) and a multilingual
 404 page. The former `/ToS/term_of_service_{fr,en}.html` URLs remain as canonical + refresh stubs.
-Generated files: `/sitemap.xml`, `/robots.txt`, `/llms.txt` (English) and `/<lang>/llms.txt` (other languages).
+Generated files: `/sitemap.xml`, `/robots.txt`, `/llms.txt` (English), `/<lang>/llms.txt` (other languages) and
+`/og/preview-<lang>.<hash>.jpg` (link preview images).
 
 ## Commands
 
@@ -25,8 +26,10 @@ Generated files: `/sitemap.xml`, `/robots.txt`, `/llms.txt` (English) and `/<lan
 | Production build (`./dist`)  | `npm run build`                             |
 | Preview the production build | `npm run preview`                           |
 | Type check only              | `npx astro check`                           |
+| Check the link preview tags  | `npm run test:og` (after a build)           |
 
-- `npm run build` runs `astro check` then `astro build`: **a passing build means types are valid**.
+- `npm run build` runs `astro check`, `astro build`, then `test:og`: **a passing build means types are valid** and
+  every page has a valid link preview.
   Run it before considering a task done.
 - `package-lock.json` is committed; only change it through `npm install`.
 - `@astrojs/check` does not support TypeScript 7 yet: keep `typescript` on `^6`.
@@ -37,17 +40,19 @@ Generated files: `/sitemap.xml`, `/robots.txt`, `/llms.txt` (English) and `/<lan
 ## Structure
 
 ```
-public/                    Files served as is, with a fixed URL: favicons, CNAME, image/preview-<lang>.jpg (1200×630) and
-                           image/preview-square-<lang>.jpg (1200×1200, kept under 300 KB for WhatsApp),
-                           image/apple-touch-icon.png, video/
+public/                    Files served as is, with a fixed URL: favicons (ico, svg, 16 and 32 px png),
+                           apple-touch-icon.png (180×180, at the root where iOS looks for it), CNAME, video/
+scripts/test-og.mjs        Checks the link preview tags and images of every page in dist/ (`npm run test:og`)
 src/
   assets/
     fonts/                 Montserrat variable font (loaded through the Astro Fonts API)
     images/                Drawings, install screenshots, badge, e-mail image
+    og/                    preview-<lang>.jpg, the link preview card of each language (see "Link previews")
     screenshots/           capture1…10.png, the app screenshots of the gallery
   components/              One component per section of the home page (each takes a `lang` prop), plus Icon,
-                           IconSprite, EmailLink, LanguageSwitcher, LanguageBanner
-  data/                    Language-independent data: icons, site constants and URLs, screenshots (images), structured data
+                           IconSprite, EmailLink, LanguageSwitcher, LanguageBanner, SocialMeta (link preview tags)
+  data/                    Language-independent data: icons, site constants and URLs, screenshots (images), structured data,
+                           og.ts (link preview images)
   i18n/                    Everything that exists once per language (see "Languages" below)
     config.ts              THE list of languages, default/international languages, path helpers
     index.ts               Registry: getMessages(lang), getTerms(lang)
@@ -64,6 +69,7 @@ src/
     [lang]/term_of_service.astro   Terms of use of each language
     ToS/term_of_service_[lang].astro   Former URLs, canonical + refresh stubs (do not add languages)
     404.astro              Multilingual 404
+    og/[file].ts           Link preview images, copied as is under a content-hashed name
     sitemap.xml.ts  robots.txt.ts  llms.txt.ts  [lang]/llms.txt.ts   Generated from the site URL and the languages
   scripts/                 Browser scripts in TypeScript (main.ts is the entry point); no text lives in them
   styles/
@@ -122,7 +128,23 @@ component, with their text in `home.ts`.
 
 - Put images in `src/assets/` and render them with `<Picture>` / `<Image>` from `astro:assets`: Astro generates the
   WebP and responsive sizes, and fingerprints the files. Do not hand-make `-360.webp` style variants.
-- `public/` is only for files whose URL must not change (favicons, `CNAME`, Open Graph image, video).
+- `public/` is only for files whose URL must not change (favicons, `CNAME`, video).
+
+## Link previews
+
+What a link to the site looks like when shared (WhatsApp, iMessage, Signal, Facebook, X, LinkedIn, Slack, Discord…).
+
+- One card per language, `src/assets/og/preview-<lang>.jpg`: **1200×630 JPEG under 300 KB** (WhatsApp drops larger
+  images; aim for 200 KB). Keep the margins (60 px or more), nothing essential in the top and bottom 20 px (X crops
+  to 2:1), and the title at 48 px or more. The source of the current cards is not versioned.
+- They are not imported (no `astro:assets` conversion or resizing): `src/data/og.ts` reads them and
+  `src/pages/og/[file].ts` serves them as `/og/preview-<lang>.<hash>.jpg`. Replacing a file changes its URL, which
+  makes every platform fetch it again.
+- `SocialMeta.astro` writes the tags, right after `<meta charset>` and viewport, on every page (both layouts and the
+  `ToS/` stubs): exactly one `og:image`, `twitter:card` = `summary_large_image`. A page without its own card uses
+  the card of its language. Social titles stay around 44 to 60 characters (`socialTitle` in `ui.ts` and
+  `legal.ts`), descriptions 155 at most.
+- `npm run test:og` (part of `npm run build`) fails if a page breaks one of these rules.
 - The e-mail address never appears in clear text in the HTML: use `EmailLink` (an image, replaced by a
   `mailto:` link by `scripts/email.ts`).
 

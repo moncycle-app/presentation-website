@@ -2,9 +2,9 @@
 import { Font } from 'astro:assets';
 import '../styles/global.css';
 import IconSprite from '../components/IconSprite.astro';
+import SocialMeta from '../components/SocialMeta.astro';
 import { getMessages } from '../i18n';
-import { alternates, locales, otherLangs, type Lang } from '../i18n/config';
-import { siteName } from '../data/site';
+import { alternates, locales, type Lang } from '../i18n/config';
 
 interface Props {
 	lang: Lang;
@@ -13,7 +13,6 @@ interface Props {
 	/** Open Graph / Twitter title, if different from the page title */
 	socialTitle?: string;
 	socialDescription?: string;
-	socialImageAlt?: string;
 	/** Path of the same page in each language (hreflang links); omit for a page that exists in one version only */
 	paths?: (lang: Lang) => string;
 	/** URL of the x-default alternate (the page for visitors whose language is not offered) */
@@ -30,20 +29,17 @@ const {
 	description,
 	socialTitle = title,
 	socialDescription = description,
-	socialImageAlt = getMessages(lang).ui.meta.socialImageAlt,
 	paths,
 	defaultPath,
 	noindex = false,
 	skipLink = true,
 } = Astro.props;
 
-const { htmlLang, ogLocale, dir } = locales[lang];
+const { htmlLang, dir } = locales[lang];
 const ui = getMessages(lang).ui;
 
 // build.format is 'file': the home page is /fr/index.html on disk but must be canonical as /fr/
 const canonical = new URL(Astro.url.pathname.replace(/index\.html$/, ''), Astro.site);
-const socialImage = new URL(`/image/preview-${lang}.jpg`, Astro.site);
-const socialImageSquare = new URL(`/image/preview-square-${lang}.jpg`, Astro.site);
 const versions = paths ? alternates(paths, Astro.site!) : [];
 ---
 <!doctype html>
@@ -51,6 +47,7 @@ const versions = paths ? alternates(paths, Astro.site!) : [];
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<SocialMeta lang={lang} url={canonical} title={socialTitle} description={socialDescription} localeAlternates={Boolean(paths)} />
 	<title>{title}</title>
 	<meta name="description" content={description}>
 	<link rel="canonical" href={canonical}>
@@ -64,30 +61,9 @@ const versions = paths ? alternates(paths, Astro.site!) : [];
 
 	<link rel="icon" href="/favicon.ico" sizes="any">
 	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-	<link rel="apple-touch-icon" href="/image/apple-touch-icon.png">
-
-	<meta property="og:type" content="website">
-	<meta property="og:locale" content={ogLocale}>
-	{paths && otherLangs(lang).map((code) => <meta property="og:locale:alternate" content={locales[code].ogLocale}>)}
-	<meta property="og:site_name" content={siteName}>
-	<meta property="og:url" content={canonical}>
-	<meta property="og:title" content={socialTitle}>
-	<meta property="og:description" content={socialDescription}>
-	<meta property="og:image" content={socialImage}>
-	<meta property="og:image:type" content="image/jpeg">
-	<meta property="og:image:width" content="1200">
-	<meta property="og:image:height" content="630">
-	<meta property="og:image:alt" content={socialImageAlt}>
-	<meta property="og:image" content={socialImageSquare}>
-	<meta property="og:image:type" content="image/jpeg">
-	<meta property="og:image:width" content="1200">
-	<meta property="og:image:height" content="1200">
-	<meta property="og:image:alt" content={socialImageAlt}>
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content={socialTitle}>
-	<meta name="twitter:description" content={socialDescription}>
-	<meta name="twitter:image" content={socialImage}>
-	<meta name="twitter:image:alt" content={socialImageAlt}>
+	<link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+	<link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 	<Font cssVariable="--font-montserrat" preload />
 	<script is:inline>document.documentElement.classList.replace('no-js', 'js');</script>

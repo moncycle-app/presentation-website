@@ -5,8 +5,8 @@ export const ui = {
 	meta: {
 		title: 'moncycle.app · free cycle charting notebook for the Billings (CBF) and FertilityCare methods',
 		description: 'moncycle.app is a free web application. Record your cervical mucus and temperature observations each day, and keep your chart according to the Billings or FertilityCare method. No advertising, no predictions, hosted in France.',
-		socialTitle: 'moncycle.app · the cycle charting notebook for natural family planning methods',
-		socialDescription: 'Record your cervical mucus and temperature observations, and find your Billings or FertilityCare chart on all your devices. Free, with no advertising and no predictions.',
+		socialTitle: 'Your cycle chart, simple and free · moncycle.app',
+		socialDescription: 'Record your cervical mucus and temperature observations, and find your Billings or FertilityCare chart anywhere. Free, no advertising, no predictions.',
 		socialImageAlt: 'moncycle.app preview card: “Your cycle chart, simple and free”, with a screenshot of the application chart',
 	},
 	// schema.org descriptions (JSON-LD)

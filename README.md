@@ -18,7 +18,7 @@ Optional `.env` (see `.env.example`): `PUBLIC_NEWS_URL` and `PUBLIC_STATS_URL` p
 ## Structure
 
 ```
-public/            files served as is: favicons, CNAME, image/preview.png, apple-touch-icon, video/
+public/            files served as is: favicons, CNAME, apple-touch-icon, video/
 src/
   assets/          images, screenshots and the font (optimised by Astro)
   components/      one component per section of the page (each takes a `lang` prop)
@@ -27,7 +27,7 @@ src/
                    features, methods, tech links, screenshots texts, terms of use, llms summary
   layouts/         BaseLayout (home pages) and LegalLayout (terms)
   pages/           index (language selector), [lang]/index, [lang]/term_of_service, 404, and generated
-                   sitemap.xml, robots.txt, llms.txt, [lang]/llms.txt
+                   sitemap.xml, robots.txt, llms.txt, [lang]/llms.txt, og/ (link preview images)
   scripts/         browser scripts (TypeScript), bundled by Astro
   styles/          global.css (cascade layers: tokens, base, components, sections/*) and legal.css
   utils/

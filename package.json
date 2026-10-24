@@ -8,13 +8,18 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build && npm run test:og",
     "preview": "astro preview",
+    "test:og": "node scripts/test-og.mjs",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.11",
     "astro": "^7.4.1",
     "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "sharp": "^0.35.5"
   }
 }

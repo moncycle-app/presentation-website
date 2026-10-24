@@ -8,13 +8,14 @@ import { selectorGraph } from '../data/structured-data';
 // "/" belongs to no language: it is the x-default of the site and lists every language as plain links.
 // There is deliberately no automatic redirect (crawlers must see every version); the home pages offer
 // a dismissible suggestion based on the browser language instead (components/LanguageBanner.astro).
-const { selector } = getMessages(internationalLang).ui;
+const { selector, meta } = getMessages(internationalLang).ui;
 const structuredData = selectorGraph(Astro.site!);
 ---
 <BaseLayout
 	lang={internationalLang}
 	title={selector.title}
 	description={selector.description}
+	socialTitle={meta.socialTitle}
 	skipLink={false}
 >
 	<script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />

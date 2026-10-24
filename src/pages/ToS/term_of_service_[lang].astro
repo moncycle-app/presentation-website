@@ -1,18 +1,24 @@
 ---
 import type { GetStaticPaths } from 'astro';
+import SocialMeta from '../../components/SocialMeta.astro';
+import { getMessages } from '../../i18n';
 import { legalPath, type Lang } from '../../i18n/config';
 
 // Former URLs of the terms of use, published before the site became multilingual:
 // /ToS/term_of_service_fr.html and /ToS/term_of_service_en.html. GitHub Pages cannot send a 301, so these
 // pages point to the new URL with a canonical link and an immediate refresh. Do not add languages here.
+// They carry the preview tags too: link preview crawlers do not follow the refresh.
 export const getStaticPaths = (() => [{ params: { lang: 'fr' } }, { params: { lang: 'en' } }]) satisfies GetStaticPaths;
 
-const target = new URL(legalPath(Astro.params.lang as Lang), Astro.site).href;
+const lang = Astro.params.lang as Lang;
+const target = new URL(legalPath(lang), Astro.site).href;
+const page = getMessages(lang).legal;
 ---
 <!doctype html>
-<html lang={Astro.params.lang}>
+<html lang={lang}>
 <head>
 	<meta charset="utf-8">
+	<SocialMeta lang={lang} url={target} title={page.socialTitle} description={page.description} />
 	<title>moncycle.app</title>
 	<link rel="canonical" href={target}>
 	<meta http-equiv="refresh" content={`0; url=${target}`}>
