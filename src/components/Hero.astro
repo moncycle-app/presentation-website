@@ -1,9 +1,10 @@
 ---
 import type { ImageMetadata } from 'astro';
-import { getImage, Picture } from 'astro:assets';
+import { getImage } from 'astro:assets';
 import couplePng from '../assets/images/moncycle_app_couple_web.png';
 import coupleCropPng from '../assets/images/moncycle_app_couple_crop_web.png';
-import capture1 from '../assets/screenshots/capture1.png';
+import screenLightPng from '../assets/images/hero_screen_light.png';
+import screenDarkPng from '../assets/images/hero_screen_dark.png';
 import { getMessages } from '../i18n';
 import type { Lang } from '../i18n/config';
 import { urls } from '../data/site';
@@ -21,6 +22,17 @@ const optimise = async (image: ImageMetadata) => ({
 });
 const couple = await optimise(couplePng);
 const coupleCrop = await optimise(coupleCropPng);
+
+// App screenshot: one version per colour scheme, each as webp + png at two widths
+const screenWidths = [360, 720];
+const srcset = async (src: ImageMetadata, format: 'webp' | 'png') =>
+	(await Promise.all(screenWidths.map(async (width) => `${(await getImage({ src, format, width })).src} ${width}w`))).join(', ');
+const screen = {
+	light: { webp: await srcset(screenLightPng, 'webp'), png: await srcset(screenLightPng, 'png') },
+	dark: { webp: await srcset(screenDarkPng, 'webp'), png: await srcset(screenDarkPng, 'png') },
+};
+const screenSizes = '(min-width: 48rem) 10rem, 9rem';
+const screenFallback = await getImage({ src: screenLightPng, format: 'png', width: 360 });
 ---
 <!-- Hero -->
 <section class="hero" id="top" aria-labelledby="hero-title">
@@ -44,15 +56,20 @@ const coupleCrop = await optimise(coupleCropPng);
 				</picture>
 			<div class="hero-squares" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 			<div class="hero-screen device">
-				<Picture
-						src={capture1}
+				<picture>
+					<source media="(prefers-color-scheme: dark)" type="image/webp" srcset={screen.dark.webp} sizes={screenSizes}>
+					<source media="(prefers-color-scheme: dark)" srcset={screen.dark.png} sizes={screenSizes}>
+					<source type="image/webp" srcset={screen.light.webp} sizes={screenSizes}>
+					<img
+						src={screenFallback.src}
+						srcset={screen.light.png}
+						sizes={screenSizes}
+						width={screenLightPng.width}
+						height={screenLightPng.height}
 						alt={hero.screenshotAlt}
-						formats={['webp']}
-						fallbackFormat="png"
-						widths={[360, 720]}
-						sizes="(min-width: 48rem) 10rem, 9rem"
 						loading="eager"
-					/>
+					>
+				</picture>
 			</div>
 		</div>
 	</div>

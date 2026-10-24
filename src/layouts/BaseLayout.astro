@@ -42,7 +42,7 @@ const ui = getMessages(lang).ui;
 
 // build.format is 'file': the home page is /fr/index.html on disk but must be canonical as /fr/
 const canonical = new URL(Astro.url.pathname.replace(/index\.html$/, ''), Astro.site);
-const socialImage = new URL('/image/preview.png', Astro.site);
+const socialImage = new URL(`/image/preview-${lang}.png`, Astro.site);
 const versions = paths ? alternates(paths, Astro.site!) : [];
 ---
 <!doctype html>

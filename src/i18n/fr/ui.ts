@@ -7,7 +7,7 @@ export const ui = {
 		description: 'moncycle.app est une application web gratuite qui permet de noter chaque jour vos observations de glaire cervicale et de température, et de tenir votre tableau selon la méthode Billings ou FertilityCare. Sans publicité, sans prédiction, hébergée en France.',
 		socialTitle: 'moncycle.app · le carnet de suivi de cycle au service des méthodes de régulation naturelle des naissances',
 		socialDescription: 'Notez vos observations de glaire cervicale et de température, et retrouvez votre tableau Billings ou FertilityCare sur tous vos appareils. Gratuit, sans publicité et sans prédiction.',
-		socialImageAlt: 'Dessin d’un couple souriant au-dessus du nom moncycle.app',
+		socialImageAlt: 'Carte d’aperçu moncycle.app : « Votre carnet de cycle, simple et gratuit », avec une capture du tableau de l’application',
 	},
 	// schema.org descriptions (JSON-LD)
 	structuredData: {

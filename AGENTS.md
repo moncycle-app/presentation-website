@@ -37,7 +37,7 @@ Generated files: `/sitemap.xml`, `/robots.txt`, `/llms.txt` (English) and `/<lan
 ## Structure
 
 ```
-public/                    Files served as is, with a fixed URL: favicons, CNAME, image/preview.png,
+public/                    Files served as is, with a fixed URL: favicons, CNAME, image/preview-<lang>.png,
                            image/apple-touch-icon.png, video/
 src/
   assets/

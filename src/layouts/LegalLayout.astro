@@ -1,6 +1,7 @@
 ---
 import '../styles/legal.css';
 import { getMessages } from '../i18n';
+import { siteName } from '../data/site';
 import { alternates, defaultLang, homePath, legalPath, locales, otherLangs, type Lang } from '../i18n/config';
 
 interface Props {
@@ -9,7 +10,10 @@ interface Props {
 
 const { lang } = Astro.props;
 const page = getMessages(lang).legal;
-const { htmlLang, dir } = locales[lang];
+const { htmlLang, ogLocale, dir } = locales[lang];
+const canonical = new URL(legalPath(lang), Astro.site);
+const socialImage = new URL(`/image/preview-${lang}.png`, Astro.site);
+const socialImageAlt = getMessages(lang).ui.meta.socialImageAlt;
 const versions = alternates(legalPath, Astro.site!);
 const others = otherLangs(lang);
 ---
@@ -21,9 +25,25 @@ const others = otherLangs(lang);
 	<meta name="color-scheme" content="light dark">
 	<meta name="description" content={page.description}>
 	<title>{page.title}</title>
-	<link rel="canonical" href={new URL(legalPath(lang), Astro.site)}>
+	<link rel="canonical" href={canonical}>
 	{versions.map(({ hreflang, href }) => <link rel="alternate" hreflang={hreflang} href={href}>)}
 	<link rel="alternate" hreflang="x-default" href={new URL(legalPath(defaultLang), Astro.site)}>
+
+	<meta property="og:type" content="website">
+	<meta property="og:locale" content={ogLocale}>
+	{others.map((code) => <meta property="og:locale:alternate" content={locales[code].ogLocale}>)}
+	<meta property="og:site_name" content={siteName}>
+	<meta property="og:url" content={canonical}>
+	<meta property="og:title" content={page.title}>
+	<meta property="og:description" content={page.description}>
+	<meta property="og:image" content={socialImage}>
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:image:alt" content={socialImageAlt}>
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content={page.title}>
+	<meta name="twitter:description" content={page.description}>
+	<meta name="twitter:image" content={socialImage}>
 </head>
 <body>
 
