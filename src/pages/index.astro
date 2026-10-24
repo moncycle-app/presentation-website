@@ -2,14 +2,17 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 import { getMessages } from '../i18n';
-import { homePath, internationalLang, langs, locales } from '../i18n/config';
+import { homePath, internationalLang, langs, languageStorageKey, locales } from '../i18n/config';
 import { selectorGraph } from '../data/structured-data';
 
 // "/" belongs to no language: it is the x-default of the site and lists every language as plain links.
-// There is deliberately no automatic redirect (crawlers must see every version); the home pages offer
-// a dismissible suggestion based on the browser language instead (components/LanguageBanner.astro).
+// A small inline script sends visitors on to their language when it is known: a language they chose
+// earlier, otherwise the main language of the browser if the site has it. Anyone else (other browser
+// language, no JavaScript, crawlers) stays here and chooses. The home pages also offer a dismissible
+// suggestion based on the browser language (components/LanguageBanner.astro).
 const { selector, meta } = getMessages(internationalLang).ui;
 const structuredData = selectorGraph(Astro.site!);
+const homes = Object.fromEntries(langs.map((code) => [code, homePath(code)]));
 ---
 <BaseLayout
 	lang={internationalLang}
@@ -19,6 +22,22 @@ const structuredData = selectorGraph(Astro.site!);
 	skipLink={false}
 >
 	<script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+	<script slot="head" is:inline define:vars={{ homes, storageKey: languageStorageKey }}>
+		// Runs in <head>, before the selector is painted. replace() keeps "/" out of the history, so Back
+		// does not bounce the visitor here again. Crawlers keep the selector, the x-default of the site.
+		(() => {
+			if (/bot|crawl|spider|slurp/i.test(navigator.userAgent)) return;
+			let chosen = null;
+			try {
+				chosen = localStorage.getItem(storageKey);
+			} catch {
+				// storage unavailable: fall back to the browser language
+			}
+			const primary = (navigator.languages?.[0] ?? navigator.language ?? '').toLowerCase().split('-')[0];
+			const target = [chosen, primary].find((code) => code && Object.hasOwn(homes, code));
+			if (target) location.replace(homes[target]);
+		})();
+	</script>
 
 	<main class="selector container">
 		<p class="selector-brand brand">

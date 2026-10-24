@@ -1,7 +1,7 @@
 // Language suggestion. The markup (components/LanguageBanner.astro) holds one hidden suggestion per other
 // language; this reveals the one that matches the first supported language of the browser, unless the
 // visitor already chose a language (switcher, banner link) or dismissed the banner.
-const STORAGE_KEY = 'moncycle-language';
+import { languageStorageKey as STORAGE_KEY } from '../i18n/config';
 
 const remembered = (): string | null => {
 	try {

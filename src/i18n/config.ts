@@ -23,6 +23,9 @@ export const llmsLang: Lang = 'en';
 /** The other languages, in the order of `locales` */
 export const otherLangs = (lang: Lang): Lang[] => langs.filter((code) => code !== lang);
 
+/** localStorage key of the language the visitor chose (selector page, switcher, language banner) */
+export const languageStorageKey = 'moncycle-language';
+
 export const isLang = (value: string | undefined): value is Lang => value !== undefined && value in locales;
 
 // Public paths. build.format is 'file': /fr/ is served from /fr/index.html and the terms of use from

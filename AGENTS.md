@@ -11,7 +11,8 @@ The site is **multilingual** (French and English today, built to take more): one
 page per language. French is the original language and the reference version of the terms of use.
 The application itself is French only; the English pages say so.
 
-Pages: a language selector at `/` (the `x-default`, no redirect), the home page of each language (`/fr/`, `/en/`),
+Pages: a language selector at `/` (the `x-default`; with JavaScript, visitors whose chosen or browser language exists
+are sent on to it), the home page of each language (`/fr/`, `/en/`),
 the terms of use of each language (`/fr/term_of_service.html`, `/en/term_of_service.html`) and a multilingual
 404 page. The former `/ToS/term_of_service_{fr,en}.html` URLs remain as canonical + refresh stubs.
 Generated files: `/sitemap.xml`, `/robots.txt`, `/llms.txt` (English), `/<lang>/llms.txt` (other languages) and
@@ -165,8 +166,11 @@ What a link to the site looks like when shared (WhatsApp, iMessage, Signal, Face
 - SEO is part of the design and the HTML must stay complete without JavaScript: every page is static, with its own
   canonical, `hreflang` alternates (all languages + `x-default` → `/`), `og:locale` and JSON-LD in its language.
   Only the news, the live key figures (static fallback in the HTML) and the e-mail address are filled in by scripts.
-- GitHub Pages cannot send redirects, hence `/` is a real selector page and the language banner
-  (`LanguageBanner.astro`, `scripts/lang-banner.ts`) only suggests; it never redirects.
+- GitHub Pages cannot send redirects, hence `/` is a real selector page. An inline script in `pages/index.astro`
+  forwards the visitor (`location.replace`) to the language they chose earlier, or else to the main language of the
+  browser when the site has it; other languages, crawlers and visitors without JavaScript see the selector. The
+  language banner of the home pages (`LanguageBanner.astro`, `scripts/lang-banner.ts`) only suggests; it never
+  redirects.
 - Internal links and assets are absolute (`/…`): `dist` is meant to be served at the domain root
   (use `npm run preview` locally; opening the HTML from disk does not work).
 - The sitemap is a custom endpoint (not `@astrojs/sitemap`) to control the hreflang alternates. Update
