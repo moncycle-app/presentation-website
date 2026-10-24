@@ -37,7 +37,8 @@ Generated files: `/sitemap.xml`, `/robots.txt`, `/llms.txt` (English) and `/<lan
 ## Structure
 
 ```
-public/                    Files served as is, with a fixed URL: favicons, CNAME, image/preview-<lang>.png,
+public/                    Files served as is, with a fixed URL: favicons, CNAME, image/preview-<lang>.jpg (1200×630) and
+                           image/preview-square-<lang>.jpg (1200×1200, kept under 300 KB for WhatsApp),
                            image/apple-touch-icon.png, video/
 src/
   assets/

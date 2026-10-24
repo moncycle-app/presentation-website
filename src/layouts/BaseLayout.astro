@@ -42,7 +42,8 @@ const ui = getMessages(lang).ui;
 
 // build.format is 'file': the home page is /fr/index.html on disk but must be canonical as /fr/
 const canonical = new URL(Astro.url.pathname.replace(/index\.html$/, ''), Astro.site);
-const socialImage = new URL(`/image/preview-${lang}.png`, Astro.site);
+const socialImage = new URL(`/image/preview-${lang}.jpg`, Astro.site);
+const socialImageSquare = new URL(`/image/preview-square-${lang}.jpg`, Astro.site);
 const versions = paths ? alternates(paths, Astro.site!) : [];
 ---
 <!doctype html>
@@ -73,13 +74,20 @@ const versions = paths ? alternates(paths, Astro.site!) : [];
 	<meta property="og:title" content={socialTitle}>
 	<meta property="og:description" content={socialDescription}>
 	<meta property="og:image" content={socialImage}>
+	<meta property="og:image:type" content="image/jpeg">
 	<meta property="og:image:width" content="1200">
 	<meta property="og:image:height" content="630">
+	<meta property="og:image:alt" content={socialImageAlt}>
+	<meta property="og:image" content={socialImageSquare}>
+	<meta property="og:image:type" content="image/jpeg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="1200">
 	<meta property="og:image:alt" content={socialImageAlt}>
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:title" content={socialTitle}>
 	<meta name="twitter:description" content={socialDescription}>
 	<meta name="twitter:image" content={socialImage}>
+	<meta name="twitter:image:alt" content={socialImageAlt}>
 
 	<Font cssVariable="--font-montserrat" preload />
 	<script is:inline>document.documentElement.classList.replace('no-js', 'js');</script>
